@@ -1,0 +1,28 @@
+.character-card {
+  max-width: 200px;
+  max-height: 300px;
+  display: inline-block;
+  margin: .2em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.character-header-image {
+  /* background-image: url('https://en.gravatar.com/userimage/35097255/b75532e06a9e75754bf49883ffa17c23.png'); */
+  background-size: cover;
+}
+
+.group-card {
+  max-width: 400px;
+  max-height: 300px;
+  display: inline-block;
+  margin: .2em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+.group-header-image {
+  /* background-image: url('https://en.gravatar.com/userimage/35097255/b75532e06a9e75754bf49883ffa17c23.png'); */
+  background-size: cover;
+}
+

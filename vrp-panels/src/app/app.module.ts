@@ -10,16 +10,21 @@ import {
   MatSidenavModule,
   MatTreeModule,
   MatButtonModule,
+  MatCardModule,
+  MatBadgeModule,
+  MatMenuModule,
+  MatToolbarModule,
 } from '@angular/material';
 
 // components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PlayerGroupsComponent } from './player-groups/player-groups.component';
+import { PlayerCharactersComponent } from './player-characters/player-characters.component';
 
 // services
 
@@ -27,8 +32,9 @@ import { NavigationComponent } from './navigation/navigation.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    NavigationComponent
+    NavigationComponent,
+    PlayerGroupsComponent,
+    PlayerCharactersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,10 @@ import { NavigationComponent } from './navigation/navigation.component';
     MatSidenavModule,
     CdkTreeModule,
     MatButtonModule,
+    MatCardModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatToolbarModule,
 
   ],
   providers: [],
