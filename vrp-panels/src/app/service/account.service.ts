@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
+import * as bcrypt from 'bcrypt';
 
 
 
