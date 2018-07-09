@@ -12,7 +12,7 @@ export class UrlNode {
 
 export class UrlFlatNode {
   constructor(
-    public expandable: boolean, public displayName: string, public level: number) { }
+    public expandable: boolean, public displayName: string, public level: number, public src?: string) { }
 }
 
 const TREE_DATA: UrlNode[] = [
@@ -21,9 +21,11 @@ const TREE_DATA: UrlNode[] = [
     children: [
       {
         displayName: 'Postacie',
+        src: '/player/characters'
       },
       {
         displayName: 'Grupy',
+        src: '/player/groups'
       }
     ]
   }
@@ -48,7 +50,7 @@ export class NavigationComponent implements OnInit {
     this.dataSource.data = TREE_DATA;
   }
   transformer = (node: UrlNode, level: number) => {
-    return new UrlFlatNode(!!node.children, node.displayName, level);
+    return new UrlFlatNode(!!node.children, node.displayName, level, node.src);
   }
 
   private _getLevel = (node: UrlFlatNode) => node.level;
