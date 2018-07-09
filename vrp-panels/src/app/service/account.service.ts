@@ -7,6 +7,7 @@ import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
 import * as bcrypt from 'bcrypt';
+import md5 from 'md5';
 
 
 
@@ -25,7 +26,7 @@ export class AccountService extends AbstractService {
     }
 
     public getAll() {
-
+      //console.log(md5("test"));
     }
 
     public getById(id: number) {
