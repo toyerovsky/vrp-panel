@@ -1,0 +1,21 @@
+<div class="player-info">
+  <img class="avatar" src="https://en.gravatar.com/userimage/35097255/b75532e06a9e75754bf49883ffa17c23.png" />
+  <p class="player-name">Toyer and his cat</p>
+  Zarząd
+</div>
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <button mat-icon-button disabled></button>
+    <a routerLink={{node.src}}> {{node.displayName}}</a>
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild">
+    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.displayName}}
+  </mat-tree-node>
+</mat-tree>
