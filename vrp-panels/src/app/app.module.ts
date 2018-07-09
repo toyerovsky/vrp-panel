@@ -25,6 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PlayerGroupsComponent } from './player-groups/player-groups.component';
 import { PlayerCharactersComponent } from './player-characters/player-characters.component';
+import { CharacterService } from './service/character.service';
+import { AccountService } from './service/account.service';
+import { AppRootComponent } from './app-root/app-root.component';
 
 // services
 
@@ -35,6 +38,7 @@ import { PlayerCharactersComponent } from './player-characters/player-characters
     NavigationComponent,
     PlayerGroupsComponent,
     PlayerCharactersComponent
+    AppRootComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { PlayerCharactersComponent } from './player-characters/player-characters
     ToastrModule.forRoot(),
     HttpClientModule,
 
-
+    // angular material modules
     MatIconModule,
     MatInputModule,
     MatTreeModule,
@@ -58,7 +62,7 @@ import { PlayerCharactersComponent } from './player-characters/player-characters
     MatToolbarModule,
 
   ],
-  providers: [],
+  providers: [AccountService, CharacterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

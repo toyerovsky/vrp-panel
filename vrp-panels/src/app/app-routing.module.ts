@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 // components
 import { PlayerGroupsComponent } from './player-groups/player-groups.component';
 import { PlayerCharactersComponent } from './player-characters/player-characters.component';
+import { LoginComponent } from './login/login.component';
+import { AppRootComponent } from './app-root/app-root.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'player/characters', pathMatch: 'full' },
@@ -18,6 +20,11 @@ const routes: Routes = [
   //ALWAYS AT THE END OF ROUTES
   {path:'**', redirectTo:'/'}
 
+  { path: 'login', component: LoginComponent },
+  {
+    path: '', component: AppRootComponent, children: [
+    ]
+  }
 ];
 
 @NgModule({

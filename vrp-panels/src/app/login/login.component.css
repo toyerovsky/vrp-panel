@@ -1,0 +1,20 @@
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  background-image: url('https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/29386921_1458476980928360_2517853731794452480_n.png?_nc_cat=0&_nc_eui2=AeGWJ1yCo0zKQAxClUJdAHAGAlq7Wq0jhqEJkIAwSAbizo0g6rYLPhNFWC8LaFifw5Xb3LlApYS6PJabsCnidpxfBUmWYRYNPIsPYgXYi0zriw&oh=f8347b593d1556ba978e189ef3b408ff&oe=5BEBD59C');
+  background-size: cover;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-top: 1vh;
+}
+
+mat-card {
+  width: 35vh;
+}

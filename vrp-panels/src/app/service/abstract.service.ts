@@ -18,6 +18,6 @@ export default class AbstractService {
         }
         
         return throwError(
-            'Something bad happened; please try again later.');
+            'Wystąpił nieoczekiwany błąd. Skontaktuj się z administratorem seriwsu.');
     }
 }
