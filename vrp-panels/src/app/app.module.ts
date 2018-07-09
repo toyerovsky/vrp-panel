@@ -14,6 +14,7 @@ import {
   MatBadgeModule,
   MatMenuModule,
   MatToolbarModule,
+  MatDialogModule,
 } from '@angular/material';
 
 // components
@@ -28,6 +29,7 @@ import { PlayerCharactersComponent } from './player-characters/player-characters
 import { CharacterService } from './service/character.service';
 import { AccountService } from './service/account.service';
 import { AppRootComponent } from './app-root/app-root.component';
+import { PlayerCharacterDetailsComponent } from './player-characters/elements/player-character-details/player-character-details.component';
 
 // services
 
@@ -38,7 +40,8 @@ import { AppRootComponent } from './app-root/app-root.component';
     NavigationComponent,
     PlayerGroupsComponent,
     PlayerCharactersComponent,
-    AppRootComponent
+    AppRootComponent,
+    PlayerCharacterDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { AppRootComponent } from './app-root/app-root.component';
     MatBadgeModule,
     MatMenuModule,
     MatToolbarModule,
+    MatDialogModule
 
   ],
   providers: [AccountService, CharacterService],

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterModel } from '../models/CharacterModel';
 import { TrustedStyleService } from '../service/trusted-style.service';
 import { GroupModel, GroupTypes } from '../models/GroupModel';
+import { MatDialog } from '@angular/material';
+import { PlayerCharacterDetailsComponent } from './elements/player-character-details/player-character-details.component';
 
 
 
@@ -13,7 +15,10 @@ import { GroupModel, GroupTypes } from '../models/GroupModel';
 export class PlayerCharactersComponent implements OnInit {
   public playerCharacters: CharacterModel[];
   public playerGroups: GroupModel[];
-  constructor(private _style: TrustedStyleService) { }
+  constructor(
+    private _style: TrustedStyleService,
+    private _dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.playerCharacters = [
@@ -31,6 +36,16 @@ export class PlayerCharactersComponent implements OnInit {
         {id: 69, name: "All Saints General Hospital",type: GroupTypes.Hospital,
         gImg: this._style.makeTrustedUrlBg("http://i.imgur.com/HBEl1GD.png"), member: "Halyna Nosacz"}
     ];
+  }
+
+  openDetails(chId: number):void{
+    const dialogRef = this._dialog.open(PlayerCharacterDetailsComponent, {
+      data: { characterId: chId }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+
+  });
   }
 
 

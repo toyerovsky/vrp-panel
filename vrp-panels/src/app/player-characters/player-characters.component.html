@@ -1,7 +1,7 @@
 <mat-toolbar color="warn">Moje postacie</mat-toolbar>
-<mat-card class="character-card" *ngFor="let character of playerCharacters">
+<mat-card class="card character-card" *ngFor="let character of playerCharacters" (click)="openDetails(character.id)">
   <mat-card-header>
-    <div mat-card-avatar class="character-header-image"
+    <div mat-card-avatar class="card-header-image"
     [style.background-image]="character.chImage">
 
   </div>
@@ -15,9 +15,9 @@
 
 <mat-toolbar color="warn">Moje grupy</mat-toolbar>
 
-<mat-card class="group-card" *ngFor="let group of playerGroups">
+<mat-card class="card group-card" *ngFor="let group of playerGroups">
   <mat-card-header>
-    <div mat-card-avatar class="group-header-image"
+    <div mat-card-avatar class="card-header-image"
     [style.background-image]="group.gImg">
 
   </div>
