@@ -6,13 +6,15 @@ import { environment } from '../../environments/environment';
 import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
-import bcrypt = require("bcrypt");
+
+
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
     constructor(
         private toastr: ToastrService,
-        private _http: HttpClient) {
+        private _http: HttpClient,
+        ) {
         super(toastr);
     }
 
