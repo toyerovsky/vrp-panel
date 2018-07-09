@@ -9,22 +9,23 @@ import { LoginComponent } from './login/login.component';
 import { AppRootComponent } from './app-root/app-root.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'player/characters', pathMatch: 'full' },
+  { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
   {
-    path: 'player', children:
-      [
-        {path: 'groups', component: PlayerGroupsComponent},
-        {path: 'characters', component: PlayerCharactersComponent}
-      ]
-  },
-  //ALWAYS AT THE END OF ROUTES
-  {path:'**', redirectTo:'/'}
-
-  { path: 'login', component: LoginComponent },
-  {
-    path: '', component: AppRootComponent, children: [
+    path: '',
+    component: AppRootComponent,
+    children: [
+      {
+        path: 'player', children:
+          [
+            { path: 'groups', component: PlayerGroupsComponent },
+            { path: 'characters', component: PlayerCharactersComponent }
+          ]
+      }
     ]
-  }
+  },
+  { path: 'login', component: LoginComponent },
+  // ALWAYS AT THE END OF ROUTES
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({
