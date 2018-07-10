@@ -9,15 +9,15 @@ export default class AbstractService {
     protected handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             // front end error
-            console.log('Błąd:', error.error.message);
+            console.log('Front-End Error:', error.error.message);
         } else {
             // http error
-            console.log(
-                `Http ${error.status}, ` +
-                `Body was: ${error.error}`);
+            console.log(`Back-End Error ` +
+                `Http Status: ${error.status}, ` +
+                `Body: ${JSON.parse(error.error)}`);
         }
-        
-        return throwError(
-            'Wystąpił nieoczekiwany błąd. Skontaktuj się z administratorem seriwsu.');
+
+        this._toastr.error("Wystąpił wyjątek w aplikacji. Prosimy zgłosić problem przez forum.")
+        return throwError("");
     }
 }

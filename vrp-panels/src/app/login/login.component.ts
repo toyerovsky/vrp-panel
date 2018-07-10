@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { LoginViewModel } from '../viewModels/LoginViewModel';
 import { AccountService } from '../service/account.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-  private _loginModel: LoginViewModel;
+  private _loginModel: LoginViewModel = new LoginViewModel();
   private _matcher = new ErrorStateMatcher();
 
   constructor(
@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
             setTimeout(() => this._toastrService.error('Podane dane logowania są niepoprawne.'));
           } else {
             this._router.navigate(["player/characters"]);
-            setTimeout(() => this._toastrService.success(`Logowanie pomyślne.`));
+            setTimeout(() => this._toastrService.success(
+              `Witaj ${account.forumUserName} zostałeś pomyślnie zalogowany.`, 'Logowanie pomyślne.'));
           }
         });
       });

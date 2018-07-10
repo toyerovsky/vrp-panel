@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, of } from "rxjs";
-
 import { environment } from '../../environments/environment';
 import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
-import * as bcrypt from 'bcrypt';
 import md5 from 'md5';
 import { AccountModel } from "../models/AccountModel";
 
@@ -38,8 +36,8 @@ export class AccountService extends AbstractService {
             .pipe(catchError(this.handleError));
     }
 
-    public getByEmail(email: string): Observable<AccountModel> {
-        return this._http.get<AccountModel>(`${environment.apiUrl}/account/salt/${email}`, { withCredentials: true })
+    public getByEmail(email: string): Observable<any> {
+        return this._http.get<any>(`${environment.apiUrl}/account/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 }
