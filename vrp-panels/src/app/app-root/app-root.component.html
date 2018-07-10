@@ -1,11 +1,11 @@
 <mat-sidenav-container class="app-container">
   <mat-sidenav mode="side" opened>
-    <div class="player-info" *ngIf="_accountModel != undefined"> 
-      <img class="avatar" [src]="_accountModel.avatarUrl != undefined ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl : 
-        this._accountService.getGravatarUrl(this._accountModel.email)" /> 
-      <p class="player-name">{{_accountModel.forumUserName}}</p> 
-      {{_accountModel.serverRank}} 
-    </div> 
+    <div class="player-info" *ngIf="_accountModel != undefined">
+      <img class="avatar" [src]="_accountModel.avatarUrl != undefined ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl :
+        this._accountService.getGravatarUrl(this._accountModel.email)" />
+      <p class="player-name">{{_accountModel.forumUserName}}</p>
+      {{_accountModel.serverRank}}
+    </div>
     <app-navigation></app-navigation>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -14,18 +14,5 @@
 </mat-sidenav-container>
 
 
-<!-- <mat-sidenav-container class="app-container">
-  <mat-sidenav mode="side" opened>
-    <div class="player-info" *ngIf="_accountModel != undefined">
-      <img class="avatar" *ngIf='_accountModel != undefined && _accountModel.avatarUrl != undefined' [src]="'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl" />
-      <img class="avatar" *ngIf='_accountModel != undefined && _accountModel.avatarUrl == undefined && _accountModel.email != undefined' [src]="this._accountService.getGravatarUrl(this._accountModel.email)" />
-      <p class="player-name" *ngIf='_accountModel != undefined'>{{this._accountModel.forumUserName}}</p>
-      {{this._accountModel.serverRank}}
-    </div>
-    <app-navigation></app-navigation>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
+
 
