@@ -28,6 +28,7 @@ import { PlayerGroupsComponent } from './player-groups/player-groups.component';
 import { PlayerCharactersComponent } from './player-characters/player-characters.component';
 import { CharacterService } from './service/character.service';
 import { AccountService } from './service/account.service';
+import { CookieService } from 'ngx-cookie-service';
 import { AppRootComponent } from './app-root/app-root.component';
 import { PlayerCharacterDetailsComponent } from './player-characters/elements/player-character-details/player-character-details.component';
 
@@ -66,7 +67,7 @@ import { PlayerCharacterDetailsComponent } from './player-characters/elements/pl
     MatDialogModule
 
   ],
-  providers: [AccountService, CharacterService],
+  providers: [AccountService, CharacterService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,16 +7,19 @@ import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
 import md5 from 'md5';
 import { AccountModel } from "../models/AccountModel";
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
-    public currentUserId: number;
+    public currentUserId: number = 0;
 
     constructor(
         private toastr: ToastrService,
         private _http: HttpClient,
+        private _cookie: CookieService
     ) {
         super(toastr);
+        this.currentUserId = parseInt(this._cookie.get('AccountId'));
     }
 
     public login(email: string, passwordHash: string): Observable<void> {
@@ -41,5 +44,9 @@ export class AccountService extends AbstractService {
     public getByEmail(email: string): Observable<any> {
         return this._http.get<any>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
+    }
+
+    public setAccountId(id: number):void {
+      this._cookie.set('AccountId',id.toString());
     }
 }
