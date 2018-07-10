@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
           if (data === undefined) {
             setTimeout(() => this._toastrService.error('Podane dane logowania są niepoprawne.'));
           } else {
+            
+            this._accountService.currentUserId = account.id;
             this._router.navigate(["player/characters"]);
             setTimeout(() => this._toastrService.success(
               `Witaj ${account.forumUserName} zostałeś pomyślnie zalogowany.`, 'Logowanie pomyślne.'));

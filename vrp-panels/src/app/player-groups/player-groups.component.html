@@ -1,9 +1,8 @@
 <mat-card class="character-card" *ngFor="let character of playerCharacters">
   <mat-card-header>
-    <div mat-card-avatar class="character-header-image"
-    [style.background-image]="character.chImage">
+    <div mat-card-avatar class="character-header-image" [style.background-image]="character.chImage">
 
-  </div>
+    </div>
     <mat-card-title>{{character.name}} {{character.surname}}</mat-card-title>
 
   </mat-card-header>
@@ -15,4 +14,3 @@
     </mat-menu>
   </mat-card-content>
 </mat-card>
-

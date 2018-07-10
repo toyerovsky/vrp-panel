@@ -10,6 +10,8 @@ import { AccountModel } from "../models/AccountModel";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
+    public currentUserId: number;
+
     constructor(
         private toastr: ToastrService,
         private _http: HttpClient,
@@ -22,8 +24,8 @@ export class AccountService extends AbstractService {
             .pipe(catchError(this.handleError));
     }
 
-    public getGravatarUrl(email: string): Observable<string> {
-        return of(`https://www.gravatar.com/avatar/${md5(email)}`);
+    public getGravatarUrl(email: string): string {
+        return `https://www.gravatar.com/avatar/${md5(email)}`;
     }
 
     public getById(id: number): Observable<AccountModel> {
@@ -37,7 +39,7 @@ export class AccountService extends AbstractService {
     }
 
     public getByEmail(email: string): Observable<any> {
-        return this._http.get<any>(`${environment.apiUrl}/account/${email}`, { withCredentials: true })
+        return this._http.get<any>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 }

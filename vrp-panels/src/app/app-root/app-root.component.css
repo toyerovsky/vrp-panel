@@ -17,3 +17,15 @@ mat-sidenav-content {
   left: 0;
   right: 0;
 }
+
+.avatar {
+  border-radius: 50%;
+  width: 6vh;
+  height: 6vh;
+  float: left;
+  margin-right: 0.5vh;
+}
+
+.player-name {
+  font-weight: 900;
+}
