@@ -8,7 +8,7 @@ export class TrustedStyleService {
 
   constructor(private _sanitizer: DomSanitizer) { }
 
-    makeTrustedUrlBg(imageUrl: string): SafeStyle{
-   return this._sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
+  makeTrustedUrlBg(imageUrl: string): SafeStyle {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
   }
 }
