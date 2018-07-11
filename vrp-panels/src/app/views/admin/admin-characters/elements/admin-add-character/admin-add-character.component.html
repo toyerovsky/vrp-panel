@@ -1,0 +1,25 @@
+<h2>Dodaj nową postać</h2>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_characterModel.name" matInput placeholder="Imię" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_characterModel.surname" matInput placeholder="Nazwisko" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_characterModel.accountId" type="number" matInput placeholder="Id konta" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-select [(ngModel)]="_characterModel.gender" placeholder="Płeć">
+    <mat-option *ngFor="let gender of _genders" [value]="gender.value">
+      {{gender.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_characterModel.bornDate" [matDatepicker]="picker" matInput placeholder="Data urodzenia">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<button mat-button (click)="saveHandler()">
+  Zapisz
+</button>

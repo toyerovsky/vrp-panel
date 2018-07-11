@@ -17,6 +17,12 @@ import {
   MatDialogModule,
   MatTabsModule,
   MatListModule,
+  MatTableModule,
+  MatSortModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 // components
@@ -35,6 +41,8 @@ import { AppRootComponent } from './views/app-root/app-root.component';
 import { PlayerCharacterDetailsComponent } from './views/player-characters/elements/player-character-details/player-character-details.component';
 import { GroupService } from './service/group.service';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
 
 // services
 
@@ -47,7 +55,8 @@ import { AdminCharactersComponent } from './views/admin/admin-characters/admin-c
     AppRootComponent,
     PlayerCharactersComponent,
     PlayerCharacterDetailsComponent,
-    AdminCharactersComponent
+    AdminCharactersComponent,
+    AdminAddCharacterComponent
   ],
   imports: [
     BrowserModule,
@@ -72,9 +81,15 @@ import { AdminCharactersComponent } from './views/admin/admin-characters/admin-c
     MatDialogModule,
     MatTabsModule,
     MatListModule,
+    MatTableModule,
+    MatSortModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
-  entryComponents: [PlayerCharacterDetailsComponent],
+  entryComponents: [PlayerCharacterDetailsComponent, AdminAddCharacterComponent],
   providers: [AccountService, CharacterService, CookieService, GroupService],
   bootstrap: [AppComponent]
 })

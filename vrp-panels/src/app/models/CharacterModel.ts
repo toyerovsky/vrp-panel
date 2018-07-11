@@ -1,6 +1,7 @@
 import { SafeStyle } from "@angular/platform-browser";
+import { AccountModel } from "./AccountModel";
 
-export interface CharacterModel {
+export class CharacterModel {
   id: number;
   online: boolean;
   createTime: Date | string;
@@ -27,4 +28,6 @@ export interface CharacterModel {
   lastRotationZ: number;
   minutesToRespawn: number;
   characterImage?: SafeStyle;
+  accountId: number;
+  account: AccountModel;
 }

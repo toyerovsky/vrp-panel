@@ -20,5 +20,4 @@ export class PlayerCharacterDetailsComponent implements OnInit {
   closeDialog(): void {
     this._dialogRef.close();
   }
-
 }
