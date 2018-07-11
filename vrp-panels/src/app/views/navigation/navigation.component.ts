@@ -5,7 +5,6 @@ import { Observable, of as observableOf } from 'rxjs';
 
 export class UrlNode {
   displayName: string;
-  icon: string;
   requiredRank?: string;
   children?: UrlNode[];
   src?: string;
@@ -13,34 +12,31 @@ export class UrlNode {
 
 export class UrlFlatNode {
   constructor(
-    public expandable: boolean, public displayName: string, public icon: string, public level: number, public src?: string) { }
+    public expandable: boolean, public displayName: string, public level: number, public src?: string) { }
 }
 
 const TREE_DATA: UrlNode[] = [
   {
-    displayName: 'Strona startowa',
-    icon: 'dashboard',
-    src: '/player/characters'
+    displayName: 'Rozgrywka',
+    children: [
+      {
+        displayName: 'Postacie',
+        src: '/player/characters'
+      },
+      {
+        displayName: 'Grupy',
+        src: '/player/groups'
+      }
+    ]
   },
   {
-    displayName: 'Zarządzaj grupami',
-    icon: 'dashboard',
-    src: '/player/characters'
-  },
-  {
-    displayName: 'Panel admistracyjny',
-    icon: 'dashboard',
-    src: '/player/characters'
-  },
-  {
-    displayName: 'Zgłoszenia',
-    icon: 'dashboard',
-    src: '/player/characters'
-  },
-  {
-    displayName: 'Moje konto',
-    icon: 'dashboard',
-    src: '/admin/characters'
+    displayName: 'Panel administracyjny',
+    children: [
+      {
+        displayName: 'Postacie',
+        src: '/admin/characters'
+      }
+    ]
   }
 ];
 
