@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../service/account.service';
-import { AccountModel } from '../models/AccountModel';
-import { TrustedStyleService } from '../service/trusted-style.service';
+import { AccountService } from '../../service/account.service';
+import { AccountModel } from '../../models/AccountModel';
+import { TrustedStyleService } from '../../service/trusted-style.service';
 
 @Component({
   selector: 'app-app-root',
@@ -17,7 +17,6 @@ export class AppRootComponent implements OnInit {
 
   ngOnInit() {
     this._accountService.getById(this._accountService.currentUserId).subscribe(account => {
-      alert(JSON.stringify(account));
       this._accountModel = account;
     });
   }

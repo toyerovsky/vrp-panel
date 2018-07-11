@@ -6,18 +6,18 @@ import { environment } from '../../environments/environment';
 import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
-import { CharacterModel } from "../models/CharacterModel";
+import { PenaltyModel } from "../models/PenaltyModel";
 
 @Injectable({ providedIn: 'root' })
-export class CharacterService extends AbstractService {
+export class PenaltyService extends AbstractService {
     constructor(
         toastr: ToastrService,
         private _http: HttpClient) {
         super(toastr);
     }
 
-    public getAllByAccountId(accountId: number): Observable<CharacterModel[]> {
-        return this._http.get<CharacterModel[]>(`${environment.apiUrl}/character/account/${accountId}`, { withCredentials: true })
+    public getAllByAccountId(accountId: number): Observable<PenaltyModel[]> {
+        return this._http.get<PenaltyModel[]>(`${environment.apiUrl}/penalty/account/${accountId}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 }

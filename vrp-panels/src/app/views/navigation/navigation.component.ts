@@ -1,11 +1,11 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Observable, of as observableOf } from 'rxjs';
 
 export class UrlNode {
   displayName: string;
+  requiredRank?: string;
   children?: UrlNode[];
   src?: string;
 }
@@ -26,6 +26,15 @@ const TREE_DATA: UrlNode[] = [
       {
         displayName: 'Grupy',
         src: '/player/groups'
+      }
+    ]
+  },
+  {
+    displayName: 'Panel administracyjny',
+    children: [
+      {
+        displayName: 'Postacie',
+        src: '/admin/characters'
       }
     ]
   }

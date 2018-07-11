@@ -15,22 +15,26 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatDialogModule,
+  MatTabsModule,
+  MatListModule,
 } from '@angular/material';
 
 // components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './views/login/login.component';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NavigationComponent } from './navigation/navigation.component';
-import { PlayerGroupsComponent } from './player-groups/player-groups.component';
-import { PlayerCharactersComponent } from './player-characters/player-characters.component';
+import { NavigationComponent } from './views/navigation/navigation.component';
+import { PlayerGroupsComponent } from './views/player-groups/player-groups.component';
+import { PlayerCharactersComponent } from './views/player-characters/player-characters.component';
 import { CharacterService } from './service/character.service';
 import { AccountService } from './service/account.service';
 import { CookieService } from 'ngx-cookie-service';
-import { AppRootComponent } from './app-root/app-root.component';
-import { PlayerCharacterDetailsComponent } from './player-characters/elements/player-character-details/player-character-details.component';
+import { AppRootComponent } from './views/app-root/app-root.component';
+import { PlayerCharacterDetailsComponent } from './views/player-characters/elements/player-character-details/player-character-details.component';
+import { GroupService } from './service/group.service';
+import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 
 // services
 
@@ -40,9 +44,10 @@ import { PlayerCharacterDetailsComponent } from './player-characters/elements/pl
     LoginComponent,
     NavigationComponent,
     PlayerGroupsComponent,
-    PlayerCharactersComponent,
     AppRootComponent,
-    PlayerCharacterDetailsComponent
+    PlayerCharactersComponent,
+    PlayerCharacterDetailsComponent,
+    AdminCharactersComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +69,13 @@ import { PlayerCharacterDetailsComponent } from './player-characters/elements/pl
     MatBadgeModule,
     MatMenuModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatListModule,
 
   ],
-  providers: [AccountService, CharacterService, CookieService],
+  entryComponents: [PlayerCharacterDetailsComponent],
+  providers: [AccountService, CharacterService, CookieService, GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

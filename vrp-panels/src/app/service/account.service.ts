@@ -11,15 +11,19 @@ import { CookieService } from "ngx-cookie-service";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
-    public currentUserId: number = 0;
-
     constructor(
-        private toastr: ToastrService,
+        toastr: ToastrService,
         private _http: HttpClient,
         private _cookie: CookieService
     ) {
         super(toastr);
-        this.currentUserId = parseInt(this._cookie.get('AccountId'));
+    }
+
+    public get currentUserId(): number {
+        return parseInt(this._cookie.get('AccountId'));;
+    }
+    public set currentUserId(value: number) {
+        this._cookie.set('AccountId', value.toString());
     }
 
     public login(email: string, passwordHash: string): Observable<void> {
@@ -44,9 +48,5 @@ export class AccountService extends AbstractService {
     public getByEmail(email: string): Observable<any> {
         return this._http.get<any>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
-    }
-
-    public setAccountId(id: number):void {
-      this._cookie.set('AccountId',id.toString());
     }
 }

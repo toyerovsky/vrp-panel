@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CharacterModel } from '../../../../models/CharacterModel';
 
 @Component({
   selector: 'app-player-character-details',
@@ -10,13 +11,13 @@ export class PlayerCharacterDetailsComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<PlayerCharacterDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public model: CharacterModel
   ) { }
 
   ngOnInit() {
   }
 
-  closeDialog(): void{
+  closeDialog(): void {
     this._dialogRef.close();
   }
 

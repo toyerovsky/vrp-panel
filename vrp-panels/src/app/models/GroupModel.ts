@@ -19,7 +19,5 @@ export interface GroupModel {
   type: GroupTypes;
   gImg: SafeStyle;
   member: string;
-
-
 }
 
