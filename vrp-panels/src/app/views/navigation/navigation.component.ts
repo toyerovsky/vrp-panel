@@ -32,7 +32,10 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Panel admistracyjny',
     icon: 'security',
-    src: '/player/characters'
+    children: [{
+      displayName: 'Postacie',
+      src: '/admin/characters'
+    }]
   },
   {
     displayName: 'Zgłoszenia',

@@ -2,6 +2,12 @@
   Dodaj postać
 </button>
 
+<mat-form-field appearance="outline">
+  <mat-label>Wyszukiwanie</mat-label>
+  <input matInput>
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
 <table mat-table [dataSource]="_dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
