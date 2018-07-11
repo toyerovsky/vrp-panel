@@ -8,7 +8,7 @@
       <span class="title">Imię i nazwisko:</span>{{model.name}} {{model.surname}}
     </span>
     <span class="info-container">
-      <span class="title">Data urodzenia:</span>{{model.bornDate.toShortDateString()}}
+      <span class="title">Data urodzenia:</span>{{model.bornDate.toString()}}
     </span>
     <span class="info-container">
       <span class="title">Portfel:</span>${{model.money}}
@@ -32,7 +32,6 @@
       <mat-icon>directions_car</mat-icon>
       Pojazdy
     </ng-template>
-    Content 2
   </mat-tab>
 
   <mat-tab>
@@ -40,6 +39,5 @@
       <mat-icon>attach_money</mat-icon>
       Przedmioty
     </ng-template>
-    Content 2
   </mat-tab>
 </mat-tab-group>

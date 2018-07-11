@@ -14,6 +14,7 @@
 
 .card-header-image {
   background-size: cover;
+  background-image: url('http://csris.edu.kg/wp-content/uploads/2017/12/default-avatar.png');
 }
 
 .group-card {

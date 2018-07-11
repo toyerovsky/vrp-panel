@@ -1,20 +1,21 @@
 <div *ngIf="_playerCharacters">
-  <mat-toolbar color="warn">Moje postacie</mat-toolbar>
+  <mat-toolbar>Moje postacie</mat-toolbar>
   <mat-card class="card character-card" *ngFor="let character of _playerCharacters" (click)="openDetails(character)">
     <mat-card-header>
-      <div mat-card-avatar class="card-header-image" [style.background-image]="character.characterImage">
+      <div mat-card-avatar class="card-header-image">
       </div>
       <mat-card-title>
-        <span matBadge="" matBadgeColor="warn" matBadgeOverlap="false">{{character.name}} {{character.surname}}</span>
+        <span>{{character.name}} {{character.surname}}</span>
       </mat-card-title>
-      <mat-card-subtitle>{{character.onlineHours}} h</mat-card-subtitle>
+      <mat-card-subtitle>Id konta: {{character.accountId}} </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
 
     </mat-card-content>
   </mat-card>
 
-  <mat-toolbar color="warn">Moje grupy</mat-toolbar>
+  <mat-toolbar>Moje grupy</mat-toolbar>
+  <p>Brak grup</p>
 
   <mat-card class="card group-card" *ngFor="let group of _playerGroups">
     <mat-card-header>
@@ -27,8 +28,8 @@
 
   </mat-card>
 
-  <mat-toolbar color="warn">Moje kary</mat-toolbar>
-
+  <mat-toolbar>Moje kary</mat-toolbar>
+  <p>Brak kar</p>
   <mat-list>
     <mat-list-item *ngFor="let penalty of _playerPenalties"> {{penalty.creatorName}}</mat-list-item>
   </mat-list>
