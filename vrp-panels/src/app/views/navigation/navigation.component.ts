@@ -63,7 +63,7 @@ export class NavigationComponent implements OnInit {
     this.dataSource.data = TREE_DATA;
   }
   transformer = (node: UrlNode, level: number) => {
-    return new UrlFlatNode(!!node.children, node.displayName, level, node.src);
+    return new UrlFlatNode(!!node.children, node.displayName, '',level, node.src);
   }
 
   private _getLevel = (node: UrlFlatNode) => node.level;
