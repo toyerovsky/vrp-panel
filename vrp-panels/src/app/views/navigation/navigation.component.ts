@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Observable, of as observableOf } from 'rxjs';
+import { AccountService } from '../../service/account.service';
+import { AccountModel } from '../../models/AccountModel';
 
 export class UrlNode {
   displayName: string;
@@ -24,22 +26,22 @@ const TREE_DATA: UrlNode[] = [
   },
   {
     displayName: 'Zarządzaj grupami',
-    icon: 'dashboard',
+    icon: 'business',
     src: '/player/characters'
   },
   {
     displayName: 'Panel admistracyjny',
-    icon: 'dashboard',
+    icon: 'security',
     src: '/player/characters'
   },
   {
     displayName: 'Zgłoszenia',
-    icon: 'dashboard',
+    icon: 'chat',
     src: '/player/characters'
   },
   {
     displayName: 'Moje konto',
-    icon: 'dashboard',
+    icon: 'person',
     src: '/admin/characters'
   }
 ];
@@ -50,20 +52,20 @@ const TREE_DATA: UrlNode[] = [
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  treeControl: FlatTreeControl<UrlFlatNode>;
-  treeFlattener: MatTreeFlattener<UrlNode, UrlFlatNode>;
-  dataSource: MatTreeFlatDataSource<UrlNode, UrlFlatNode>;
+  private treeControl: FlatTreeControl<UrlFlatNode>;
+  private treeFlattener: MatTreeFlattener<UrlNode, UrlFlatNode>;
+  private dataSource: MatTreeFlatDataSource<UrlNode, UrlFlatNode>;
+  private _accountModel: AccountModel;
 
-  constructor() {
+  constructor(private _accountService: AccountService) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
-
     this.treeControl = new FlatTreeControl<UrlFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = TREE_DATA;
   }
   transformer = (node: UrlNode, level: number) => {
-    return new UrlFlatNode(!!node.children, node.displayName, node.icon,level, node.src);
+    return new UrlFlatNode(!!node.children, node.displayName, node.icon, level, node.src);
   }
 
   private _getLevel = (node: UrlFlatNode) => node.level;
@@ -75,5 +77,8 @@ export class NavigationComponent implements OnInit {
   hasChild = (_: number, _nodeData: UrlFlatNode) => _nodeData.expandable;
 
   ngOnInit() {
+    this._accountService.getById(this._accountService.currentUserId).subscribe(account => {
+      this._accountModel = account;
+    });
   }
 }
