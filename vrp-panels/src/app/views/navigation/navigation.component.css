@@ -1,4 +1,234 @@
-mat-tree {
-  padding-top: 5vh;
-  clear: both;
+.asideContent {
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #1f2127;
+  color: #ffffff;
+}
+.asideContent .topBarPart {
+  height: 8vh;
+  width: 100%;
+  background: #286639;
+  color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+.asideContent .panelHeader {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px 10px;
+  background-color: #272b33;
+}
+.asideContent .panelHeader .userBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.asideContent .panelHeader .userBox .userImg {
+  width: 86px;
+  height: 81px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 1px solid #181b1d;
+}
+.asideContent .panelHeader .userBox .userImg img {
+  width: 100%;
+  height: 100%;
+}
+.asideContent .panelHeader .userBox .userInfo {
+  padding-left: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-shadow: 1px 1px 1px black;
+}
+.asideContent .panelHeader .userBox .userInfo .userInfo-name {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  height: 20px;
+  font-size: 16px;
+}
+.asideContent .panelHeader .userBox .userInfo .userInfo-rank {
+  padding-top: 7px;
+  opacity: 0.4;
+  font-size: 15px;
+  color: #ee6dff;
+}
+.asideContent .navigation {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.asideContent .navigation .navigationHeader {
+  padding-left: 15px;
+  font-size: 18px;
+  color: #5d636b;
+  font-weight: 300;
+}
+.asideContent .navigation .mat-tree, .asideContent .navigation mat-tree {
+  padding: 8px 0px;
+  list-style-type: none;
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #272b33;
+  border-top: 2px solid #272a31;
+  border-bottom: 2px solid #272a31;
+}
+.asideContent .navigation .mat-tree a, .asideContent .navigation .mat-tree mat-tree-node, .asideContent .navigation mat-tree a, .asideContent .navigation mat-tree mat-tree-node {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #b8c7ce;
+  text-decoration: none;
+  font-size: 17px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 6px 15px;
+  margin: 8px 0px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.asideContent .navigation .mat-tree a .fontAwesome, .asideContent .navigation .mat-tree mat-tree-node .fontAwesome, .asideContent .navigation mat-tree a .fontAwesome, .asideContent .navigation mat-tree mat-tree-node .fontAwesome {
+  font-family: FontAwesome !important;
+}
+.asideContent .navigation .mat-tree a i, .asideContent .navigation .mat-tree mat-tree-node i, .asideContent .navigation mat-tree a i, .asideContent .navigation mat-tree mat-tree-node i {
+  font-size: 21px;
+  padding-right: 15px;
+}
+.asideContent .navigation .mat-tree a:hover, .asideContent .navigation .mat-tree mat-tree-node:hover, .asideContent .navigation mat-tree a:hover, .asideContent .navigation mat-tree mat-tree-node:hover {
+  background: #31363f;
+  color: white;
+}
+.asideContent .navigation .mat-tree .active a, .asideContent .navigation mat-tree .active a {
+  background: #357046;
+  color: #ebebeb;
+}
+.asideContent .navigation .mat-tree .active a:hover, .asideContent .navigation mat-tree .active a:hover {
+  cursor: default;
+  background: #286639;
+  color: #fafafa;
+}
+.asideContent .shortcuts {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-bottom: 20px;
+}
+.asideContent .shortcuts .shortcutsHeader {
+  padding-left: 15px;
+  padding-bottom: 2px;
+  font-size: 18px;
+  color: #5d636b;
+  font-weight: 300;
+}
+.asideContent .shortcuts .shortcutsContent {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  margin: 15px 0px 35px 0px;
+  padding: 0px 7px;
+  color: #b8c7ce;
+  text-decoration: none;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a .shortcutImg {
+  width: 56px;
+  height: 51px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a .shortcutImg img {
+  width: 100%;
+  height: 100%;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a .shortcutInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a .shortcutInfo .shortcutInfo-rank {
+  padding-top: 7px;
+  opacity: 0.4;
+  font-size: 14px;
+  color: #15a1e2;
+}
+.asideContent .shortcuts .shortcutsContent .shortcut a:hover {
+  opacity: 0.6;
+}
+.asideContent .asideFooter {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0.3;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  font-size: 13px;
+}
+.asideContent .asideFooter a {
+  color: white;
+}
+.asideContent .asideFooter:hover {
+  cursor: default;
+  opacity: 1;
 }

@@ -1,15 +1,101 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-    <button mat-icon-button disabled></button>
-    <a routerLink={{node.src}}> {{node.displayName}}</a>
-  </mat-tree-node>
+<aside class="asideContent">
+  <header class="panelHeader">
+      <div class="userBox">
+          <div class="userImg">
+              <img src="./assets/images/avatar.png" alt="Avatar">
+          </div>
 
-  <mat-tree-node *matTreeNodeDef="let node;when: hasChild">
-    <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
-      <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-      </mat-icon>
-    </button>
-    {{node.displayName}}
-  </mat-tree-node>
-</mat-tree>
+          <div class="userInfo">
+              <span class="userInfo-name">
+                  k1k9
+              </span>
+
+              <span class="userInfo-rank">
+                  Administrator techniczny
+              </span>
+          </div>
+      </div>
+  </header>
+
+  <nav class="navigation">
+      <header class="navigationHeader">
+          <p>Nawigacja</p>
+      </header>
+
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+          <!-- <mat-icon [ngClass]"{{node.icon}}" class="fa" aria-hidden="true"></mat-icon> -->
+          <mat-icon>dashboard</mat-icon>
+          <a routerLink={{node.src}}> {{node.icon}}</a>
+        </mat-tree-node>
+      </mat-tree>
+  </nav>
+
+  <section class="shortcuts">
+      <header class="shortcutsHeader">
+          <p>Szybki wybór</p>
+      </header>
+
+      <div class="shortcutsContent">
+          <!-- #region shortcut -->
+          <article class="shortcut"><a href="#">
+              <div class="shortcutImg">
+                  <img src="./assets/images/fd.png">
+              </div>
+
+              <div class="shortcutInfo">
+                  <span class="shortcutInfo-name">
+                      Los Santos Fire Department
+                  </span>
+
+                  <span class="shortcutInfo-rank">
+                      Org. publiczna
+                  </span>
+              </div>
+          </a></article>
+          <!-- #endregion shortcut -->
+
+          <!-- #region shortcut -->
+          <article class="shortcut"><a href="#">
+              <div class="shortcutImg">
+                  <img src="./assets/images/kkk.png">
+              </div>
+
+              <div class="shortcutInfo">
+                  <span class="shortcutInfo-name">
+                      Ku Klux Klan
+                  </span>
+
+                  <span class="shortcutInfo-rank" style="color:#ee8a18;">
+                      Org. przestępcza
+                  </span>
+              </div>
+          </a></article>
+          <!-- #endregion shortcut -->
+
+          <!-- #region shortcut -->
+          <article class="shortcut"><a href="#">
+              <div class="shortcutImg">
+                  <img src="./assets/images/piekarnia.jpg">
+              </div>
+
+              <div class="shortcutInfo">
+                  <span class="shortcutInfo-name">
+                      Jakaś super piekarnia
+                  </span>
+
+                  <span class="shortcutInfo-rank" style="color:#7dc74c;">
+                      Biznes
+                  </span>
+              </div>
+          </a></article>
+          <!-- #endregion shortcut -->
+      </div>
+  </section>
+
+  <footer class="asideFooter">
+      <p>
+          &copy; Wszelkie prawa zastrzeżone <a href="https://v-rp.pl/">V-RP.pl</a>
+      </p>
+  </footer>
+</aside>
