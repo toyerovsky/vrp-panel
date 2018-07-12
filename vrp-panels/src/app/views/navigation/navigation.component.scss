@@ -1,224 +1,97 @@
-.asideContent{
-    // position: fixed;
-    // width: 16%;
-    height: 100vh;
-    box-sizing: border-box;
+.mat-tree{
+  // padding: 8px 0px;
+  list-style-type: none;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 
+  background-color: #272b33;
+  border-top: 2px solid #272a31;
+  border-bottom: 2px solid #272a31;
+
+  mat-tree-node{a{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 
-    background-color: #1f2127;//21322b
-    color: #ffffff;
+    color: #b8c7ce;
+    text-decoration: none;
+    font-size: 17px;
 
-    .topBarPart{
-        height: 8vh;
-        width: 100%;
-        background: #286639;
+
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    margin: 10px 0px;
+    transition: all .3s ease-in-out;
+
+    mat-icon{
+      font-size: 21px;
+      padding-right: 15px;
+    }
+
+    outline: none;
+
+    &:hover{
+        background: #31363f;
         color: white;
-        box-sizing: border-box;
-        overflow: hidden;
     }
+  }}
 
-    .panelHeader{
-        width: 100%;
-        box-sizing: border-box;
-        padding: 20px 10px;
-        background-color: #272b33;
+  .active{a{
+      background: #357046;
+      color:#ebebeb;
 
-        .userBox{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            .userImg{
-                width: 86px;
-                height: 81px;
-                box-sizing: border-box;
-                overflow: hidden;
-                border-radius: 100%;
-                border: 1px solid #181b1d;
-
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            .userInfo{
-                padding-left: 15px;
-                display: flex;
-                flex-direction: column;
-                text-shadow: 1px 1px 1px black;
-
-                .userInfo-name{
-                    width: 100%;
-                    box-sizing: border-box;
-                    overflow: hidden;
-                    height: 20px;
-                    font-size: 16px;
-                }
-
-                .userInfo-rank{
-                    padding-top: 7px;
-                    opacity: 0.4;
-                    font-size: 15px;
-                    color: #ee6dff;
-                }
-            }
-        }
-    }
+      &:hover{
+          cursor: default;
+          background: #286639;
+          color:#fafafa;
+      }
+  }}
+}
 
 
-    .navigation{
-        width: 100%;
-        box-sizing: border-box;
-
-        .navigationHeader{
-            padding-left:15px;
-            font-size: 18px;
-            color: #5d636b;
-            font-weight: 300;
-        }
+@media only screen and (max-width:1650px){
+  mat-tree-node{a{
+    padding: 10px 7px !important;
+    margin: 5px 0px !important;
+    font-size: 15px !important;
+  }}
+}
 
 
-        .mat-tree, mat-tree{
-            padding: 8px 0px;
-            list-style-type: none;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-
-            background-color: #272b33;
-            border-top: 2px solid #272a31;
-            border-bottom: 2px solid #272a31;
-
-            a, mat-tree-node{
-
-                .fontAwesome{
-                  font-family: FontAwesome !important;
-                }
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-
-                color: #b8c7ce;
-                text-decoration: none;
-                font-size: 17px;
+@media only screen and (max-width:1392px){
+  mat-tree-node{a{
+    padding: 6px 4px !important;
+    font-size: 14px !important;
+  }}
+}
 
 
-                width: 100%;
-                box-sizing: border-box;
-                padding: 6px 15px;
-                margin: 8px 0px;
-                transition: all .3s ease-in-out;
-
-                i{
-                    font-size: 21px;
-                    padding-right: 15px;
-                }
-
-                &:hover{
-                    background: #31363f;
-                    color: white;
-                }
-            }
-
-            .active{a{
-                background: #357046;
-                color:#ebebeb;
-
-                &:hover{
-                    cursor: default;
-                    background: #286639;
-                    color:#fafafa;
-                }
-            }}
-        }
-    }
+@media only screen and (max-width:1236px){
+  mat-tree-node{a{
+    font-size: 13px !important;
+  }}
+}
 
 
-    .shortcuts{
-        width: 100%;
-        box-sizing: border-box;
-        padding-bottom: 20px;
+@media only screen and (max-width:976px){
+  .material-icons{
+    margin:auto !important;
+  }
 
-        .shortcutsHeader{
-            padding-left: 15px;
-            padding-bottom: 2px;
-            font-size: 18px;
-            color: #5d636b;
-            font-weight: 300;
-        }
+  .mat-tree{
+    width: 0 auto !important;
+  }
 
-        .shortcutsContent{
-            width: 100%;
-            box-sizing: border-box;
-
-            .shortcut{a{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-
-                width: 100%;
-                box-sizing: border-box;
-                overflow: hidden;
-
-                margin: 15px 0px 35px 0px;
-                padding:0px 7px;
-
-                color:#b8c7ce;
-                text-decoration: none;
-                transition: all .3s ease-in-out;
-
-                .shortcutImg{
-                    width: 56px;
-                    height: 51px;
-                    box-sizing: border-box;
-                    overflow: hidden;
-                    border-radius: 100%;
-                    margin-right: 10px;
-
-                    img{
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-
-                .shortcutInfo{
-                    display: flex;
-                    flex-direction: column;
-
-                    .shortcutInfo-rank{
-                        padding-top: 7px;
-                        opacity: 0.4;
-                        font-size: 14px;
-                        color: #15a1e2;
-                    }
-                }
-
-                &:hover{
-                    opacity: 0.6;
-                }
-            }}
-        }
-    }
-
-
-    .asideFooter{
-        position: absolute;
-        width: 100%;
-        bottom:0px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        opacity: 0.3;
-        transition: opacity .3s ease-in-out;
-        font-size: 13px;
-        a {color: white;}
-
-        &:hover{
-            cursor: default;
-            opacity: 1;
-        }
-    }
+  mat-tree-node{a{
+    width: 0 auto !important;
+    padding:0 !important;
+    margin: 0 !important;
+  }}
+  .name{
+    display: none !important;
+  }
+  mat-icon{
+    font-size: 30px !important;
+  }
 }
