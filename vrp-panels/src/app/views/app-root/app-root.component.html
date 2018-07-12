@@ -1,12 +1,116 @@
-<mat-sidenav-container class="app-container">
-  <mat-sidenav mode="side" opened>
-    <app-navigation></app-navigation>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<main class="app-container">
+  <aside class="asideContent">
+    <header class="panelHeader">
+      <div class="userBox" *ngIf="_accountModel">
+        <div class="userImg">
+          <img class="avatar" [src]="_accountModel.avatarUrl != undefined ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl :
+        this._accountService.getGravatarUrl(this._accountModel.email)" />
+        </div>
 
+        <div class="userInfo">
+          <span class="userInfo-name">
+            {{_accountModel.forumUserName}}
+          </span>
 
+          <span class="userInfo-rank">
+            {{_accountModel.serverRank}}
+          </span>
+        </div>
+      </div>
+    </header>
 
+    <nav class="navigation">
+      <header class="navigationHeader">
+        <p>Nawigacja</p>
+      </header>
 
+      <app-navigation></app-navigation>
+    </nav>
+
+    <!-- #region shortcuts -->
+    <section class="shortcuts">
+        <header class="shortcutsHeader">
+            <p>Szybki wybór</p>
+        </header>
+
+        <div class="shortcutsContent">
+            <!-- #region shortcut -->
+            <article class="shortcut"><a href="#">
+                <div class="shortcutImg">
+                    <img src="https://vignette.wikia.nocookie.net/gtawiki/images/c/cc/LSFD_logo.png">
+                </div>
+
+                <div class="shortcutInfo">
+                    <span class="shortcutInfo-name">
+                        Los Santos Fire Department
+                    </span>
+
+                    <span class="shortcutInfo-rank">
+                        Org. publiczna
+                    </span>
+                </div>
+            </a></article>
+            <!-- #endregion shortcut -->
+
+            <!-- #region shortcut -->
+            <article class="shortcut"><a href="#">
+                <div class="shortcutImg">
+                    <img src="http://www.forbiddensymbols.com/wp-content/uploads/kkk.png">
+                </div>
+
+                <div class="shortcutInfo">
+                    <span class="shortcutInfo-name">
+                        Ku Klux Klan
+                    </span>
+
+                    <span class="shortcutInfo-rank" style="color:#ee8a18;">
+                        Org. przestępcza
+                    </span>
+                </div>
+            </a></article>
+            <!-- #endregion shortcut -->
+
+            <!-- #region shortcut -->
+            <article class="shortcut"><a href="#">
+                <div class="shortcutImg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKBEovfEbOwm8SVU4S3HEhkcPAGC16ZT7mBnTTXkKI0OXlZB4n">
+                </div>
+
+                <div class="shortcutInfo">
+                    <span class="shortcutInfo-name">
+                        Jakaś super piekarnia
+                    </span>
+
+                    <span class="shortcutInfo-rank" style="color:#7dc74c;">
+                        Biznes
+                    </span>
+                </div>
+            </a></article>
+            <!-- #endregion shortcut -->
+        </div>
+    </section>
+    <!-- #endregion shortcuts -->
+  </aside>
+
+  <section class="mainContent">
+      <section class="mainTopBox">
+          <div class="sectionName">
+              <p>Panel zarządzania</p>
+          </div>
+
+         <div class="actionBox">
+             <a class="button" href="https://forum.v-rp.pl/">
+                 Przejdź do forum
+              </a>
+
+             <a class="button" href="#">
+                 Wyloguj się
+              </a>
+         </div>
+     </section>
+
+     <section class="sectionContent">
+        <router-outlet></router-outlet>
+     </section>
+  </section>
+</main>
