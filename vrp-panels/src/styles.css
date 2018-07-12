@@ -4,6 +4,11 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 * {
   font-family: 'Roboto', sans-serif;
+  padding:0; margin: 0;
+}
+
+body{
+  background: #eeeeee;
 }
 
 a {
@@ -11,10 +16,19 @@ a {
   text-decoration: none;
 }
 
-
 mat-sidenav[_ngcontent-c1]{
   padding: 0!important;
   margin:0!important;
   width: 16%!important;
-  overflow: hidden!important;
+  border:none!important;
+}
+mat-sidenav-content[_ngcontent-c1]{
+  padding-left: 16%;
+  box-sizing: border-box;
+}
+
+.button{
+  background: none;
+  border:none;
+  outline: none;
 }
