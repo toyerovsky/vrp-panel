@@ -1,9 +1,27 @@
 .title {
   font-weight: 700;
-  padding: 1vh; 
+  padding: 1vh;
 }
 
 .info-container {
   display: block;
   margin: 1vh;
+}
+
+.character-image {
+  width: 200px;
+  height: 200px;
+  margin-left: 40%;
+  margin-right: auto;
+  padding: 0;
+}
+
+.character-image:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.cropper {
+  max-height: 200px;
+  height: 200px;
 }
