@@ -8,20 +8,26 @@ import { ToastrService } from "ngx-toastr";
 import md5 from 'md5';
 import { AccountModel } from "../models/AccountModel";
 import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
     constructor(
         toastr: ToastrService,
         private _http: HttpClient,
-        private _cookie: CookieService
+        private _cookie: CookieService,
+        private _router: Router,
     ) {
         super(toastr);
     }
 
     public get currentUserId(): number {
+        if (!this._cookie.check('AccountId')) {
+            this._router.navigate(['login']);
+        }
         return parseInt(this._cookie.get('AccountId'));;
     }
+
     public set currentUserId(value: number) {
         this._cookie.set('AccountId', value.toString());
     }
