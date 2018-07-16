@@ -43,6 +43,7 @@ import { GroupService } from './service/group.service';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
+import { AdminEditCharacterComponent } from './views/admin/admin-characters/elements/admin-edit-character/admin-edit-character.component';
 
 // services
 
@@ -56,7 +57,8 @@ import { AdminAddCharacterComponent } from './views/admin/admin-characters/eleme
     PlayerCharactersComponent,
     PlayerCharacterDetailsComponent,
     AdminCharactersComponent,
-    AdminAddCharacterComponent
+    AdminAddCharacterComponent,
+    AdminEditCharacterComponent
   ],
   imports: [
     BrowserModule,

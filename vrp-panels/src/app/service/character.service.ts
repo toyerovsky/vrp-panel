@@ -29,4 +29,9 @@ export class CharacterService extends AbstractService {
         return this._http.post<CharacterModel>(`${environment.apiUrl}/character/`, characterModel, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
+
+    public put(characterId: number, characterModel: CharacterModel): Observable<CharacterModel> {
+        return this._http.put<CharacterModel>(`${environment.apiUrl}/character/${characterId}`, characterModel, { withCredentials: true })
+            .pipe(catchError(this.handleError));
+    }
 }

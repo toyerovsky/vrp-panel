@@ -4,6 +4,7 @@ import { CharacterService } from '../../../service/character.service';
 import { CharacterModel } from '../../../models/CharacterModel';
 import { AdminAddCharacterComponent } from './elements/admin-add-character/admin-add-character.component';
 import { ToastrService } from 'ngx-toastr';
+import { AdminEditCharacterComponent } from './elements/admin-edit-character/admin-edit-character.component';
 
 @Component({
   selector: 'app-admin-characters',
@@ -19,6 +20,7 @@ export class AdminCharactersComponent implements OnInit {
   constructor(
     private _characterService: CharacterService,
     private _addCharacterDialog: MatDialog,
+    private _editCharacterDialog: MatDialog,
     private _toastrService: ToastrService
   ) {
   }
@@ -37,13 +39,25 @@ export class AdminCharactersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-        let character: CharacterModel = result;
         let temp = this._dataSource.data;
-        temp.push(character);
+        temp.push(result);
         this._dataSource = new MatTableDataSource<CharacterModel>(temp);
         this._dataSource.sort = this.sort;
-        this._characterService.post(character).subscribe();
-        this._toastrService.success(`Pomyślnie dodano postać ${character.name} ${character.surname}`);
+        this._characterService.post(result).subscribe(postResult => {
+          this._toastrService.success(`Pomyślnie dodano postać ${result.name} ${result.surname}`);
+        });
+      }
+    });
+  }
+
+  editCharacterClickHandler() {
+    const dialogRef = this._editCharacterDialog.open(AdminEditCharacterComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        this._characterService.put(result.id, result).subscribe(putResult => {
+          this._toastrService.success(`Pomyślnie edytowano postać ${result.name} ${result.surname}`);
+        });
       }
     });
   }

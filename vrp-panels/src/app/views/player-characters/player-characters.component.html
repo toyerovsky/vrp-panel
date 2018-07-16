@@ -34,9 +34,3 @@
     <mat-list-item *ngFor="let penalty of _playerPenalties"> {{penalty.creatorName}}</mat-list-item>
   </mat-list>
 </div>
-<div *ngIf="!_playerCharacters" class="not-found-container">
-  <span class="not-found-message">
-    <mat-icon class="not-found-icon">sentiment_very_dissatisfied</mat-icon>
-    Bardzo się staraliśmy, ale nie udało nam się załadować listy Twoich postaci. Spróbuj jeszcze raz.
-  </span>
-</div>
