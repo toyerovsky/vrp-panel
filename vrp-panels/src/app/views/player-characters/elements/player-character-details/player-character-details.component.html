@@ -8,7 +8,7 @@
       <span class="title">Imię i nazwisko:</span>{{model.name}} {{model.surname}}
     </span>
     <span class="info-container">
-      <span class="title">Data urodzenia:</span>{{model.bornDate.toString()}}
+      <span class="title">Data urodzenia:</span>{{model.bornDate | date:'mediumDate'}}
     </span>
     <span class="info-container">
       <span class="title">Portfel:</span>${{model.money}}

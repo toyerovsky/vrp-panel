@@ -1,9 +1,10 @@
 // modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID  } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import {
   MatIconModule,
   MatInputModule,
@@ -43,8 +44,11 @@ import { GroupService } from './service/group.service';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 import { AdminEditCharacterComponent } from './views/admin/admin-characters/elements/admin-edit-character/admin-edit-character.component';
 
+registerLocaleData(localePl);
 // services
 
 @NgModule({
@@ -68,6 +72,7 @@ import { AdminEditCharacterComponent } from './views/admin/admin-characters/elem
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    ImageCropperModule,
 
     // angular material modules
     MatIconModule,
@@ -92,7 +97,12 @@ import { AdminEditCharacterComponent } from './views/admin/admin-characters/elem
 
   ],
   entryComponents: [PlayerCharacterDetailsComponent, AdminAddCharacterComponent],
-  providers: [AccountService, CharacterService, CookieService, GroupService],
+  providers: [AccountService, CharacterService, CookieService, GroupService,
+    { provide: LOCALE_ID, useValue: "pl" }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+ }
