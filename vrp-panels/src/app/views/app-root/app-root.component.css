@@ -3,49 +3,54 @@
   width: 0 auto;
   min-height: 100vh;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: #1f2127;
   color: #ffffff;
 }
+
 .asideContent .panelHeader {
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 20px 10px;
   background-color: #272b33;
 }
+
 .asideContent .panelHeader .userBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
+
 .asideContent .panelHeader .userBox .userImg {
   width: 76px;
   height: 71px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
   border-radius: 100%;
   border: 1px solid #181b1d;
 }
+
 .asideContent .panelHeader .userBox .userImg img {
   width: 100%;
   height: 100%;
 }
+
 .asideContent .panelHeader .userBox .userInfo {
   padding-left: 15px;
   display: -webkit-box;
@@ -53,95 +58,105 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   text-shadow: 1px 1px 1px black;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .asideContent .panelHeader .userBox .userInfo .userInfo-name {
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
   height: 20px;
   font-size: 16px;
 }
+
 .asideContent .panelHeader .userBox .userInfo .userInfo-rank {
   padding-top: 7px;
   opacity: 0.4;
   font-size: 15px;
-  color: #ee6dff;
 }
+
 .asideContent .navigation {
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .asideContent .navigation .navigationHeader {
   padding: 15px 0px 15px 15px;
   font-size: 18px;
   color: #5d636b;
   font-weight: 300;
 }
+
 .asideContent .navigation li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   color: #b8c7ce;
   text-decoration: none;
   font-size: 17px;
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 14px 15px;
   margin: 18px 0px;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
+
 .asideContent .navigation li a i {
   font-size: 21px;
   padding-right: 15px;
 }
+
 .asideContent .navigation li a:hover {
   background: #31363f;
   color: white;
 }
+
 .asideContent .shortcuts {
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding-bottom: 20px;
 }
+
 .asideContent .shortcuts .shortcutsHeader {
   padding: 15px 0px 15px 15px;
   font-size: 18px;
   color: #5d636b;
   font-weight: 300;
 }
+
 .asideContent .shortcuts .shortcutsContent {
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 100%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
   margin: 15px 0px 35px 0px;
   padding: 0px 7px;
@@ -150,34 +165,39 @@
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a .shortcutImg {
   width: 46px;
   height: 46px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
   border-radius: 100%;
   margin-right: 10px;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a .shortcutImg img {
   width: 100%;
   height: 100%;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a .shortcutInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a .shortcutInfo .shortcutInfo-rank {
   padding-top: 7px;
   opacity: 0.4;
   font-size: 14px;
   color: #15a1e2;
 }
+
 .asideContent .shortcuts .shortcutsContent .shortcut a:hover {
   opacity: 0.6;
 }
@@ -188,30 +208,33 @@
   height: 100vh;
   padding: 40px 50px 0px 50px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .mainContent .mainTopBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -ms-flex-line-pack: center;
-      align-content: center;
+  align-content: center;
   color: #272b33;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .mainContent .mainTopBox .sectionName {
   font-size: 22px;
   border-bottom: 1px solid #e0e0e0;
   padding: 0px 30px 4px 5px;
 }
+
 .mainContent .mainTopBox .actionBox .button {
   font-size: 15px;
   padding: 8px 10px;
@@ -220,21 +243,24 @@
   -webkit-transition: opacity .3s ease-in-out;
   transition: opacity .3s ease-in-out;
 }
+
 .mainContent .mainTopBox .actionBox .button a {
   text-decoration: none;
   display: block;
   width: 100%;
   height: 100%;
 }
+
 .mainContent .mainTopBox .actionBox .button:hover {
   cursor: pointer;
   opacity: 1;
 }
+
 .mainContent .sectionContent {
   width: 100%;
   min-height: 88.5vh;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background: white;
   margin-top: 36px;
   padding: 40px;
@@ -246,11 +272,11 @@
   .asideContent {
     width: 16%;
   }
-
   .mainContent {
     margin-left: 16%;
   }
 }
+
 @media only screen and (max-width: 1650px) {
   .panelHeader .userImg {
     width: 66px !important;
@@ -262,24 +288,22 @@
   .panelHeader .userInfo .userInfo-rank {
     font-size: 13px !important;
   }
-
-  .navigationHeader, .shortcutsHeader {
+  .navigationHeader,
+  .shortcutsHeader {
     font-size: 16px !important;
   }
-
   .shortcutImg {
     width: 46px !important;
     height: 46px !important;
   }
-
   .shortcutInfo-name {
-    font-size: 14px  !important;
+    font-size: 14px !important;
   }
-
   .shortcutInfo-rank {
     font-size: 13px !important;
   }
 }
+
 @media only screen and (max-width: 1392px) {
   .panelHeader .userImg {
     width: 46px !important;
@@ -291,45 +315,45 @@
   .panelHeader .userInfo .userInfo-rank {
     font-size: 12px !important;
   }
-
-  .navigationHeader, .shortcutsHeader {
+  .navigationHeader,
+  .shortcutsHeader {
     padding: 10px 0px 10px 7px !important;
     font-size: 15px !important;
   }
-
   .shortcutImg {
     width: 36px !important;
     height: 36px !important;
   }
-
   .shortcutInfo-name {
-    font-size: 13px  !important;
+    font-size: 13px !important;
   }
-
   .shortcutInfo-rank {
     font-size: 12px !important;
   }
 }
+
 @media only screen and (max-width: 1236px) {
   .panelHeader .userImg {
     display: none !important;
   }
 }
+
 @media only screen and (max-width: 976px) {
-  .panelHeader, .navigationHeader, .shortcutsHeader, .shortcutInfo {
+  .panelHeader,
+  .navigationHeader,
+  .shortcutsHeader,
+  .shortcutInfo {
     display: none !important;
   }
-
   aside {
     width: 0 auto !important;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
-
   .mainContent {
     margin-left: 10%;
   }

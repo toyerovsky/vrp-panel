@@ -1,317 +1,287 @@
-.asideContent{
+.asideContent {
   position: fixed;
   width: 0 auto;
   min-height: 100vh;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
-
-  background-color: #1f2127;//21322b
+  background-color: #1f2127; //21322b
   color: #ffffff;
-
-  .panelHeader{
-      width: 100%;
-      box-sizing: border-box;
-      padding: 20px 10px;
-      background-color: #272b33;
-
-      .userBox{
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
-          .userImg{
-              width: 76px;
-              height: 71px;
-              box-sizing: border-box;
-              overflow: hidden;
-              border-radius: 100%;
-              border: 1px solid #181b1d;
-
-              img{
-                  width: 100%;
-                  height: 100%;
-              }
-          }
-
-          .userInfo{
-              padding-left: 15px;
-              display: flex;
-              flex-direction: column;
-              text-shadow: 1px 1px 1px black;
-              box-sizing: border-box;
-
-              .userInfo-name{
-                  width: 100%;
-                  box-sizing: border-box;
-                  overflow: hidden;
-                  height: 20px;
-                  font-size: 16px;
-              }
-
-              .userInfo-rank{
-                  padding-top: 7px;
-                  opacity: 0.4;
-                  font-size: 15px;
-                  color: #ee6dff;
-              }
-          }
+  .panelHeader {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    background-color: #272b33;
+    .userBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .userImg {
+        width: 76px;
+        height: 71px;
+        box-sizing: border-box;
+        overflow: hidden;
+        border-radius: 100%;
+        border: 1px solid #181b1d;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
+      .userInfo {
+        padding-left: 15px;
+        display: flex;
+        flex-direction: column;
+        text-shadow: 1px 1px 1px black;
+        box-sizing: border-box;
+        .userInfo-name {
+          width: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
+          height: 20px;
+          font-size: 16px;
+        }
+        .userInfo-rank {
+          padding-top: 7px;
+          opacity: 0.4;
+          font-size: 15px;
+        }
+      }
+    }
   }
-
-
-  .navigation{
-      width: 100%;
-      box-sizing: border-box;
-
-      .navigationHeader{
-          padding: 15px 0px 15px 15px;
-          font-size: 18px;
-          color: #5d636b;
-          font-weight: 300;
-      }
-
-      li{a{
+  .navigation {
+    width: 100%;
+    box-sizing: border-box;
+    .navigationHeader {
+      padding: 15px 0px 15px 15px;
+      font-size: 18px;
+      color: #5d636b;
+      font-weight: 300;
+    }
+    li {
+      a {
         display: flex;
         flex-direction: row;
-
         color: #b8c7ce;
         text-decoration: none;
         font-size: 17px;
-
-
         width: 100%;
         box-sizing: border-box;
         padding: 14px 15px;
         margin: 18px 0px;
         transition: all .3s ease-in-out;
-
-        i{
-            font-size: 21px;
-            padding-right: 15px;
+        i {
+          font-size: 21px;
+          padding-right: 15px;
         }
-
-        &:hover{
-            background: #31363f;
-            color: white;
+        &:hover {
+          background: #31363f;
+          color: white;
         }
-      }}
+      }
+    }
   }
-
-
-  .shortcuts{
+  .shortcuts {
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    .shortcutsHeader {
+      padding: 15px 0px 15px 15px;
+      font-size: 18px;
+      color: #5d636b;
+      font-weight: 300;
+    }
+    .shortcutsContent {
       width: 100%;
       box-sizing: border-box;
-      padding-bottom: 20px;
-
-      .shortcutsHeader{
-          padding: 15px 0px 15px 15px;
-          font-size: 18px;
-          color: #5d636b;
-          font-weight: 300;
-      }
-
-      .shortcutsContent{
+      .shortcut {
+        a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
           width: 100%;
           box-sizing: border-box;
-
-          .shortcut{a{
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-
+          overflow: hidden;
+          margin: 15px 0px 35px 0px;
+          padding: 0px 7px;
+          color: #b8c7ce;
+          text-decoration: none;
+          transition: all .3s ease-in-out;
+          .shortcutImg {
+            width: 46px;
+            height: 46px;
+            box-sizing: border-box;
+            overflow: hidden;
+            border-radius: 100%;
+            margin-right: 10px;
+            img {
               width: 100%;
-              box-sizing: border-box;
-              overflow: hidden;
-
-              margin: 15px 0px 35px 0px;
-              padding:0px 7px;
-
-              color:#b8c7ce;
-              text-decoration: none;
-              transition: all .3s ease-in-out;
-
-              .shortcutImg{
-                  width: 46px;
-                  height: 46px;
-                  box-sizing: border-box;
-                  overflow: hidden;
-                  border-radius: 100%;
-                  margin-right: 10px;
-
-                  img{
-                      width: 100%;
-                      height: 100%;
-                  }
-              }
-
-              .shortcutInfo{
-                  display: flex;
-                  flex-direction: column;
-
-                  .shortcutInfo-rank{
-                      padding-top: 7px;
-                      opacity: 0.4;
-                      font-size: 14px;
-                      color: #15a1e2;
-                  }
-              }
-
-              &:hover{
-                  opacity: 0.6;
-              }
-          }}
+              height: 100%;
+            }
+          }
+          .shortcutInfo {
+            display: flex;
+            flex-direction: column;
+            .shortcutInfo-rank {
+              padding-top: 7px;
+              opacity: 0.4;
+              font-size: 14px;
+              color: #15a1e2;
+            }
+          }
+          &:hover {
+            opacity: 0.6;
+          }
+        }
       }
+    }
   }
 }
 
-
-
-.mainContent{
+.mainContent {
   margin-left: 5% auto;
   width: 84%;
   height: 100vh;
   padding: 40px 50px 0px 50px;
   box-sizing: border-box;
-
-  .mainTopBox{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-content: center;
-      color: #272b33;
-      box-sizing: border-box;
-
-      .sectionName{
-          font-size: 22px;
-          border-bottom: 1px solid #e0e0e0;
-          padding: 0px 30px 4px 5px;
+  .mainTopBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    color: #272b33;
+    box-sizing: border-box;
+    .sectionName {
+      font-size: 22px;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0px 30px 4px 5px;
+    }
+    .actionBox {
+      .button {
+        font-size: 15px;
+        padding: 8px 10px;
+        margin: 0px 10px;
+        opacity: 0.5;
+        transition: opacity .3s ease-in-out;
+        a {
+          text-decoration: none;
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        &:hover {
+          cursor: pointer;
+          opacity: 1;
+        }
       }
-
-      .actionBox{
-          .button{
-              font-size: 15px;
-              padding: 8px 10px;
-              margin: 0px 10px;
-              opacity: 0.5;
-              transition: opacity .3s ease-in-out;
-
-              a{text-decoration: none; display: block; width: 100%; height: 100%;}
-
-              &:hover{ cursor: pointer; opacity: 1;}
-          }
-      }
+    }
   }
-
-  .sectionContent{
-      width: 100%;
-      min-height: 88.5vh;
-      box-sizing: border-box;
-      background: white;
-
-      margin-top: 36px;
-      padding: 40px;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
+  .sectionContent {
+    width: 100%;
+    min-height: 88.5vh;
+    box-sizing: border-box;
+    background: white;
+    margin-top: 36px;
+    padding: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 }
 
-
 // RESPONSIVE
-@media only screen and (min-width:1000px){
-  .asideContent{
+@media only screen and (min-width:1000px) {
+  .asideContent {
     width: 16%;
   }
-  .mainContent{
+  .mainContent {
     margin-left: 16%;
   }
 }
 
-
-@media only screen and (max-width:1650px){
-  .panelHeader{
-    .userImg{
+@media only screen and (max-width:1650px) {
+  .panelHeader {
+    .userImg {
       width: 66px !important;
       height: 61px !important;
     }
-
-    .userInfo{
-      .userInfo-name{ font-size: 15px !important; }
-      .userInfo-rank{ font-size: 13px !important; }
+    .userInfo {
+      .userInfo-name {
+        font-size: 15px !important;
+      }
+      .userInfo-rank {
+        font-size: 13px !important;
+      }
     }
   }
-
-  .navigationHeader, .shortcutsHeader{
+  .navigationHeader,
+  .shortcutsHeader {
     font-size: 16px !important;
   }
-
-  .shortcutImg{
+  .shortcutImg {
     width: 46px !important;
     height: 46px !important;
   }
-
-  .shortcutInfo-name{
-    font-size: 14px  !important;
+  .shortcutInfo-name {
+    font-size: 14px !important;
   }
-  .shortcutInfo-rank{
+  .shortcutInfo-rank {
     font-size: 13px !important;
   }
 }
 
-
-@media only screen and (max-width:1392px){
-  .panelHeader{
-    .userImg{
+@media only screen and (max-width:1392px) {
+  .panelHeader {
+    .userImg {
       width: 46px !important;
       height: 41px !important;
     }
-
-    .userInfo{
-      .userInfo-name{ font-size: 15px !important; }
-      .userInfo-rank{ font-size: 12px !important; }
+    .userInfo {
+      .userInfo-name {
+        font-size: 15px !important;
+      }
+      .userInfo-rank {
+        font-size: 12px !important;
+      }
     }
   }
-
-  .navigationHeader, .shortcutsHeader{
+  .navigationHeader,
+  .shortcutsHeader {
     padding: 10px 0px 10px 7px !important;
     font-size: 15px !important;
   }
-
-  .shortcutImg{
+  .shortcutImg {
     width: 36px !important;
     height: 36px !important;
   }
-
-  .shortcutInfo-name{
-    font-size: 13px  !important;
+  .shortcutInfo-name {
+    font-size: 13px !important;
   }
-  .shortcutInfo-rank{
+  .shortcutInfo-rank {
     font-size: 12px !important;
   }
 }
 
-
-@media only screen and (max-width:1236px){
-  .panelHeader{
-    .userImg{
+@media only screen and (max-width:1236px) {
+  .panelHeader {
+    .userImg {
       display: none !important;
     }
   }
 }
 
-
-@media only screen and (max-width:976px){
-  .panelHeader, .navigationHeader, .shortcutsHeader, .shortcutInfo{
+@media only screen and (max-width:976px) {
+  .panelHeader,
+  .navigationHeader,
+  .shortcutsHeader,
+  .shortcutInfo {
     display: none !important;
   }
-  aside{
+  aside {
     width: 0 auto !important;
     justify-content: center;
     align-items: center;
   }
-
-  .mainContent{
+  .mainContent {
     margin-left: 10%;
   }
 }

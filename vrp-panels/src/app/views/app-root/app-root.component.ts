@@ -20,4 +20,17 @@ export class AppRootComponent implements OnInit {
       this._accountModel = account;
     });
   }
+
+  private getRankColor(serverRank: string): string {
+    if (serverRank.startsWith('Administrator rozgrywki'))
+      return '#2ECC71';
+    else if (serverRank.startsWith('Administrator techniczny'))
+      return '#9B59B6';
+    else if (serverRank.startsWith('Zarząd'))
+      return '#ff0000';
+    else if (serverRank.startsWith('Donator'))
+      return '#ebc11a';
+    else if (serverRank.startsWith('Support'))
+      return '#52aeff'
+  }
 }
