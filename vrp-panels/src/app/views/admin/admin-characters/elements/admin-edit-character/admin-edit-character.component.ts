@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { CharacterService } from '../../../../../service/character.service';
 import { CharacterModel } from '../../../../../models/CharacterModel';
 
 export interface Gender {
@@ -21,7 +20,7 @@ export class AdminEditCharacterComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<AdminEditCharacterComponent>,
-    @Inject(MAT_DIALOG_DATA) public model: CharacterModel
+    @Inject(MAT_DIALOG_DATA) public characterModel: CharacterModel
   ) {
   }
 
@@ -29,7 +28,7 @@ export class AdminEditCharacterComponent implements OnInit {
   }
 
   saveHandler(): void {
-    this._dialogRef.close(this.model)
+    this._dialogRef.close(this.characterModel)
   }
 
   closeDialog(): void {

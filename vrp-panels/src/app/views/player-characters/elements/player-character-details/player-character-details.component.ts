@@ -11,9 +11,9 @@ export class PlayerCharacterDetailsComponent implements OnInit {
   constructor(
     private _dialogRef: MatDialogRef<PlayerCharacterDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public model: CharacterModel
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   closeDialog(): void {
     this._dialogRef.close();

@@ -39,24 +39,26 @@ export class AdminCharactersComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
-        let temp = this._dataSource.data;
-        temp.push(result);
-        this._dataSource = new MatTableDataSource<CharacterModel>(temp);
-        this._dataSource.sort = this.sort;
         this._characterService.post(result).subscribe(postResult => {
-          this._toastrService.success(`Pomyślnie dodano postać ${result.name} ${result.surname}`);
+          let temp = this._dataSource.data;
+          temp.push(postResult);
+          this._dataSource = new MatTableDataSource<CharacterModel>(temp);
+          this._dataSource.sort = this.sort;
+          this._toastrService.success(`Pomyślnie dodano postać: ${postResult.name} ${postResult.surname}`);
         });
       }
     });
   }
 
-  editCharacterClickHandler() {
-    const dialogRef = this._editCharacterDialog.open(AdminEditCharacterComponent);
+  editCharacterClickHandler(characterModel: CharacterModel) {
+    const dialogRef = this._editCharacterDialog.open(AdminEditCharacterComponent, {
+      data: characterModel
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
         this._characterService.put(result.id, result).subscribe(putResult => {
-          this._toastrService.success(`Pomyślnie edytowano postać ${result.name} ${result.surname}`);
+          this._toastrService.success(`Pomyślnie edytowano postać: ${result.name} ${result.surname}`);
         });
       }
     });
