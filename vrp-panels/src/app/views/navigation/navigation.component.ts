@@ -5,7 +5,7 @@ import { Observable, of as observableOf } from 'rxjs';
 
 export class UrlNode {
   displayName: string;
-  icon: string;
+  icon?: string;
   requiredRank?: string;
   children?: UrlNode[];
   src?: string;
@@ -30,7 +30,28 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Panel admistracyjny',
     icon: 'security',
-    src: '/player/characters'
+    children: [
+      {
+        displayName: 'Konta',
+        src: 'admin/accounts'
+      },
+      {
+        displayName: 'Postacie',
+        src: 'admin/characters'
+      },
+      {
+        displayName: 'Grupy',
+        src: 'admin/groups'
+      },
+      {
+        displayName: 'Pojazdy',
+        src: 'admin/vehicles'
+      },
+      {
+        displayName: 'Kary',
+        src: 'admin/penalties'
+      }
+    ]
   },
   {
     displayName: 'Zgłoszenia',

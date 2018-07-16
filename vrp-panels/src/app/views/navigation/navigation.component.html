@@ -1,8 +1,8 @@
 <!--  add class="active" (mat-tree-node) for active element -->
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
     <a routerLink={{node.src}} title={{node.displayName}}>
-      <mat-icon>{{node.icon}}</mat-icon>
+      <mat-icon *ngIf="node.icon">{{node.icon}}</mat-icon>
       <span class="name">{{node.displayName}}</span>
     </a>
   </mat-tree-node>

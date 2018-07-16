@@ -1,97 +1,93 @@
-.mat-tree{
+.mat-tree {
   // padding: 8px 0px;
   list-style-type: none;
   display: block;
   width: 100%;
   box-sizing: border-box;
-
   background-color: #272b33;
   border-top: 2px solid #272a31;
   border-bottom: 2px solid #272a31;
-
-  mat-tree-node{a{
-    display: flex;
-    flex-direction: row;
-
-    color: #b8c7ce;
-    text-decoration: none;
-    font-size: 17px;
-
-
-    width: 100%;
-    box-sizing: border-box;
-    padding: 14px 15px;
-    margin: 10px 0px;
-    transition: all .3s ease-in-out;
-
-    mat-icon{
-      font-size: 21px;
-      padding-right: 15px;
-    }
-
-    outline: none;
-
-    &:hover{
+  mat-tree-node {
+    a {
+      display: flex;
+      flex-direction: row;
+      color: #b8c7ce;
+      text-decoration: none;
+      font-size: 17px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 15px;
+      margin: 10px 0px;
+      transition: all .3s ease-in-out;
+      mat-icon {
+        font-size: 21px;
+        padding-right: 15px;
+      }
+      outline: none;
+      &:hover {
         background: #31363f;
         color: white;
-    }
-  }}
-
-  .active{a{
-      background: #357046;
-      color:#ebebeb;
-
-      &:hover{
-          cursor: default;
-          background: #286639;
-          color:#fafafa;
       }
-  }}
-}
-
-
-@media only screen and (max-width:1650px){
-  mat-tree-node{a{
-    padding: 10px 7px !important;
-    margin: 5px 0px !important;
-    font-size: 15px !important;
-  }}
-}
-
-
-@media only screen and (max-width:1392px){
-  mat-tree-node{a{
-    padding: 6px 4px !important;
-    font-size: 14px !important;
-  }}
-}
-
-
-@media only screen and (max-width:1236px){
-  mat-tree-node{a{
-    font-size: 13px !important;
-  }}
-}
-
-
-@media only screen and (max-width:976px){
-  .material-icons{
-    margin:auto !important;
+    }
   }
+  .active {
+    a {
+      background: #357046;
+      color: #ebebeb;
+      &:hover {
+        cursor: default;
+        background: #286639;
+        color: #fafafa;
+      }
+    }
+  }
+}
 
-  .mat-tree{
+@media only screen and (max-width:1650px) {
+  mat-tree-node {
+    a {
+      padding: 10px 7px !important;
+      margin: 5px 0px !important;
+      font-size: 15px !important;
+    }
+  }
+}
+
+@media only screen and (max-width:1392px) {
+  mat-tree-node {
+    a {
+      padding: 6px 4px !important;
+      font-size: 14px !important;
+    }
+  }
+}
+
+@media only screen and (max-width:1236px) {
+  mat-tree-node {
+    a {
+      font-size: 13px !important;
+    }
+  }
+}
+
+@media only screen and (max-width:976px) {
+  .material-icons {
+    margin: auto !important;
+  }
+  .mat-tree {
     width: 0 auto !important;
   }
-
-  mat-tree-node{a{
-    width: 0 auto !important;
-    padding:0 !important;
-    margin: 0 !important;
-  }}
-  .name{
+  mat-tree-node {
+    a {
+      width: 0 auto !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+  .name {
     display: none !important;
   }
-  mat-icon{
+  mat-icon {
     font-size: 30px !important;
   }
 }
