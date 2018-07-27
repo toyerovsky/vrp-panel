@@ -1,4 +1,5 @@
 import { AccountModel } from "./AccountModel";
+import { CharacterModel } from "./CharacterModel";
 
 export interface PenaltyModel {
     creatorName: string;
@@ -7,4 +8,5 @@ export interface PenaltyModel {
     reason: string;
     penaltyType: string;
     creator: AccountModel;
+    character: CharacterModel;
 }

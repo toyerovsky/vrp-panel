@@ -15,22 +15,29 @@
   </mat-card>
 
   <mat-toolbar>Moje grupy</mat-toolbar>
-  <p>Brak grup</p>
+  <p *ngIf="_playerWorkers == undefined">Brak grup</p>
 
-  <mat-card class="card group-card" *ngFor="let group of _playerGroups">
+  <mat-card class="card group-card" *ngFor="let worker of _playerWorkers">
     <mat-card-header>
-      <div mat-card-avatar class="card-header-image" [style.background-image]="group.gImg">
+      <div mat-card-avatar class="card-header-image" [style.background-image]="worker.group.gImg">
 
       </div>
-      <mat-card-title>{{group.name}}</mat-card-title>
-      <mat-card-subtitle>Postać: {{group.member}} </mat-card-subtitle>
+      <mat-card-title>{{worker.group.name}}({{worker.group.groupType}})</mat-card-title>
+      <mat-card-subtitle>Postać: {{worker.character.name}} {{worker.character.surname}} </mat-card-subtitle>
+      <mat-card-subtitle>Typ: {{worker.group.groupType}} </mat-card-subtitle>
     </mat-card-header>
 
   </mat-card>
 
   <mat-toolbar>Moje kary</mat-toolbar>
-  <p>Brak kar</p>
+  <p *ngIf="_playerPenalties == undefined">Brak kar</p>
   <mat-list>
-    <mat-list-item *ngFor="let penalty of _playerPenalties"> {{penalty.creatorName}}</mat-list-item>
+    <mat-list-item *ngFor="let penalty of _playerPenalties">
+      <mat-icon mat-list-icon>warning</mat-icon>
+      <h4 mat-line>Powód: {{penalty.reason}} ({{penalty.penaltyType}})</h4>
+      <h3 mat-line> Postać: {{penalty.character.name}} {{penalty.character.surname}}</h3>
+      <p mat-line>Nadano: {{penalty.date | date}} przez {{penalty.creator.forumUserName || 'Nieznany'}}({{penalty.creator.serverRank}})</p>
+      <p mat-line>Wygasa: {{penalty.expiryDate | date}} </p>
+    </mat-list-item>
   </mat-list>
 </div>

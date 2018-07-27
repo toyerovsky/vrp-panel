@@ -13,11 +13,14 @@ export enum GroupTypes {
   CityHall
 }
 
-export interface GroupModel {
+export class GroupModel {
   id: number;
   name: string;
-  type: GroupTypes;
+  groupType: string;
   gImg: SafeStyle;
-  member: string;
+  tag: string;
+  dotation: number;
+  maxPayday: number;
+  money: number;
+  color: string;
 }
-

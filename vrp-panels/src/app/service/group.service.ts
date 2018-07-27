@@ -7,6 +7,7 @@ import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
 import { GroupModel } from "../models/GroupModel";
+import { WorkerModel } from "../models/WorkerModel";
 
 @Injectable({ providedIn: 'root' })
 export class GroupService extends AbstractService {
@@ -16,8 +17,8 @@ export class GroupService extends AbstractService {
         super(toastr);
     }
 
-    public getAllByCharacterId(characterId: number): Observable<GroupModel[]> {
-        return this._http.get<GroupModel[]>(`${environment.apiUrl}/group/character/${characterId}`, { withCredentials: true })
+    public getAllByAccountId(accountId: number): Observable<WorkerModel[]> {
+        return this._http.get<WorkerModel[]>(`${environment.apiUrl}/group/account/${accountId}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 }
