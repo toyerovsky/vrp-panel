@@ -24,6 +24,8 @@ import {
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
 } from '@angular/material';
 
 // components
@@ -53,6 +55,7 @@ import { GroupService } from './service/group.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
+import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
 registerLocaleData(localePl);
 
 @NgModule({
@@ -66,7 +69,8 @@ registerLocaleData(localePl);
     PlayerCharacterDetailsComponent,
     AdminCharactersComponent,
     AdminAddCharacterComponent,
-    AdminEditCharacterComponent
+    AdminEditCharacterComponent,
+    PlayerGroupDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -102,12 +106,15 @@ registerLocaleData(localePl);
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,
+    PlayerGroupDetailsComponent,
     // admin panel modals
     AdminAddCharacterComponent,
     AdminEditCharacterComponent
   ],
   providers: [AccountService, CharacterService, CookieService, GroupService,
-    { provide: LOCALE_ID, useValue: "pl" }],
+    { provide: LOCALE_ID, useValue: "pl" },
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

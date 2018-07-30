@@ -11,6 +11,7 @@ import { PenaltyModel } from "../../models/PenaltyModel";
 import { PenaltyService } from "../../service/penalty.service";
 import { group } from "../../../../node_modules/@angular/animations";
 import { WorkerModel } from "../../models/WorkerModel";
+import { PlayerGroupDetailsComponent } from "./elements/player-group-details/player-group-details.component";
 
 @Component({
   selector: "app-player-characters",
@@ -23,9 +24,10 @@ export class PlayerCharactersComponent implements OnInit {
   private _playerWorkers: WorkerModel[];
   private _playerPenalties: PenaltyModel[];
 
+
   constructor(
     private _style: TrustedStyleService,
-    private _characterDetailsDialog: MatDialog,
+    private _dialog: MatDialog,
     private _accountService: AccountService,
     private _characterService: CharacterService,
     private _groupService: GroupService,
@@ -37,12 +39,6 @@ export class PlayerCharactersComponent implements OnInit {
       .getAllByAccountId(this._accountService.currentUserId)
       .subscribe(characters => {
         this._playerCharacters = characters;
-        // this._playerCharacters.forEach(character => {
-        //   this._groupService.getAllByCharacterId(character.id).subscribe(groups => {
-        //     this._playerGroups.push(...groups);
-        //   });
-        //   console.log(this._playerGroups);
-        // });
       });
     this._groupService
       .getAllByAccountId(this._accountService.currentUserId)
@@ -66,7 +62,7 @@ export class PlayerCharactersComponent implements OnInit {
   }
 
   openDetails(character: CharacterModel): void {
-    const dialogRef = this._characterDetailsDialog.open(
+    const dialogRef = this._dialog.open(
       PlayerCharacterDetailsComponent,
       {
         data: character
@@ -74,5 +70,23 @@ export class PlayerCharactersComponent implements OnInit {
     );
 
     dialogRef.afterClosed().subscribe(result => {});
+  }
+
+  openGroupDetails(groupId: number): void{
+
+    this._groupService.getById(groupId).subscribe(gr =>{
+
+      const dialogRef = this._dialog.open(
+        PlayerGroupDetailsComponent,
+        {
+          data: gr
+        }
+      );
+
+      dialogRef.afterClosed().subscribe(result => {});
+      console.log('Dialog debug: ');
+      console.log(gr);
+    })
+
   }
 }

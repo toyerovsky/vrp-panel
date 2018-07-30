@@ -1,4 +1,5 @@
 import { SafeStyle } from "@angular/platform-browser";
+import {WorkerModel} from "./WorkerModel";
 
 export enum GroupTypes {
   Taxi,
@@ -23,4 +24,5 @@ export class GroupModel {
   maxPayday: number;
   money: number;
   color: string;
+  workers: WorkerModel[];
 }

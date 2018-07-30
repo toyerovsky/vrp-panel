@@ -21,4 +21,8 @@ export class GroupService extends AbstractService {
         return this._http.get<WorkerModel[]>(`${environment.apiUrl}/group/account/${accountId}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
+
+    public getById(groupId: number): Observable<GroupModel>{
+      return this._http.get<GroupModel>(`${environment.apiUrl}/group/${groupId}`,{withCredentials: true})
+      .pipe(catchError(this.handleError));
 }

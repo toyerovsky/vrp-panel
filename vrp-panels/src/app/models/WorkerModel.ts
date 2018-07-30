@@ -5,7 +5,7 @@ export interface WorkerModel {
   character: CharacterModel;
   group: GroupModel;
   id: number;
-  rights: string;
+  rights: number;
   salary: number;
   dutyMinutes: number;
 }

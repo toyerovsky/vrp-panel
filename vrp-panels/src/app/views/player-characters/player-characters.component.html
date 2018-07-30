@@ -17,7 +17,7 @@
   <mat-toolbar>Moje grupy</mat-toolbar>
   <p *ngIf="_playerWorkers == undefined">Brak grup</p>
 
-  <mat-card class="card group-card" *ngFor="let worker of _playerWorkers">
+  <mat-card class="card group-card" *ngFor="let worker of _playerWorkers" (click)="openGroupDetails(worker.group.id)">
     <mat-card-header>
       <div mat-card-avatar class="card-header-image" [style.background-image]="worker.group.gImg">
 
