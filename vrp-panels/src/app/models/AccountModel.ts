@@ -5,4 +5,5 @@ export class AccountModel {
     serverRank: string;
     lastLogin?: Date | string;
     avatarUrl?: string;
+    passwordSalt?: string;
 }
