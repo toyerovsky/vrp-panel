@@ -1,4 +1,3 @@
-<!--  add class="active" (mat-tree-node) for active element -->
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
     <a routerLink={{node.src}} title={{node.displayName}}>

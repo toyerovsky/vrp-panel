@@ -26,6 +26,7 @@ import {
   MatNativeDateModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
+  MatPaginatorModule,
 } from '@angular/material';
 
 // components
@@ -101,8 +102,8 @@ registerLocaleData(localePl);
     MatOptionModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,

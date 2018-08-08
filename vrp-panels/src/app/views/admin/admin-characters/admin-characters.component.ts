@@ -1,21 +1,24 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl } from '@angular/material';
 import { CharacterService } from '../../../service/character.service';
 import { CharacterModel } from '../../../models/CharacterModel';
 import { AdminAddCharacterComponent } from './elements/admin-add-character/admin-add-character.component';
 import { ToastrService } from 'ngx-toastr';
 import { AdminEditCharacterComponent } from './elements/admin-edit-character/admin-edit-character.component';
+import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 
 @Component({
   selector: 'app-admin-characters',
   templateUrl: './admin-characters.component.html',
-  styleUrls: ['./admin-characters.component.css']
+  styleUrls: ['./admin-characters.component.scss']
 })
 export class AdminCharactersComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'accountId', 'name', 'money', 'bank', 'gender', 'isAlive'];
   private _dataSource = new MatTableDataSource<CharacterModel>();
+  private _lastCharacters: CharacterModel[];
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private _characterService: CharacterService,
@@ -28,10 +31,17 @@ export class AdminCharactersComponent implements OnInit {
   ngOnInit() {
     this._characterService.getAll().subscribe(characters => {
       if (characters != undefined) {
-        this._dataSource.data = characters;
+        this._lastCharacters = characters;
+        this._dataSource.data = this._lastCharacters;
       }
     });
     this._dataSource.sort = this.sort;
+    this.paginator._intl.firstPageLabel = PL_PAGINATOR_INTL.firstPageLabel;
+    this.paginator._intl.itemsPerPageLabel = PL_PAGINATOR_INTL.itemsPerPageLabel;
+    this.paginator._intl.lastPageLabel = PL_PAGINATOR_INTL.lastPageLabel;
+    this.paginator._intl.nextPageLabel = PL_PAGINATOR_INTL.nextPageLabel;
+    this.paginator._intl.previousPageLabel = PL_PAGINATOR_INTL.previousPageLabel;
+    this._dataSource.paginator = this.paginator;
   }
 
   addCharacterClickHandler() {
@@ -40,9 +50,8 @@ export class AdminCharactersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
         this._characterService.post(result).subscribe(postResult => {
-          let temp = this._dataSource.data;
-          temp.push(postResult);
-          this._dataSource = new MatTableDataSource<CharacterModel>(temp);
+          this._lastCharacters.push(postResult);
+          this._dataSource = new MatTableDataSource<CharacterModel>(this._lastCharacters);
           this._dataSource.sort = this.sort;
           this._toastrService.success(`Pomyślnie dodano postać: ${postResult.name} ${postResult.surname}`);
         });
@@ -62,5 +71,9 @@ export class AdminCharactersComponent implements OnInit {
         });
       }
     });
+  }
+
+  searchHandler(filter: string) {
+    this._dataSource.filter = filter.trim().toLowerCase();
   }
 }

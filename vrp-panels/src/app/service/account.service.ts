@@ -51,8 +51,8 @@ export class AccountService extends AbstractService {
             .pipe(catchError(this.handleError));
     }
 
-    public getByEmail(email: string): Observable<any> {
-        return this._http.get<any>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
+    public getByEmail(email: string): Observable<AccountModel> {
+        return this._http.get<AccountModel>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
 }

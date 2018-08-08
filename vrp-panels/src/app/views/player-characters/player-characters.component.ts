@@ -9,7 +9,7 @@ import { CharacterService } from "../../service/character.service";
 import { GroupService } from "../../service/group.service";
 import { PenaltyModel } from "../../models/PenaltyModel";
 import { PenaltyService } from "../../service/penalty.service";
-import { group } from "../../../../node_modules/@angular/animations";
+import { group } from "@angular/animations";
 import { WorkerModel } from "../../models/WorkerModel";
 import { PlayerGroupDetailsComponent } from "./elements/player-group-details/player-group-details.component";
 

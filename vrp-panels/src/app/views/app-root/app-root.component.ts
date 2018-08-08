@@ -6,7 +6,7 @@ import { TrustedStyleService } from '../../service/trusted-style.service';
 @Component({
   selector: 'app-app-root',
   templateUrl: './app-root.component.html',
-  styleUrls: ['./app-root.component.css']
+  styleUrls: ['./app-root.component.scss']
 })
 export class AppRootComponent implements OnInit {
   private _accountModel: AccountModel;

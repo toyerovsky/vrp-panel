@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.search {
+  position: relative;
+  left: 40vh;
+  mat-form-field {
+    width: 50vh;
+  }
+}

@@ -1,12 +1,14 @@
-<button mat-button (click)="addCharacterClickHandler()">
-  Dodaj postać
-</button>
+<div class="search">
+  <mat-form-field appearance="outline">
+    <mat-label>Wyszukiwanie</mat-label>
+    <input matInput (keyup)="searchHandler($event.target.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
 
-<mat-form-field appearance="outline">
-  <mat-label>Wyszukiwanie</mat-label>
-  <input matInput>
-  <mat-icon matSuffix>search</mat-icon>
-</mat-form-field>
+  <button mat-icon-button (click)="addCharacterClickHandler()">
+    <mat-icon>add_box</mat-icon>
+  </button>
+</div>
 
 <table mat-table [dataSource]="_dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="id">
@@ -50,3 +52,5 @@
   <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: _displayedColumns;" (click)="editCharacterClickHandler(row)"></tr>
 </table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
