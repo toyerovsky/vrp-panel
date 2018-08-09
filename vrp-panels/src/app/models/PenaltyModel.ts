@@ -8,5 +8,7 @@ export interface PenaltyModel {
     reason: string;
     penaltyType: string;
     creator: AccountModel;
+    creatorId: AccountModel;
     character: CharacterModel;
+    characterId: number;
 }
