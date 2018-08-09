@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { CharacterService } from '../../../../../service/character.service';
+import { AccountService } from '../../../../../service/account.service';
 import { CharacterModel } from '../../../../../models/CharacterModel';
 
 export interface Gender {
@@ -22,6 +23,7 @@ export class AdminAddCharacterComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<AdminAddCharacterComponent>,
+    private _accountService: AccountService
   ) {
   }
 
@@ -35,5 +37,11 @@ export class AdminAddCharacterComponent implements OnInit {
 
   closeDialog(): void {
     this._dialogRef.close();
+  }
+
+  loadAccountHandler(event: any): void {
+    let value = event.target.value;
+    this._accountService.getById(this._characterModel.accountId)
+      .subscribe(data => this._characterModel.account = data);
   }
 }

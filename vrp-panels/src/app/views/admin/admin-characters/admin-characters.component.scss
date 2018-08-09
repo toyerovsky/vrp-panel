@@ -7,9 +7,14 @@ th.mat-sort-header-sorted {
 }
 
 .search {
-  position: relative;
-  left: 40vh;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
   mat-form-field {
-    width: 50vh;
+    width: 80%;
   }
+}
+
+.mat-row:hover {
+  background-color: rgb(250, 250, 250);
 }
