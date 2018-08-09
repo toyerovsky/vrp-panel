@@ -65,8 +65,9 @@ import { JsonService } from './service/json.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
-
-
+import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
+import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
+import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
 registerLocaleData(localePl);
 
 @NgModule({
@@ -87,6 +88,10 @@ registerLocaleData(localePl);
     AdminVehiclesComponent,
     AdminAddVehicleComponent,
     AdminEditVehicleComponent,
+    PlayerGroupDetailsComponent,
+    AdminGroupsComponent,
+    AdminAddGroupComponent,
+    AdminEditGroupComponent
   ],
   imports: [
     BrowserModule,
