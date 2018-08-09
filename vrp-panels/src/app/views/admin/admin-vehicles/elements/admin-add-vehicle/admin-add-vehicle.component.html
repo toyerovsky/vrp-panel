@@ -1,3 +1,20 @@
-<p>
-  admin-add-vehicle works!
-</p>
+<h2>Dodaj pojazd</h2>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_vehicleModel.numberPlate" matInput placeholder="Rejestracja" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="_vehicleModel.name" matInput placeholder="Nazwa" />
+</mat-form-field>
+<img *ngIf="_vehicleCtrl.value && containsVehicle(_vehicleCtrl.value)" [src]="'https://v-rp.pl/uploads/vehicles/' + _vehicleCtrl.value.toLowerCase() + 'f.jpg'">
+<mat-form-field class="full-width">
+  <input (change)="onVehicleModelChange()" matInput placeholder="Model" [matAutocomplete]="auto" [formControl]="_vehicleCtrl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let vehicle of _filteredVehicles | async" [value]="vehicle.displayName">
+      <span>{{vehicle.displayName}}</span> |
+      <small>Skrót: {{vehicle.id}}</small>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<button mat-button (click)="saveHandler()">
+  Zapisz
+</button>

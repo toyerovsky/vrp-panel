@@ -1,24 +1,22 @@
-<h2>Edytuj postać</h2>
+<h2>Edytuj pojazd</h2>
 <mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.numberPlate" matInput placeholder="Imię" />
+  <input [(ngModel)]="vehicleModel.numberPlate" matInput placeholder="Rejestracja" />
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.surname" matInput placeholder="Nazwisko" />
+  <input [(ngModel)]="vehicleModel.name" matInput placeholder="Nazwa" />
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.accountId" type="number" matInput placeholder="Id konta" />
+  <input [(ngModel)]="vehicleModel.vehicleHash" type="number" matInput placeholder="Id konta" />
 </mat-form-field>
 <mat-form-field class="full-width">
-  <mat-select [(ngModel)]="vehicleModel.gender" placeholder="Płeć">
-    <mat-option *ngFor="let gender of _genders" [value]="gender.value">
-      {{gender.viewValue}}
+  <input matInput placeholder="Model" [matAutocomplete]="auto" [formControl]="vehicleCtrl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let vehicle of filteredVehicles | async" [value]="vehicle.displayName">
+      <img class="vehicle-img" aria-hidden [src]="'https://v-rp.pl/uploads/vehicles/' + vehicle.displayName + '.jpg'" height="25">
+      <span>{{vehicle.displayName}}</span> |
+      <small>Skrót: {{vehicle.id}}</small>
     </mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.bornDate" [matDatepicker]="picker" matInput placeholder="Data urodzenia">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  </mat-autocomplete>
 </mat-form-field>
 <button mat-button (click)="saveHandler()">
   Zapisz

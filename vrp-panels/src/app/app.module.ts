@@ -27,6 +27,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
   MatPaginatorModule,
+  MatAutocompleteModule,
 } from '@angular/material';
 
 // components
@@ -41,6 +42,12 @@ import { AdminCharactersComponent } from './views/admin/admin-characters/admin-c
 import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
 import { registerLocaleData } from '@angular/common';
 import { AdminEditCharacterComponent } from './views/admin/admin-characters/elements/admin-edit-character/admin-edit-character.component';
+import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
+import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
+import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements/admin-edit-account/admin-edit-account.component';
+import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
+import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/admin-add-vehicle/admin-add-vehicle.component';
+import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -54,15 +61,11 @@ import { AccountService } from './service/account.service';
 import { CookieService } from 'ngx-cookie-service';
 import { GroupService } from './service/group.service';
 import { VehicleService } from './service/vehicle.service';
+import { JsonService } from './service/json.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
-import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
-import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
-import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements/admin-edit-account/admin-edit-account.component';
-import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
-import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/admin-add-vehicle/admin-add-vehicle.component';
-import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
+
 
 registerLocaleData(localePl);
 
@@ -115,7 +118,8 @@ registerLocaleData(localePl);
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,
@@ -135,6 +139,7 @@ registerLocaleData(localePl);
     CookieService, 
     GroupService, 
     VehicleService,
+    JsonService,
     
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatDialogRef, useValue: {} },

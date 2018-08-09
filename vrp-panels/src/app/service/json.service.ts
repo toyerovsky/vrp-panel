@@ -4,23 +4,26 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import AbstractService from './abstract.service';
 import { ToastrService } from 'ngx-toastr';
+import { catchError } from 'rxjs/operators';
 
-export interface SimpleSelectorElement {
+export interface EntityInfo {
   displayName: string;
   id: number;
 }
 
 @Injectable({ providedIn: 'root' })
 export class JsonService extends AbstractService {
-    constructor(toastr: ToastrService, private _http: HttpClient) {
-      super(toastr);
-    }
+  constructor(toastr: ToastrService, private _http: HttpClient) {
+    super(toastr);
+  }
 
-    public getSkins(): Observable<SimpleSelectorElement[]> {
-        return this._http.get<SimpleSelectorElement[]>('./assets/json/skins.json');
-    }
+  public getSkins(): Observable<EntityInfo[]> {
+    return this._http.get<EntityInfo[]>('./assets/json/skins.json')
+      .pipe(catchError(this.handleError));;
+  }
 
-    public getVehicles(): Observable<SimpleSelectorElement[]> {
-      return this._http.get<SimpleSelectorElement[]>('./assets/json/vehicles.json');
+  public getVehicles(): Observable<EntityInfo[]> {
+    return this._http.get<EntityInfo[]>('./assets/json/vehicles.json')
+      .pipe(catchError(this.handleError));;
   }
 }
