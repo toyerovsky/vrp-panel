@@ -7,8 +7,8 @@
 </mat-form-field>
 <mat-form-field class="full-width">
   <mat-select [(ngModel)]="accountModel.serverRank" placeholder="Ranga">
-    <mat-option *ngFor="let rank of _ranks" [value]="rank.value">
-      {{rank.viewValue}}
+    <mat-option *ngFor="let rank of _ranks" [value]="rank">
+      {{rank}}
     </mat-option>
   </mat-select>
 </mat-form-field>

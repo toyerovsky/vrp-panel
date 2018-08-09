@@ -10,7 +10,7 @@ import { RANKS } from '../../../../../const/Misc';
   styleUrls: ['./admin-edit-account.component.css']
 })
 export class AdminEditAccountComponent implements OnInit {
-  private _ranks: any = RANKS;
+  private _ranks: string[] = RANKS;
 
   constructor(
     private _dialogRef: MatDialogRef<AdminEditAccountComponent>,
