@@ -23,8 +23,19 @@ export class GroupService extends AbstractService {
       .pipe(catchError(this.handleError));
   }
 
-    public getById(groupId: number): Observable<GroupModel> {
-        return this._http.get<GroupModel>(`${environment.apiUrl}/group/${groupId}`, { withCredentials: true })
-            .pipe(catchError(this.handleError));
-    }
+  public getAll(): Observable<GroupModel[]> {
+    return this._http
+      .get<GroupModel[]>(`${environment.apiUrl}/group`, {
+        withCredentials: true
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  public getById(groupId: number): Observable<GroupModel> {
+    return this._http
+      .get<GroupModel>(`${environment.apiUrl}/group/${groupId}`, {
+        withCredentials: true
+      })
+      .pipe(catchError(this.handleError));
+  }
 }

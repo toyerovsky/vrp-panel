@@ -63,7 +63,9 @@ import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
 import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/admin-add-vehicle/admin-add-vehicle.component';
 import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
-
+import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
+import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
+import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
 registerLocaleData(localePl);
 
 @NgModule({
@@ -84,6 +86,10 @@ registerLocaleData(localePl);
     AdminVehiclesComponent,
     AdminAddVehicleComponent,
     AdminEditVehicleComponent,
+    PlayerGroupDetailsComponent,
+    AdminGroupsComponent,
+    AdminAddGroupComponent,
+    AdminEditGroupComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,8 @@ import { PlayerCharactersComponent } from './views/player-characters/player-char
 import { LoginComponent } from './views/login/login.component';
 import { AppRootComponent } from './views/app-root/app-root.component';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
-import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
+import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
 
 
 const routes: Routes = [
@@ -27,6 +27,7 @@ const routes: Routes = [
         path: 'admin', children: [
           { path: 'characters', component: AdminCharactersComponent },
           { path: 'accounts', component: AdminAccountsComponent },
+          { path: 'groups', component: AdminGroupsComponent }
           { path: 'vehicles', component: AdminVehiclesComponent }
         ]
       }
