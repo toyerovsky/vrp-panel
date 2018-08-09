@@ -57,6 +57,8 @@ import { GroupService } from './service/group.service';
 // misc
 import localePl from '@angular/common/locales/pl';
 import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
+import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
+import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements/admin-edit-account/admin-edit-account.component';
 registerLocaleData(localePl);
 
 @NgModule({
@@ -71,7 +73,9 @@ registerLocaleData(localePl);
     AdminCharactersComponent,
     AdminAddCharacterComponent,
     AdminEditCharacterComponent,
-    PlayerGroupDetailsComponent
+    PlayerGroupDetailsComponent,
+    AdminAccountsComponent,
+    AdminEditAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,9 +112,11 @@ registerLocaleData(localePl);
   entryComponents: [
     PlayerCharacterDetailsComponent,
     PlayerGroupDetailsComponent,
+
     // admin panel modals
     AdminAddCharacterComponent,
-    AdminEditCharacterComponent
+    AdminEditCharacterComponent,
+    AdminEditAccountComponent
   ],
   providers: [AccountService, CharacterService, CookieService, GroupService,
     { provide: LOCALE_ID, useValue: "pl" },

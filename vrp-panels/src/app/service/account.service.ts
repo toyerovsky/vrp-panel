@@ -55,4 +55,9 @@ export class AccountService extends AbstractService {
         return this._http.get<AccountModel>(`${environment.apiUrl}/account/email/${email}`, { withCredentials: true })
             .pipe(catchError(this.handleError));
     }
+
+    public put(id: number, accountModel: AccountModel): Observable<AccountModel> {
+        return this._http.put<AccountModel>(`${environment.apiUrl}/account/${id}`, accountModel, { withCredentials: true })
+            .pipe(catchError(this.handleError));
+    }
 }

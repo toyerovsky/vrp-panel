@@ -1,0 +1,22 @@
+<h2>Edytuj konto</h2>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="accountModel.forumUserName" matInput placeholder="Nazwa użytkownika" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input [(ngModel)]="accountModel.email" matInput placeholder="Email" />
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-select [(ngModel)]="accountModel.serverRank" placeholder="Ranga">
+    <mat-option *ngFor="let rank of _ranks" [value]="rank.value">
+      {{rank.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input disabled [(ngModel)]="accountModel.lastLogin" [matDatepicker]="picker" matInput placeholder="Ostatnie zalogowanie">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<button mat-button (click)="saveHandler()">
+  Zapisz
+</button>

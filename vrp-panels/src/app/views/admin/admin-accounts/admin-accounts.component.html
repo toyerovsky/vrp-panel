@@ -1,0 +1,42 @@
+<div class="search">
+  <mat-form-field appearance="outline">
+    <mat-label>Wyszukiwanie</mat-label>
+    <input matInput (keyup)="searchHandler($event.target.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="_dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="forumUserName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
+    <td mat-cell *matCellDef="let element"> {{element.forumUserName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="serverRank">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ranga </th>
+    <td mat-cell *matCellDef="let element"> {{element.serverRank}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastLogin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ostatnie logowanie </th>
+    <td mat-cell *matCellDef="let element"> 
+      <p *ngIf="element.lastLogin">{{element.lastLogin | date}}</p>
+      <p *ngIf="!element.lastLogin">Brak</p>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: _displayedColumns;" (click)="editAccountClickHandler(row)"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>

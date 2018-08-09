@@ -10,7 +10,7 @@ import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 @Component({
   selector: 'app-admin-characters',
   templateUrl: './admin-characters.component.html',
-  styleUrls: ['./admin-characters.component.scss']
+  styleUrls: ['../admin-table.scss']
 })
 export class AdminCharactersComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'accountId', 'name', 'money', 'bank', 'gender', 'isAlive'];
