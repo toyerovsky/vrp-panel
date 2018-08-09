@@ -53,12 +53,17 @@ import { CharacterService } from './service/character.service';
 import { AccountService } from './service/account.service';
 import { CookieService } from 'ngx-cookie-service';
 import { GroupService } from './service/group.service';
+import { VehicleService } from './service/vehicle.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
 import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
 import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
 import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements/admin-edit-account/admin-edit-account.component';
+import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
+import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/admin-add-vehicle/admin-add-vehicle.component';
+import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
+
 registerLocaleData(localePl);
 
 @NgModule({
@@ -76,6 +81,9 @@ registerLocaleData(localePl);
     PlayerGroupDetailsComponent,
     AdminAccountsComponent,
     AdminEditAccountComponent,
+    AdminVehiclesComponent,
+    AdminAddVehicleComponent,
+    AdminEditVehicleComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,9 +124,18 @@ registerLocaleData(localePl);
     // admin panel modals
     AdminAddCharacterComponent,
     AdminEditCharacterComponent,
-    AdminEditAccountComponent
+    AdminEditAccountComponent,
+    AdminAddVehicleComponent,
+    AdminEditVehicleComponent 
   ],
-  providers: [AccountService, CharacterService, CookieService, GroupService,
+  providers: [
+    // services
+    AccountService, 
+    CharacterService, 
+    CookieService, 
+    GroupService, 
+    VehicleService,
+    
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
