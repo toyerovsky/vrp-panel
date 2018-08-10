@@ -1,20 +1,35 @@
 <h2>Dodaj pojazd</h2>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="_vehicleModel.numberPlate" matInput placeholder="Rejestracja" />
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="_vehicleModel.name" matInput placeholder="Nazwa" />
-</mat-form-field>
-<img *ngIf="_vehicleCtrl.value && containsVehicle(_vehicleCtrl.value)" [src]="'https://v-rp.pl/uploads/vehicles/' + _vehicleCtrl.value.toLowerCase() + 'f.jpg'">
-<mat-form-field class="full-width">
-  <input (change)="onVehicleModelChange()" matInput placeholder="Model" [matAutocomplete]="auto" [formControl]="_vehicleCtrl">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let vehicle of _filteredVehicles | async" [value]="vehicle.displayName">
-      <span>{{vehicle.displayName}}</span> |
-      <small>Skrót: {{vehicle.id}}</small>
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
-<button mat-button (click)="saveHandler()">
-  Zapisz
-</button>
+<form [formGroup]="_addVehicleForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <input formControlName="numberPlate" matInput placeholder="Rejestracja" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Model" [matAutocomplete]="auto" formControlName="vehicleHash">
+    <mat-error *ngIf="vehicleHash.errors?.isVehicleName">
+      Wprowadzony model pojazdu jest
+      <strong>Nieprawidłowy</strong>
+    </mat-error>
+    <mat-error *ngIf="vehicleHash.errors?.required">
+      Pole model jest
+      <strong>wymagane</strong>
+    </mat-error>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let vehicle of _filteredVehicles | async" [value]="vehicle.displayName">
+        <img class="vehicle-img" height="50" [src]="'https://v-rp.pl/uploads/vehicles/icons/' + vehicle.displayName.toLowerCase() + '.jpg'">
+        <span>{{vehicle.displayName}}</span> |
+        <small>Skrót: {{vehicle.id}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (input)="loadCharacterHandler($event)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_vehicleModel.character">({{_vehicleModel.character.id}}) {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
+  </mat-form-field>
+  <button type="submit" [disabled]="!_addVehicleForm.valid" mat-button>
+    Zapisz
+  </button>
+</form>

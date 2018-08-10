@@ -41,7 +41,7 @@ export class AdminAddCharacterComponent implements OnInit {
 
   loadAccountHandler(event: any): void {
     let value = event.target.value;
-    this._accountService.getById(this._characterModel.accountId)
+    this._accountService.getById(value)
       .subscribe(data => this._characterModel.account = data);
   }
 }

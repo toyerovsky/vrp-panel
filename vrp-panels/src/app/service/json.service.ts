@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 
 export interface EntityInfo {
   displayName: string;
-  id: number;
+  id: string;
 }
 
 @Injectable({ providedIn: 'root' })

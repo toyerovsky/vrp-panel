@@ -20,6 +20,11 @@ export class CharacterService extends AbstractService {
             .pipe(catchError(this.handleError));
     }
 
+    public getById(characterId: number): Observable<CharacterModel> {
+        return this._http.get<CharacterModel>(`${environment.apiUrl}/character/${characterId}`, { withCredentials: true })
+            .pipe(catchError(this.handleError));
+    }
+
     public getAll(): Observable<CharacterModel[]> {
         return this._http.get<CharacterModel[]>(`${environment.apiUrl}/character/`, { withCredentials: true })
             .pipe(catchError(this.handleError));
