@@ -7,10 +7,10 @@
     <input formControlName="name" matInput placeholder="Nazwa" />
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput placeholder="Model" [matAutocomplete]="auto" formControlName="vehicleHash">
-    <mat-error *ngIf="vehicleHash.errors?.isVehicleName">
+    <input (input)="onVehicleHashChange($event)" matInput placeholder="Model" [matAutocomplete]="auto" formControlName="vehicleHash">
+    <mat-error *ngIf="vehicleHash.errors?.isVehicleName && !vehicleHash.errors?.required">
       Wprowadzony model pojazdu jest
-      <strong>Nieprawidłowy</strong>
+      <strong>nieprawidłowy</strong>
     </mat-error>
     <mat-error *ngIf="vehicleHash.errors?.required">
       Pole model jest
@@ -27,9 +27,14 @@
   <mat-form-field class="full-width">
     <input formControlName="characterId" (input)="loadCharacterHandler($event)" type="number" matInput placeholder="Id postaci"
     />
-    <mat-hint *ngIf="_vehicleModel.character">({{_vehicleModel.character.id}}) {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
+    <mat-hint *ngIf="_vehicleModel.character">Id konta: {{_vehicleModel.character.accountId}} {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
   </mat-form-field>
-  <button type="submit" [disabled]="!_addVehicleForm.valid" mat-button>
+  <mat-form-field class="full-width">
+    <input formControlName="groupId" (input)="loadGroupHandler($event)" type="number" matInput placeholder="Id grupy" />
+    <mat-hint *ngIf="_vehicleModel.group">Id Grupy: {{_vehicleModel.character.accountId}} {{_vehicleModel.group.name}} </mat-hint>
+  </mat-form-field>
+
+  <button type="submit" mat-button>
     Zapisz
   </button>
 </form>
