@@ -11,6 +11,7 @@ import { AdminCharactersComponent } from './views/admin/admin-characters/admin-c
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
 import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
 import {AdminAccountsComponent} from './views/admin/admin-accounts/admin-accounts.component';
+import { TicketsComponent } from './views/tickets/tickets.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
           { path: 'groups', component: AdminGroupsComponent },
           { path: 'vehicles', component: AdminVehiclesComponent }
         ]
-      }
+      },
+      {path: 'tickets', component: TicketsComponent}
     ]
   },
   //ALWAYS AT THE END OF ROUTES

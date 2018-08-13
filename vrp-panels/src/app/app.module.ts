@@ -68,6 +68,7 @@ import localePl from '@angular/common/locales/pl';
 import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
 import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
 import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
+import { TicketsComponent } from './views/tickets/tickets.component';
 registerLocaleData(localePl);
 
 @NgModule({
@@ -91,7 +92,8 @@ registerLocaleData(localePl);
     PlayerGroupDetailsComponent,
     AdminGroupsComponent,
     AdminAddGroupComponent,
-    AdminEditGroupComponent
+    AdminEditGroupComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,
