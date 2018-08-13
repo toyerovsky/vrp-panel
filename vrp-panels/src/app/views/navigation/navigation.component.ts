@@ -56,7 +56,7 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Zgłoszenia',
     icon: 'feedback ',
-    src: '/player/characters'
+    src: '/tickets'
   },
   {
     displayName: 'Moje konto',
