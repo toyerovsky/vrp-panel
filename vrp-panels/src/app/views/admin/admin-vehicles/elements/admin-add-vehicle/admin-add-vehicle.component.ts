@@ -31,19 +31,20 @@ export class AdminAddVehicleComponent implements OnInit {
 
   ngOnInit() {
     this._addVehicleForm = new FormGroup({
-      'numberPlate': new FormControl('', [
+      'numberPlate': new FormControl(this._vehicleModel.numberPlate, [
         Validators.maxLength(11)
       ]),
-      'name': new FormControl(''),
-      'vehicleHash': new FormControl('', {
+      'name': new FormControl(this._vehicleModel.name),
+      'vehicleHash': new FormControl(this._vehicleModel.vehicleHash, {
         validators: [
           Validators.required,
           isVehicleName
         ],
         updateOn: 'blur'
       }),
-      'characterId': new FormControl({ value: '' }),
-      'groupId': new FormControl({ value: '' }),
+      'characterId': new FormControl(this._vehicleModel.characterId),
+      'groupId': new FormControl(this._vehicleModel.groupId),
+      'milage': new FormControl(this._vehicleModel.milage)
     });
     this._filteredVehicles = of(this._vehicles);
     this.characterId.setValidators([mutuallyExclusiveWith(this.groupId)]);
@@ -57,23 +58,23 @@ export class AdminAddVehicleComponent implements OnInit {
     );
   }
 
-  get numberPlate() {
+  get numberPlate(): FormControl {
     return this._addVehicleForm.controls.numberPlate as FormControl;
   }
 
-  get name() {
+  get name(): FormControl {
     return this._addVehicleForm.controls.name as FormControl;
   }
 
-  get vehicleHash() {
+  get vehicleHash(): FormControl {
     return this._addVehicleForm.controls.vehicleHash as FormControl;
   }
 
-  get characterId() {
+  get characterId(): FormControl {
     return this._addVehicleForm.controls.characterId as FormControl;
   }
 
-  get groupId() {
+  get groupId(): FormControl {
     return this._addVehicleForm.controls.groupId as FormControl;
   }
 
