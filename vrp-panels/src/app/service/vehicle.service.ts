@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { environment } from "../../environments/environment";
-import { catchError } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
 import { VehicleModel } from "../models/VehicleModel";
@@ -36,5 +36,17 @@ export class VehicleService extends AbstractService {
   public put(vehicleId: number, vehicleModel: VehicleModel): Observable<VehicleModel> {
     return this._http.put<VehicleModel>(`${environment.apiUrl}/vehicle/${vehicleId}`, vehicleModel, { withCredentials: true })
       .pipe(catchError(this.handleError));
+  }
+
+  public getByNumberPlate(numberPlate: string): Observable<VehicleModel> {
+    return this._http.get<VehicleModel>(`${environment.apiUrl}/vehicle/numberplate/${numberPlate}`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public checkIfNumberPlateTaken(numberPlate: string): Observable<Boolean> {
+    return this.getByNumberPlate(numberPlate)
+      .pipe(
+        map(vehicle => vehicle != undefined)
+      );
   }
 }

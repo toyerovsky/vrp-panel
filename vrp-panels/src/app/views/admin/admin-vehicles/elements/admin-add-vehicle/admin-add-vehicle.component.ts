@@ -8,7 +8,8 @@ import { startWith, map, max } from 'rxjs/operators';
 import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith } from '../../../../../utils/validators';
+import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken } from '../../../../../utils/validators';
+import { VehicleService } from '../../../../../service/vehicle.service';
 
 @Component({
   selector: 'app-admin-add-vehicle',
@@ -23,17 +24,23 @@ export class AdminAddVehicleComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<AdminAddVehicleComponent>,
-    private _jsonService: JsonService,
     private _characterService: CharacterService,
-    private _groupService: GroupService
+    private _groupService: GroupService,
+    private _vehicleService: VehicleService
   ) {
   }
 
   ngOnInit() {
     this._addVehicleForm = new FormGroup({
-      'numberPlate': new FormControl(this._vehicleModel.numberPlate, [
-        Validators.maxLength(11)
-      ]),
+      'numberPlate': new FormControl(this._vehicleModel.numberPlate, {
+        validators: [
+          Validators.maxLength(11)
+        ],
+        asyncValidators: [
+          isNumberPlateTaken(this._vehicleService)
+        ],
+        updateOn: 'blur'
+      }),
       'name': new FormControl(this._vehicleModel.name),
       'vehicleHash': new FormControl(this._vehicleModel.vehicleHash, {
         validators: [

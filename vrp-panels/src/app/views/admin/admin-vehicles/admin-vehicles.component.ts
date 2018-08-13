@@ -7,6 +7,7 @@ import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 // dialogs
 import { AdminAddVehicleComponent } from './elements/admin-add-vehicle/admin-add-vehicle.component';
 import { AdminEditVehicleComponent } from './elements/admin-edit-vehicle/admin-edit-vehicle.component';
+import { config } from 'rxjs';
 
 @Component({
   selector: 'app-admin-vehicles',

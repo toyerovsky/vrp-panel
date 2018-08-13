@@ -1,5 +1,7 @@
-import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors, FormControl } from "@angular/forms";
+import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors, FormControl, AsyncValidatorFn } from "@angular/forms";
 import { VEHICLES } from "../const/Misc";
+import { VehicleService } from "../service/vehicle.service";
+import { map } from "rxjs/operators";
 
 export function isVehicleName(): ValidatorFn {
     return (control: FormGroup): ValidationErrors | null => {
@@ -26,4 +28,13 @@ export function mutuallyExclusiveWith(excluded: FormControl): ValidatorFn {
         }
         return null;
     };
+}
+
+export function isNumberPlateTaken(vehicleService: VehicleService): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+        return vehicleService.checkIfNumberPlateTaken(control.value)
+            .pipe(
+                map(res => { return res ? null : { isNumberPlateTaken: true } })
+            );
+    }
 }
