@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import AbstractService from './abstract.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError } from 'rxjs/operators';
+import { VEHICLES } from '../const/Misc';
 
 export interface EntityInfo {
   displayName: string;
