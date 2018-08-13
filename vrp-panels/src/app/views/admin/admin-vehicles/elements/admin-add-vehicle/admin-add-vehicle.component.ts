@@ -7,8 +7,8 @@ import { Observable, of } from 'rxjs';
 import { startWith, map, max } from 'rxjs/operators';
 import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
-import { isVehicleName } from '../../../../../utils/validators';
 import { GroupService } from '../../../../../service/group.service';
+import { isVehicleName, mutuallyExclusiveWith } from '../../../../../utils/validators';
 
 @Component({
   selector: 'app-admin-add-vehicle',
@@ -46,6 +46,8 @@ export class AdminAddVehicleComponent implements OnInit {
       'groupId': new FormControl({ value: '' }),
     });
     this._filteredVehicles = of(this._vehicles);
+    this.characterId.setValidators([mutuallyExclusiveWith(this.groupId)]);
+    this.groupId.setValidators([mutuallyExclusiveWith(this.characterId)]);
   }
 
   onVehicleHashChange(event: any) {
