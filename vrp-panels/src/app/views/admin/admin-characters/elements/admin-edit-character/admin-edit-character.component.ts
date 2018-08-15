@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CharacterModel } from '../../../../../models/CharacterModel';
+import { AccountService } from '../../../../../service/account.service';
 
 export interface Gender {
   value: boolean;
