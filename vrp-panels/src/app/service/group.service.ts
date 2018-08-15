@@ -16,26 +16,32 @@ export class GroupService extends AbstractService {
   }
 
   public getAllByAccountId(accountId: number): Observable<WorkerModel[]> {
-    return this._http
-      .get<WorkerModel[]>(`${environment.apiUrl}/group/account/${accountId}`, {
-        withCredentials: true
-      })
-      .pipe(catchError(this.handleError));
+    return this._http.get<WorkerModel[]>(`${environment.apiUrl}/group/account/${accountId}`, {
+      withCredentials: true
+    }).pipe(catchError(this.handleError));
   }
 
   public getAll(): Observable<GroupModel[]> {
-    return this._http
-      .get<GroupModel[]>(`${environment.apiUrl}/group`, {
-        withCredentials: true
-      })
-      .pipe(catchError(this.handleError));
+    return this._http.get<GroupModel[]>(`${environment.apiUrl}/group`, {
+      withCredentials: true
+    }).pipe(catchError(this.handleError));
   }
 
   public getById(groupId: number): Observable<GroupModel> {
-    return this._http
-      .get<GroupModel>(`${environment.apiUrl}/group/${groupId}`, {
-        withCredentials: true
-      })
-      .pipe(catchError(this.handleError));
+    return this._http.get<GroupModel>(`${environment.apiUrl}/group/${groupId}`, {
+      withCredentials: true
+    }).pipe(catchError(this.handleError));
+  }
+
+  public post(groupModel: GroupModel): Observable<GroupModel> {
+    return this._http.post<GroupModel>(`${environment.apiUrl}/group/`, {
+      withCredentials: true
+    }).pipe(catchError(this.handleError));
+  }
+
+  public put(groupModel: GroupModel, id: number): Observable<GroupModel> {
+    return this._http.put<GroupModel>(`${environment.apiUrl}/group/${id}`, groupModel, {
+      withCredentials: true
+    }).pipe(catchError(this.handleError));
   }
 }

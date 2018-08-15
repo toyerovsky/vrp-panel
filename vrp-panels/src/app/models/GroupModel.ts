@@ -1,5 +1,6 @@
 import { SafeStyle } from "@angular/platform-browser";
-import {WorkerModel} from "./WorkerModel";
+import { WorkerModel } from "./WorkerModel";
+import { CharacterModel } from "./CharacterModel";
 
 export enum GroupTypes {
   Taxi,
@@ -11,7 +12,6 @@ export enum GroupTypes {
   Police,
   Hospital,
   News,
-  CityHall
 }
 
 export class GroupModel {
@@ -25,4 +25,6 @@ export class GroupModel {
   money: number;
   color: string;
   workers: WorkerModel[];
+  bossCharacter: CharacterModel;
+  bossId: number;
 }

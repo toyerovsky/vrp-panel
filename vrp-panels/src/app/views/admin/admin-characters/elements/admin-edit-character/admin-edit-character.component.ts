@@ -10,7 +10,7 @@ export interface Gender {
 @Component({
   selector: 'app-admin-edit-character',
   templateUrl: './admin-edit-character.component.html',
-  styleUrls: ['./admin-edit-character.component.css']
+  styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminEditCharacterComponent implements OnInit {
   private _genders: Gender[] = [
@@ -20,7 +20,8 @@ export class AdminEditCharacterComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<AdminEditCharacterComponent>,
-    @Inject(MAT_DIALOG_DATA) public characterModel: CharacterModel
+    @Inject(MAT_DIALOG_DATA) public characterModel: CharacterModel,
+    private _accountService: AccountService
   ) {
   }
 
@@ -33,5 +34,10 @@ export class AdminEditCharacterComponent implements OnInit {
 
   closeDialog(): void {
     this._dialogRef.close();
+  }
+
+  loadAccountHandler(value: number): void {
+    this._accountService.getById(value)
+      .subscribe(data => this.characterModel.account = data);
   }
 }

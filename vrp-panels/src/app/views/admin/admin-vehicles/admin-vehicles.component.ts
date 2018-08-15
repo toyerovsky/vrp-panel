@@ -18,7 +18,6 @@ export class AdminVehiclesComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'numberPlate', 'name', 'vehicleHash', 'health', 'owner'];
   private _dataSource = new MatTableDataSource<VehicleModel>();
   private _lastVehicles: VehicleModel[];
-
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

@@ -6,7 +6,8 @@
   <input [(ngModel)]="characterModel.surname" matInput placeholder="Nazwisko" />
 </mat-form-field>
 <mat-form-field class="full-width">
-  <input [(ngModel)]="characterModel.accountId" type="number" matInput placeholder="Id konta" />
+    <input [(ngModel)]="characterModel.accountId" (blur)="loadAccountHandler($event.target.value)" type="number" matInput placeholder="Id konta" />
+    <mat-hint *ngIf="characterModel.account">{{_characterModel.account.forumUserName}}</mat-hint>
 </mat-form-field>
 <mat-form-field class="full-width">
   <mat-select [(ngModel)]="characterModel.gender" placeholder="Płeć">

@@ -30,7 +30,7 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input formControlName="characterId" (input)="loadCharacterHandler($event)" type="number" matInput placeholder="Id postaci"
+    <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
     />
     <mat-hint *ngIf="_vehicleModel.character">Id konta: {{_vehicleModel.character.accountId}} {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
     <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
@@ -39,7 +39,7 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input formControlName="groupId" (input)="loadGroupHandler($event)" type="number" matInput placeholder="Id grupy" />
+    <input formControlName="groupId" (blur)="loadGroupHandler($event.target.value)" type="number" matInput placeholder="Id grupy" />
     <mat-hint *ngIf="_vehicleModel.group">Id Grupy: {{_vehicleModel.character.accountId}} {{_vehicleModel.group.name}} </mat-hint>
     <mat-error *ngIf="groupId.errors?.mutuallyExclusiveWith">
       Pola Id grupy, oraz Id postaci nie mogą być wypełnione

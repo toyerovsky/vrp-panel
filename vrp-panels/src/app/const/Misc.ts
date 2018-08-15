@@ -16,7 +16,18 @@ export const RANKS: string[] = [
     'Zarząd I',
     'Zarząd II',
     'Zarząd III'
-]
+];
+
+export const GROUP_TYPES = [
+    { value: 0, viewValue: 'Taxi' },
+    { value: 1, viewValue: 'Restauracja' },
+    { value: 2, viewValue: 'Klub' },
+    { value: 3, viewValue: 'Przestępcza' },
+    { value: 4, viewValue: 'Warsztat' },
+    { value: 5, viewValue: 'Porządkowa' },
+    { value: 6, viewValue: 'Medyczna' },
+    { value: 7, viewValue: 'Dziennikarska' }
+];
 
 export const GENDERS = [
     { value: false, viewValue: 'Kobieta' },

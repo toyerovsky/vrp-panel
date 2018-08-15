@@ -7,7 +7,7 @@ import { RANKS } from '../../../../../const/Misc';
 @Component({
   selector: 'app-admin-edit-account',
   templateUrl: './admin-edit-account.component.html',
-  styleUrls: ['./admin-edit-account.component.css']
+  styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminEditAccountComponent implements OnInit {
   private _ranks: string[] = RANKS;

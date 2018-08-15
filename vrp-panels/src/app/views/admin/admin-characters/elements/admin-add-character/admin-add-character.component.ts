@@ -12,7 +12,7 @@ export interface Gender {
 @Component({
   selector: 'app-admin-add-character',
   templateUrl: './admin-add-character.component.html',
-  styleUrls: ['./admin-add-character.component.css']
+  styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminAddCharacterComponent implements OnInit {
   private _genders: Gender[] = [
@@ -39,8 +39,7 @@ export class AdminAddCharacterComponent implements OnInit {
     this._dialogRef.close();
   }
 
-  loadAccountHandler(event: any): void {
-    let value = event.target.value;
+  loadAccountHandler(value: number): void {
     this._accountService.getById(value)
       .subscribe(data => this._characterModel.account = data);
   }

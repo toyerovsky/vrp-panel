@@ -1,3 +1,59 @@
-<p>
-  admin-add-group works!
-</p>
+<h2>Dodaj pojazd</h2>
+<form [formGroup]="_addGroupForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-select formControlName="groupType" placeholder="Typ grupy">
+      <mat-option *ngFor="let type of _groupTypes" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="groupType.errors?.required">
+      Pole typ grupy jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+    <mat-error *ngIf="name.errors?.required">
+      Pole nazwa jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Tag" formControlName="tag">
+    <mat-error *ngIf="tag.errors?.required">
+      Pole tag jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="bossCharacterId" (blur)="loadBossCharacterHandler($event.target.value)" type="number" matInput placeholder="Id szefa"
+    />
+    <mat-hint *ngIf="_groupModel.bossCharacter">Id konta: {{_groupModel.bossCharacter.accountId}} {{_groupModel.bossCharacter.name}} {{_groupModel.bossCharacter.surname}}</mat-hint>
+    <mat-error *ngIf="bossCharacterId.errors?.required">
+      Pole Id szefa jest
+      <strong>wymagane</strong>
+    </mat-error>
+    <mat-error *ngIf="bossCharacterId.errors?.characterWithIdExists">
+      Postać o podanym id
+      <strong>nie istnieje</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="dotation" type="number" matInput placeholder="Dotacja" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="maxPayday" type="number" matInput placeholder="Maksymalna wypłata" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input #colorInput [style.color]="'#' + colorInput.value" formControlName="color" type="text" matInput placeholder="Kolor"
+    />
+    <span style="padding-right: 2px;" matPrefix>#</span>
+    <mat-error *ngIf="color.errors?.pattern">
+      Wprowadzony kolor jest
+      <strong>niepoprawny</strong>
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

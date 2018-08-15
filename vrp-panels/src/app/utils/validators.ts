@@ -2,6 +2,8 @@ import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors, FormControl,
 import { VEHICLES } from "../const/Misc";
 import { VehicleService } from "../service/vehicle.service";
 import { map } from "rxjs/operators";
+import { CharacterService } from "../service/character.service";
+import { GroupService } from "../service/group.service";
 
 export function isVehicleName(): ValidatorFn {
     return (control: FormGroup): ValidationErrors | null => {
@@ -35,6 +37,24 @@ export function isNumberPlateTaken(vehicleService: VehicleService): AsyncValidat
         return vehicleService.checkIfNumberPlateTaken(control.value)
             .pipe(
                 map(res => { return res ? null : { isNumberPlateTaken: true } })
+            );
+    }
+}
+
+export function characterWithIdExists(characterService: CharacterService): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+        return characterService.getById(control.value)
+            .pipe(
+                map(res => { return res ? null : { characterWithIdExists: true } })
+            );
+    }
+}
+
+export function groupWithIdExists(groupService: GroupService): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+        return groupService.getById(control.value)
+            .pipe(
+                map(res => { return res ? null : { groupWithIdExists: true } })
             );
     }
 }

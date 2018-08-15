@@ -1,23 +1,56 @@
-<h2>Edytuj pojazd</h2>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.numberPlate" matInput placeholder="Rejestracja" />
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.name" matInput placeholder="Nazwa" />
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input [(ngModel)]="vehicleModel.vehicleHash" type="number" matInput placeholder="Id konta" />
-</mat-form-field>
-<mat-form-field class="full-width">
-  <input matInput placeholder="Model" [matAutocomplete]="auto" [formControl]="vehicleCtrl">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let vehicle of filteredVehicles | async" [value]="vehicle.displayName">
-      <img class="vehicle-img" aria-hidden [src]="'https://v-rp.pl/uploads/vehicles/' + vehicle.displayName + '.jpg'" height="25">
-      <span>{{vehicle.displayName}}</span> |
-      <small>Skrót: {{vehicle.id}}</small>
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
-<button mat-button (click)="saveHandler()">
-  Zapisz
-</button>
+<h2>Dodaj pojazd</h2>
+<form [formGroup]="_editVehicleForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <input formControlName="numberPlate" matInput placeholder="Rejestracja" />
+    <mat-error *ngIf="numberPlate.errors?.isNumberPlateTaken">
+      Wprowadzona rejestracja jest
+      <strong>zajęta</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+    <mat-hint>Nazwa, która występować będzie w liście pojazdów</mat-hint>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input (input)="onVehicleHashChange($event)" matInput placeholder="Model" [matAutocomplete]="auto" formControlName="vehicleHash">
+    <mat-error *ngIf="vehicleHash.errors?.isVehicleName && !vehicleHash.errors?.required">
+      Wprowadzony model pojazdu jest
+      <strong>nieprawidłowy</strong>
+    </mat-error>
+    <mat-error *ngIf="vehicleHash.errors?.required">
+      Pole model jest
+      <strong>wymagane</strong>
+    </mat-error>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let vehicle of _filteredVehicles | async" [value]="vehicle.displayName">
+        <img class="vehicle-img" height="50" [src]="'https://v-rp.pl/uploads/vehicles/icons/' + vehicle.displayName.toLowerCase() + '.jpg'">
+        <span>{{vehicle.displayName}}</span> |
+        <small>Skrót: {{vehicle.id}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (input)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_vehicleModel.character">Id konta: {{_vehicleModel.character.accountId}} {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
+    <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="groupId" (input)="loadGroupHandler($event.target.value)" type="number" matInput placeholder="Id grupy" />
+    <mat-hint *ngIf="_vehicleModel.group">Id Grupy: {{_vehicleModel.character.accountId}} {{_vehicleModel.group.name}} </mat-hint>
+    <mat-error *ngIf="groupId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="milage" type="number" matInput placeholder="Przebieg" />
+    <span matSuffix>mi</span>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

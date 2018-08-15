@@ -8,13 +8,13 @@ import { startWith, map, max } from 'rxjs/operators';
 import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken } from '../../../../../utils/validators';
+import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists, groupWithIdExists } from '../../../../../utils/validators';
 import { VehicleService } from '../../../../../service/vehicle.service';
 
 @Component({
   selector: 'app-admin-add-vehicle',
   templateUrl: './admin-add-vehicle.component.html',
-  styleUrls: ['./admin-add-vehicle.component.css']
+  styleUrls: ['./admin-add-vehicle.component.scss']
 })
 export class AdminAddVehicleComponent implements OnInit {
   private _addVehicleForm: FormGroup;
@@ -49,8 +49,18 @@ export class AdminAddVehicleComponent implements OnInit {
         ],
         updateOn: 'blur'
       }),
-      'characterId': new FormControl(this._vehicleModel.characterId),
-      'groupId': new FormControl(this._vehicleModel.groupId),
+      'characterId': new FormControl(this._vehicleModel.characterId, {
+        asyncValidators: [
+          characterWithIdExists(this._characterService)
+        ],
+        updateOn: 'blur'
+      }),
+      'groupId': new FormControl(this._vehicleModel.groupId, {
+        asyncValidators: [
+          groupWithIdExists(this._groupService)
+        ],
+        updateOn: 'blur'
+      }),
       'milage': new FormControl(this._vehicleModel.milage)
     });
     this._filteredVehicles = of(this._vehicles);
@@ -106,14 +116,12 @@ export class AdminAddVehicleComponent implements OnInit {
     }
   }
 
-  loadCharacterHandler(event: any): void {
-    let value = event.target.value;
+  loadCharacterHandler(value: number): void {
     this._characterService.getById(value)
       .subscribe(data => this._vehicleModel.character = data);
   }
 
-  loadGroupHandler(event: any): void {
-    let value = event.target.value;
+  loadGroupHandler(value: number): void {
     this._groupService.getById(value)
       .subscribe(data => this._vehicleModel.group = data);
   }

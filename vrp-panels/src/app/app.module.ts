@@ -48,6 +48,8 @@ import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
 import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/admin-add-vehicle/admin-add-vehicle.component';
 import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
+import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
+import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -66,10 +68,9 @@ import { JsonService } from './service/json.service';
 // misc
 import localePl from '@angular/common/locales/pl';
 import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
-import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
-import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
 import { TicketsComponent } from './views/tickets/tickets.component';
 registerLocaleData(localePl);
+
 
 @NgModule({
   declarations: [
@@ -137,17 +138,19 @@ registerLocaleData(localePl);
     AdminEditCharacterComponent,
     AdminEditAccountComponent,
     AdminAddVehicleComponent,
-    AdminEditVehicleComponent 
+    AdminEditVehicleComponent,
+    AdminAddGroupComponent,
+    AdminEditGroupComponent
   ],
   providers: [
     // services
-    AccountService, 
-    CharacterService, 
-    CookieService, 
-    GroupService, 
+    AccountService,
+    CharacterService,
+    CookieService,
+    GroupService,
     VehicleService,
     JsonService,
-    
+
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
