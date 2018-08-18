@@ -1,0 +1,49 @@
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from '../../environments/environment';
+import { catchError } from "rxjs/operators";
+import AbstractService from "./abstract.service";
+import { ToastrService } from "ngx-toastr";
+import { BuildingModel } from "../models/BuildingModel";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BuildingService extends AbstractService {
+  constructor(
+    toastr: ToastrService,
+    private _http: HttpClient) {
+    super(toastr);
+  }
+
+  public getAllByCharacterId(characterId: number): Observable<BuildingModel[]> {
+    return this._http.get<BuildingModel[]>(`${environment.apiUrl}/building/character/${characterId}`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public getAllByGroupId(groupId: number): Observable<BuildingModel[]> {
+    return this._http.get<BuildingModel[]>(`${environment.apiUrl}/building/group/${groupId}`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public getById(buildingId: number): Observable<BuildingModel> {
+    return this._http.get<BuildingModel>(`${environment.apiUrl}/building/${buildingId}`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public getAll(): Observable<BuildingModel[]> {
+    return this._http.get<BuildingModel[]>(`${environment.apiUrl}/building/`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public post(buildingModel: BuildingModel): Observable<BuildingModel> {
+    return this._http.post<BuildingModel>(`${environment.apiUrl}/building/`, buildingModel, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
+  public put(buildingId: number, buildingModel: BuildingModel): Observable<BuildingModel> {
+    return this._http.put<BuildingModel>(`${environment.apiUrl}/building/${buildingId}`, buildingModel, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+}

@@ -10,8 +10,9 @@ import { AppRootComponent } from './views/app-root/app-root.component';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
 import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
-import {AdminAccountsComponent} from './views/admin/admin-accounts/admin-accounts.component';
+import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
 import { TicketsComponent } from './views/tickets/tickets.component';
+import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
 
 
 const routes: Routes = [
@@ -30,10 +31,11 @@ const routes: Routes = [
           { path: 'characters', component: AdminCharactersComponent },
           { path: 'accounts', component: AdminAccountsComponent },
           { path: 'groups', component: AdminGroupsComponent },
-          { path: 'vehicles', component: AdminVehiclesComponent }
+          { path: 'vehicles', component: AdminVehiclesComponent },
+          { path: 'buildings', component: AdminBuildingsComponent },
         ]
       },
-      {path: 'tickets', component: TicketsComponent}
+      { path: 'tickets', component: TicketsComponent }
     ]
   },
   //ALWAYS AT THE END OF ROUTES

@@ -1,0 +1,40 @@
+<h2>Dodaj pojazd</h2>
+<form [formGroup]="_addVehicleForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <textarea formControlName="description" matInput placeholder="Opis"></textarea>
+  </mat-form-field>
+  <mat-checkbox class="full-width" formControlName="spawnPossible">Mieszkalny</mat-checkbox>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_buildingModel.character">Id konta: {{_buildingModel.character.accountId}} {{_buildingModel.character.name}} {{_buildingModel.character.surname}}</mat-hint>
+    <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="groupId" (blur)="loadGroupHandler($event.target.value)" type="number" matInput placeholder="Id grupy"
+    />
+    <mat-hint *ngIf="_buildingModel.group">Id Grupy: {{_buildingModel.character.accountId}} {{_buildingModel.group.name}} </mat-hint>
+    <mat-error *ngIf="groupId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="externalPickupPositionX" type="number" matInput placeholder="Pozycja X" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="externalPickupPositionY" type="number" matInput placeholder="Pozycja Y" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="externalPickupPositionZ" type="number" matInput placeholder="Pozycja Z" />
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

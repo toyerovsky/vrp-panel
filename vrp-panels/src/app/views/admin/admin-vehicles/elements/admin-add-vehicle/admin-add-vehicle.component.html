@@ -23,7 +23,7 @@
     </mat-error>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let vehicle of _filteredVehicles | async" [value]="vehicle.displayName">
-        <img class="vehicle-img" height="50" [src]="'https://v-rp.pl/uploads/vehicles/icons/' + vehicle.displayName.toLowerCase() + '.jpg'">
+        <img class="vehicle-img" height="50" [src]="'https://info.v-rp.pl/uploads/vehicles/icons/' + vehicle.displayName.toLowerCase() + '.jpg'">
         <span>{{vehicle.displayName}}</span> |
         <small>Skrót: {{vehicle.id}}</small>
       </mat-option>

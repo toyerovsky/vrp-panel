@@ -1,0 +1,83 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl } from '@angular/material';
+import { CharacterService } from '../../../service/character.service';
+import { BuildingService } from '../../../service/building.service';
+import { GroupService } from '../../../service/group.service';
+import { AdminAddBuildingComponent } from './elements/admin-add-building/admin-add-building.component';
+import { ToastrService } from 'ngx-toastr';
+import { AdminEditBuildingComponent } from './elements/admin-edit-building/admin-edit-building.component';
+import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
+import { BuildingModel } from '../../../models/BuildingModel';
+
+@Component({
+  selector: 'app-admin-buildings',
+  templateUrl: './admin-buildings.component.html',
+  styleUrls: ['../admin-table.scss']
+})
+export class AdminBuildingsComponent implements OnInit {
+  private _displayedColumns: string[] = ['id', 'name', 'description', 'spawnPossible', 'owner'];
+  private _dataSource = new MatTableDataSource<BuildingModel>();
+  private _lastBuildings: BuildingModel[];
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(
+    private _characterService: CharacterService,
+    private _groupService: GroupService,
+    private _buildingService: BuildingService,
+    private _addBuildingDialog: MatDialog,
+    private _editBuildingDialog: MatDialog,
+    private _toastrService: ToastrService
+  ) {
+  }
+
+  ngOnInit() {
+    this._buildingService.getAll().subscribe(buildings => {
+      if (buildings != undefined) {
+        this._lastBuildings = buildings;
+        this._dataSource.data = this._lastBuildings;
+      }
+    });
+    this._dataSource.sort = this.sort;
+    this.paginator._intl.firstPageLabel = PL_PAGINATOR_INTL.firstPageLabel;
+    this.paginator._intl.itemsPerPageLabel = PL_PAGINATOR_INTL.itemsPerPageLabel;
+    this.paginator._intl.lastPageLabel = PL_PAGINATOR_INTL.lastPageLabel;
+    this.paginator._intl.nextPageLabel = PL_PAGINATOR_INTL.nextPageLabel;
+    this.paginator._intl.previousPageLabel = PL_PAGINATOR_INTL.previousPageLabel;
+    this._dataSource.paginator = this.paginator;
+  }
+
+  addBuildingClickHandler() {
+    const dialogRef = this._addBuildingDialog.open(AdminAddBuildingComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        this._buildingService.post(result).subscribe(postResult => {
+          this._lastBuildings.push(postResult);
+          this._dataSource = new MatTableDataSource<BuildingModel>(this._lastBuildings);
+          this._dataSource.sort = this.sort;
+          this._toastrService.success(`Pomyślnie dodano budynek: ${postResult.name}`);
+        });
+      }
+    });
+  }
+
+  editBuildingClickHandler(buildingModel: BuildingModel) {
+    const dialogRef = this._editBuildingDialog.open(AdminEditBuildingComponent, {
+      data: buildingModel
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != undefined) {
+        this._characterService.put(result.id, result).subscribe(putResult => {
+          this._toastrService.success(`Pomyślnie edytowano budynek: ${result.name}`);
+        });
+      }
+    });
+  }
+
+  searchHandler(filter: string) {
+    this._dataSource.filter = filter.trim().toLowerCase();
+  }
+}

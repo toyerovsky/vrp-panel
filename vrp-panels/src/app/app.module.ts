@@ -28,6 +28,7 @@ import {
   MAT_DIALOG_DATA,
   MatPaginatorModule,
   MatAutocompleteModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 // components
@@ -64,11 +65,15 @@ import { CookieService } from 'ngx-cookie-service';
 import { GroupService } from './service/group.service';
 import { VehicleService } from './service/vehicle.service';
 import { JsonService } from './service/json.service';
+import { BuildingService } from './service/building.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
 import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
 import { TicketsComponent } from './views/tickets/tickets.component';
+import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
+import { AdminAddBuildingComponent } from './views/admin/admin-buildings/elements/admin-add-building/admin-add-building.component';
+import { AdminEditBuildingComponent } from './views/admin/admin-buildings/elements/admin-edit-building/admin-edit-building.component';
 registerLocaleData(localePl);
 
 
@@ -94,7 +99,10 @@ registerLocaleData(localePl);
     AdminGroupsComponent,
     AdminAddGroupComponent,
     AdminEditGroupComponent,
-    TicketsComponent
+    TicketsComponent,
+    AdminBuildingsComponent,
+    AdminAddBuildingComponent,
+    AdminEditBuildingComponent
   ],
   imports: [
     BrowserModule,
@@ -127,7 +135,8 @@ registerLocaleData(localePl);
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,
@@ -140,7 +149,9 @@ registerLocaleData(localePl);
     AdminAddVehicleComponent,
     AdminEditVehicleComponent,
     AdminAddGroupComponent,
-    AdminEditGroupComponent
+    AdminEditGroupComponent,
+    AdminAddBuildingComponent,
+    AdminEditBuildingComponent
   ],
   providers: [
     // services
@@ -150,6 +161,7 @@ registerLocaleData(localePl);
     GroupService,
     VehicleService,
     JsonService,
+    BuildingService,
 
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatDialogRef, useValue: {} },
