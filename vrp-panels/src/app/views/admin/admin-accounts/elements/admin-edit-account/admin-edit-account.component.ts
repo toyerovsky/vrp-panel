@@ -18,6 +18,10 @@ export class AdminEditAccountComponent implements OnInit {
   ) {
   }
 
+  ngOnInit() {
+    
+  }
+
   saveHandler(): void {
     this._dialogRef.close(this.accountModel)
   }

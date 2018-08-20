@@ -34,7 +34,7 @@ export class GroupService extends AbstractService {
   }
 
   public post(groupModel: GroupModel): Observable<GroupModel> {
-    return this._http.post<GroupModel>(`${environment.apiUrl}/group/`, {
+    return this._http.post<GroupModel>(`${environment.apiUrl}/group/`, groupModel, {
       withCredentials: true
     }).pipe(catchError(this.handleError));
   }

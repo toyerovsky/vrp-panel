@@ -1,3 +1,44 @@
-<p>
-  admin-items works!
-</p>
+<div class="search">
+  <mat-form-field appearance="outline">
+    <mat-label>Wyszukiwanie</mat-label>
+    <input matInput (keyup)="searchHandler($event.target.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <button mat-icon-button (click)="addItemClickHandler()">
+    <mat-icon>add_box</mat-icon>
+  </button>
+</div>
+
+<table mat-table [dataSource]="_dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Typ przedmiotu </th>
+    <td mat-cell *matCellDef="let element"> ${{element.itemType}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="owner">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Właściciel </th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngIf="element.character">{{element.characterId}} {{element.character.name}} {{element.character.surname}}</p>
+      <p *ngIf="element.building">{{element.buildingId}} {{element.building.name}}</p>
+      <p *ngIf="element.vehicle">{{element.vehicleId}} {{element.vehicle.name}} (schowek)</p>
+      <p *ngIf="element.tuningInVehicle">{{element.tuningInVehicleId}} {{element.tuningInVehicle.name}} (tuning)</p>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: _displayedColumns;" (click)="editItemClickHandler(row)"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[10, 5, 15, 20]" showFirstLastButtons></mat-paginator>

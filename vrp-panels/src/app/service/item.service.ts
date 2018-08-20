@@ -26,7 +26,7 @@ export class ItemService extends AbstractService {
       withCredentials: true
     }).pipe(catchError(this.handleError));
   }
-  
+
   public getAllByVehicleId(vehicleId: number): Observable<ItemModel[]> {
     return this._http.get<ItemModel[]>(`${environment.apiUrl}/item/vehicle/${vehicleId}`, {
       withCredentials: true
@@ -46,7 +46,7 @@ export class ItemService extends AbstractService {
   }
 
   public post(itemModel: ItemModel): Observable<ItemModel> {
-    return this._http.post<ItemModel>(`${environment.apiUrl}/item/`, {
+    return this._http.post<ItemModel>(`${environment.apiUrl}/item/`, itemModel, {
       withCredentials: true
     }).pipe(catchError(this.handleError));
   }

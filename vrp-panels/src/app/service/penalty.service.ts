@@ -15,8 +15,7 @@ export class PenaltyService extends AbstractService {
   }
 
   public getAllByAccountId(accountId: number): Observable<PenaltyModel[]> {
-    return this._http
-      .get<PenaltyModel[]>(
+    return this._http.get<PenaltyModel[]>(
         `${environment.apiUrl}/penalty/account/${accountId}`,
         { withCredentials: true }
       )
