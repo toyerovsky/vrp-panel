@@ -1,6 +1,6 @@
-import { CharacterModel } from "./CharacterModel";
-import { GroupModel } from "./GroupModel";
-import { GroupRankModel } from "./GroupRankModel";
+import { CharacterModel } from './CharacterModel';
+import { GroupModel } from './GroupModel';
+import { GroupRankModel } from './GroupRankModel';
 
 export class WorkerModel {
   id: number;

@@ -1,5 +1,5 @@
-import { SafeStyle } from "@angular/platform-browser";
-import { AccountModel } from "./AccountModel";
+import { SafeStyle } from '@angular/platform-browser';
+import { AccountModel } from './AccountModel';
 
 export class CharacterModel {
   id: number;

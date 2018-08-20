@@ -1,6 +1,6 @@
-import { SafeStyle } from "@angular/platform-browser";
-import { WorkerModel } from "./WorkerModel";
-import { CharacterModel } from "./CharacterModel";
+import { SafeStyle } from '@angular/platform-browser';
+import { WorkerModel } from './WorkerModel';
+import { CharacterModel } from './CharacterModel';
 
 export enum GroupTypes {
   Taxi,

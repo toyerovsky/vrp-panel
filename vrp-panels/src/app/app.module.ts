@@ -74,6 +74,9 @@ import { TicketsComponent } from './views/tickets/tickets.component';
 import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
 import { AdminAddBuildingComponent } from './views/admin/admin-buildings/elements/admin-add-building/admin-add-building.component';
 import { AdminEditBuildingComponent } from './views/admin/admin-buildings/elements/admin-edit-building/admin-edit-building.component';
+import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
+import { AdminAddItemComponent } from './views/admin/admin-items/elements/admin-add-item/admin-add-item.component';
+import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin-edit-item/admin-edit-item.component';
 registerLocaleData(localePl);
 
 
@@ -102,7 +105,10 @@ registerLocaleData(localePl);
     TicketsComponent,
     AdminBuildingsComponent,
     AdminAddBuildingComponent,
-    AdminEditBuildingComponent
+    AdminEditBuildingComponent,
+    AdminItemsComponent,
+    AdminAddItemComponent,
+    AdminEditItemComponent
   ],
   imports: [
     BrowserModule,

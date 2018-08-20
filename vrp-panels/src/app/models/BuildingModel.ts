@@ -1,5 +1,5 @@
-import { CharacterModel } from "./CharacterModel";
-import { GroupModel } from './GroupModel'
+import { CharacterModel } from './CharacterModel';
+import { GroupModel } from './GroupModel';
 
 export class BuildingModel {
     id: number;

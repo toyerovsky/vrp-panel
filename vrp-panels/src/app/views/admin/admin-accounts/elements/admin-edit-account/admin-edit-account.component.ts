@@ -14,13 +14,8 @@ export class AdminEditAccountComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<AdminEditAccountComponent>,
-    private _accountService: AccountService,
     @Inject(MAT_DIALOG_DATA) public accountModel: AccountModel
   ) {
-  }
-
-  ngOnInit() {
-
   }
 
   saveHandler(): void {

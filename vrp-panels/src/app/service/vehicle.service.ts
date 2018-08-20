@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { environment } from "../../environments/environment";
-import { catchError, map } from "rxjs/operators";
-import AbstractService from "./abstract.service";
-import { ToastrService } from "ngx-toastr";
-import { VehicleModel } from "../models/VehicleModel";
+import { environment } from '../../environments/environment';
+import { catchError, map } from 'rxjs/operators';
+import AbstractService from './abstract.service';
+import { ToastrService } from 'ngx-toastr';
+import { VehicleModel } from '../models/VehicleModel';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class VehicleService extends AbstractService {
   public checkIfNumberPlateTaken(numberPlate: string): Observable<Boolean> {
     return this.getByNumberPlate(numberPlate)
       .pipe(
-        map(vehicle => vehicle != undefined)
+        map(vehicle => vehicle !== undefined)
       );
   }
 }

@@ -1,4 +1,4 @@
-import { WorkerModel } from "./WorkerModel";
+import { WorkerModel } from './WorkerModel';
 
 export class GroupRankModel {
     Id: number;

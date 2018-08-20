@@ -1,7 +1,7 @@
-import { AccountModel } from "./AccountModel";
-import { CharacterModel } from "./CharacterModel";
+import { AccountModel } from './AccountModel';
+import { CharacterModel } from './CharacterModel';
 
-export interface PenaltyModel {
+export class PenaltyModel {
     creatorName: string;
     date: Date | string;
     expiryDate: Date | string;

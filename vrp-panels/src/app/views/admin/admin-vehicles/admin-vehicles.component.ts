@@ -31,7 +31,7 @@ export class AdminVehiclesComponent implements OnInit {
 
   ngOnInit() {
     this._vehicleService.getAll().subscribe(vehicles => {
-      if (vehicles != undefined) {
+      if (vehicles !== undefined) {
         this._lastVehicles = vehicles;
         this._dataSource.data = this._lastVehicles;
       }
@@ -49,7 +49,7 @@ export class AdminVehiclesComponent implements OnInit {
     const dialogRef = this._addVehicleDialog.open(AdminAddVehicleComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined) {
+      if (result !== undefined) {
         this._vehicleService.post(result).subscribe(postResult => {
           this._lastVehicles.push(postResult);
           this._dataSource = new MatTableDataSource<VehicleModel>(this._lastVehicles);
@@ -66,7 +66,7 @@ export class AdminVehiclesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined) {
+      if (result !== undefined) {
         this._vehicleService.put(result.id, result).subscribe(putResult => {
           this._toastrService.success(`Pomyślnie edytowano pojazd: ${result.name}`);
         });

@@ -2,13 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { BuildingModel } from '../../../../../models/BuildingModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { startWith, map, max } from 'rxjs/operators';
-import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists, groupWithIdExists } from '../../../../../utils/validators';
-import { VehicleService } from '../../../../../service/vehicle.service';
+import { mutuallyExclusiveWith, characterWithIdExists, groupWithIdExists } from '../../../../../utils/validators';
 
 @Component({
   selector: 'app-admin-add-building',
@@ -16,10 +12,8 @@ import { VehicleService } from '../../../../../service/vehicle.service';
   styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminAddBuildingComponent implements OnInit {
-  private _addVehicleForm: FormGroup;
+  private _addBuildingForm: FormGroup;
   private _buildingModel: BuildingModel = new BuildingModel();
-  private _interiors: any[] = VEHICLES;
-  private _filteredInteriors: Observable<any[]>;
 
   constructor(
     private _dialogRef: MatDialogRef<AdminAddBuildingComponent>,
@@ -29,7 +23,7 @@ export class AdminAddBuildingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._addVehicleForm = new FormGroup({
+    this._addBuildingForm = new FormGroup({
       'name': new FormControl(this._buildingModel.name, {
         validators: [
           Validators.required
@@ -74,55 +68,49 @@ export class AdminAddBuildingComponent implements OnInit {
         updateOn: 'blur'
       }),
     });
-    this._filteredInteriors = of(this._interiors);
     this.characterId.setValidators([mutuallyExclusiveWith(this.groupId)]);
     this.groupId.setValidators([mutuallyExclusiveWith(this.characterId)]);
   }
 
-  onVehicleHashChange(event: any) {
-    this._filteredInteriors = of(this._interiors).pipe(
-      startWith(''),
-      map(vehicle => vehicle ? this.filterVehicles(event.target.value) : this._interiors.slice())
-    );
-  }
-
-  get numberPlate(): FormControl {
-    return this._addVehicleForm.controls.numberPlate as FormControl;
+  get description(): FormControl {
+    return this._addBuildingForm.controls.description as FormControl;
   }
 
   get name(): FormControl {
-    return this._addVehicleForm.controls.name as FormControl;
+    return this._addBuildingForm.controls.name as FormControl;
   }
 
-  get vehicleHash(): FormControl {
-    return this._addVehicleForm.controls.vehicleHash as FormControl;
+  get spawnPossible(): FormControl {
+    return this._addBuildingForm.controls.spawnPossible as FormControl;
   }
 
   get characterId(): FormControl {
-    return this._addVehicleForm.controls.characterId as FormControl;
+    return this._addBuildingForm.controls.characterId as FormControl;
   }
 
   get groupId(): FormControl {
-    return this._addVehicleForm.controls.groupId as FormControl;
+    return this._addBuildingForm.controls.groupId as FormControl;
   }
 
-  private filterVehicles(value: string): any[] {
-    const filterValue = value.toLowerCase();
-    return this._interiors.filter(vehicle => vehicle.displayName.toLowerCase().indexOf(filterValue) === 0);
+  get externalPickupPositionX(): FormControl {
+    return this._addBuildingForm.controls.externalPickupPositionX as FormControl;
+  }
+
+  get externalPickupPositionY(): FormControl {
+    return this._addBuildingForm.controls.externalPickupPositionY as FormControl;
+  }
+
+  get externalPickupPositionZ(): FormControl {
+    return this._addBuildingForm.controls.externalPickupPositionZ as FormControl;
   }
 
   closeDialog(): void {
     this._dialogRef.close();
   }
 
-  containsVehicle(name: string): boolean {
-    return this._interiors.some(vehicle => vehicle.displayName == name);
-  }
-
   onSubmit() {
-    if (this._addVehicleForm.valid) {
-      Object.assign(this._buildingModel, this._addVehicleForm.value);
-      this._buildingModel.vehicleHash = this._interiors.find(vehicle => vehicle.displayName == this._buildingModel.vehicleHash).id;
+    if (this._addBuildingForm.valid) {
+      Object.assign(this._buildingModel, this._addBuildingForm.value);
       this._dialogRef.close(this._buildingModel);
     }
   }
