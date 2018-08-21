@@ -77,6 +77,7 @@ import { AdminEditBuildingComponent } from './views/admin/admin-buildings/elemen
 import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
 import { AdminAddItemComponent } from './views/admin/admin-items/elements/admin-add-item/admin-add-item.component';
 import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin-edit-item/admin-edit-item.component';
+import { TicketService } from './service/ticket.service';
 registerLocaleData(localePl);
 
 
@@ -171,6 +172,7 @@ registerLocaleData(localePl);
     JsonService,
     BuildingService,
 
+    TicketService,
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
