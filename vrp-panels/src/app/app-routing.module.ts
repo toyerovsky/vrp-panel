@@ -1,3 +1,4 @@
+import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -33,6 +34,7 @@ const routes: Routes = [
           { path: 'groups', component: AdminGroupsComponent },
           { path: 'vehicles', component: AdminVehiclesComponent },
           { path: 'buildings', component: AdminBuildingsComponent },
+          { path: 'items', component: AdminItemsComponent }
         ]
       },
       { path: 'tickets', component: TicketsComponent }

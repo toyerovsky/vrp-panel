@@ -29,6 +29,22 @@ export const GROUP_TYPES = [
     { value: 7, viewValue: 'Dziennikarska' }
 ];
 
+export const ITEM_TYPES = [
+    { value: 0, viewValue: 'Jedzenie' },
+    { value: 1, viewValue: 'Broń' },
+    { value: 2, viewValue: 'Magazynek' },
+    { value: 3, viewValue: 'Maska' },
+    { value: 4, viewValue: 'Narkotyk' },
+    { value: 5, viewValue: 'Kość do gry' },
+    { value: 6, viewValue: 'Zegarek' },
+    { value: 7, viewValue: 'Ubranie' },
+    { value: 8, viewValue: 'Krótkofalówka' },
+    { value: 9, viewValue: 'Alkohol' },
+    { value: 10, viewValue: 'Ubranie' },
+    { value: 11, viewValue: 'Telefon komórkowy' },
+    { value: 12, viewValue: 'Tuning pojazdu' }
+]
+
 export const GENDERS = [
     { value: false, viewValue: 'Kobieta' },
     { value: true, viewValue: 'Mężczyzna' },

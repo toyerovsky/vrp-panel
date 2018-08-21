@@ -1,3 +1,47 @@
-<p>
-  admin-edit-item works!
-</p>
+<h2>Edytuj przedmiot</h2>
+<form [formGroup]="_addItemForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-select disabled formControlName="itemType" placeholder="Typ przedmiotu">
+      <mat-option *ngFor="let type of _itemTypes" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="itemType.errors?.required">
+      Pole typ przedmiotu jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_itemModel.character">Id konta: {{_itemModel.character.accountId}} Id postaci: {{_itemModel.character.id}} {{_itemModel.character.name}} {{_itemModel.character.surname}}</mat-hint>
+    <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="buildingId" (blur)="loadBuildingHandler($event.target.value)" type="number" matInput placeholder="Id budynku"
+    />
+    <mat-hint *ngIf="_itemModel.building">Id Budynku: {{_itemModel.building.id}} {{_itemModel.building.name}} </mat-hint>
+    <mat-error *ngIf="buildingId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="vehicleId" (blur)="loadVehicleHandler($event.target.value)" type="number" matInput placeholder="Id pojazdu"
+    />
+    <mat-hint *ngIf="_itemModel.vehicle">Id Pojazdu: {{_itemModel.vehicle.id}} {{_itemModel.vehicle.name}} </mat-hint>
+    <mat-error *ngIf="vehicleId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

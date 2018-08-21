@@ -23,6 +23,11 @@ export class VehicleService extends AbstractService {
       .pipe(catchError(this.handleError));
   }
 
+  public getById(vehicleId: number): Observable<VehicleModel> {
+    return this._http.get<VehicleModel>(`${environment.apiUrl}/vehicle/${vehicleId}`, { withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
   public getAll(): Observable<VehicleModel[]> {
     return this._http.get<VehicleModel[]>(`${environment.apiUrl}/vehicle/`, { withCredentials: true })
       .pipe(catchError(this.handleError));

@@ -157,7 +157,9 @@ registerLocaleData(localePl);
     AdminAddGroupComponent,
     AdminEditGroupComponent,
     AdminAddBuildingComponent,
-    AdminEditBuildingComponent
+    AdminEditBuildingComponent,
+    AdminAddItemComponent,
+    AdminEditItemComponent
   ],
   providers: [
     // services

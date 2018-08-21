@@ -55,6 +55,10 @@ const TREE_DATA: UrlNode[] = [
         displayName: 'Budynki',
         src: 'admin/buildings'
       },
+      {
+        displayName: 'Przedmioty',
+        src: 'admin/items'
+      }
     ]
   },
   {
