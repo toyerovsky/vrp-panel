@@ -6,4 +6,5 @@ export class AccountModel {
     lastLogin?: Date | string;
     avatarUrl?: string;
     passwordSalt?: string;
+    useGravatar?: boolean;
 }
