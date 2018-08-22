@@ -1,8 +1,8 @@
 import { WorkerModel } from './WorkerModel';
 
 export class GroupRankModel {
-    Id: number;
-    Name: string;
-    Rights: number;
-    Workers: WorkerModel[];
+  public id: number;
+  public name: string;
+  public rights: number;
+  public workers: WorkerModel[];
 }

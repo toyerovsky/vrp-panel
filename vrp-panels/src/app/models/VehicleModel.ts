@@ -2,18 +2,18 @@ import { GroupModel } from './GroupModel';
 import { CharacterModel } from './CharacterModel';
 
 export class VehicleModel {
-    id: number;
-    numberPlate: string;
-    numberPlateStyle: number;
-    name: string;
-    vehicleHash: string;
-    health: number;
-    milage: number;
-    fuel: number;
-    fuelTank: number;
-    fuelConsumption: number;
-    character: CharacterModel;
-    characterId: number;
-    group: GroupModel;
-    groupId: number;
+  public id: number;
+  public numberPlate: string;
+  public numberPlateStyle: number;
+  public name: string;
+  public vehicleHash: string;
+  public health: number;
+  public milage: number;
+  public fuel: number;
+  public fuelTank: number;
+  public fuelConsumption: number;
+  public character: CharacterModel;
+  public characterId?: number;
+  public group: GroupModel;
+  public groupId?: number;
 }

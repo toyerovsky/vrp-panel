@@ -13,7 +13,6 @@ export class AppRootComponent implements OnInit {
 
   constructor(
     private _accountService: AccountService) {
-      
   }
 
   ngOnInit() {

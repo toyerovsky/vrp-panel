@@ -1,11 +1,11 @@
 export class AccountModel {
-    id: number;
-    forumUserName: string;
-    email: string;
-    serverRank: string;
-    lastLogin?: Date | string;
-    avatarUrl?: string;
-    passwordSalt?: string;
-    useGravatar?: boolean;
-    gravatarEmail?: string;
+  public id: number;
+  public forumUserName: string;
+  public email: string;
+  public serverRank: string;
+  public lastLogin?: Date | string;
+  public avatarUrl?: string;
+  public passwordSalt?: string;
+  public useGravatar?: boolean;
+  public gravatarEmail?: string;
 }

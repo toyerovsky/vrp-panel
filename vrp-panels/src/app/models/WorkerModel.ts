@@ -3,14 +3,14 @@ import { GroupModel } from './GroupModel';
 import { GroupRankModel } from './GroupRankModel';
 
 export class WorkerModel {
-  id: number;
-  rights: number;
-  salary: number;
-  dutyMinutes: number;
-  character: CharacterModel;
-  characterId: number;
-  group: GroupModel;
-  groupId: number;
-  groupRankId: number;
-  groupRank: GroupRankModel;
+  public id: number;
+  public rights: number;
+  public salary: number;
+  public dutyMinutes: number;
+  public character: CharacterModel;
+  public characterId: number;
+  public group: GroupModel;
+  public groupId: number;
+  public groupRankId?: number;
+  public groupRank: GroupRankModel;
 }

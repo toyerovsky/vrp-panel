@@ -22,6 +22,7 @@ export function getPolishPaginatorIntl() {
   paginatorIntl.lastPageLabel = "Ostatnia";
   paginatorIntl.nextPageLabel = "Następna";
   paginatorIntl.previousPageLabel = "Poprzednia";
+  paginatorIntl.itemsPerPageLabel = "Rekordów na stronie:";
 
   paginatorIntl.getRangeLabel = polishRangeLabel;
 

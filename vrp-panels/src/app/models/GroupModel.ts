@@ -15,16 +15,16 @@ export enum GroupTypes {
 }
 
 export class GroupModel {
-  id: number;
-  name: string;
-  groupType: string;
-  gImg: SafeStyle;
-  tag: string;
-  dotation: number;
-  maxPayday: number;
-  money: number;
-  color: string;
-  workers: WorkerModel[];
-  bossCharacter: CharacterModel;
-  bossId: number;
+  public id: number;
+  public name: string;
+  public groupType: string;
+  public gImg: SafeStyle;
+  public tag: string;
+  public dotation: number;
+  public maxPayday: number;
+  public money: number;
+  public color: string;
+  public workers: WorkerModel[];
+  public bossCharacter: CharacterModel;
+  public bossId?: number;
 }
