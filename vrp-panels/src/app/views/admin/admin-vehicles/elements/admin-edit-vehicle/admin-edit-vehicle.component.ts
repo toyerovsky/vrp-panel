@@ -7,7 +7,7 @@ import { VEHICLES } from '../../../../../const/Misc';
 import { Observable, of } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
-import { mutuallyExclusiveWith, isVehicleName, isNumberPlateTaken, groupWithIdExists, characterWithIdExists } from '../../../../../utils/validators';
+import { mutuallyExclusiveWith, isVehicleName, isNumberPlateTaken, groupWithIdExists, characterWithIdExists } from '../../../../../utils/Validators';
 import { VehicleService } from '../../../../../service/vehicle.service';
 import { GroupService } from '../../../../../service/group.service';
 import { CharacterService } from '../../../../../service/character.service';

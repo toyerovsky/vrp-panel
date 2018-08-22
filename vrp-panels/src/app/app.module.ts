@@ -1,3 +1,4 @@
+import { MatPaginatorIntl } from '@angular/material';
 // modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -78,6 +79,7 @@ import { AdminItemsComponent } from './views/admin/admin-items/admin-items.compo
 import { AdminAddItemComponent } from './views/admin/admin-items/elements/admin-add-item/admin-add-item.component';
 import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin-edit-item/admin-edit-item.component';
 import { TicketService } from './service/ticket.service';
+import { getPolishPaginatorIntl } from './utils/PolishPaginator';
 registerLocaleData(localePl);
 
 
@@ -174,6 +176,7 @@ registerLocaleData(localePl);
 
     TicketService,
     { provide: LOCALE_ID, useValue: "pl" },
+    { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl()}
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]

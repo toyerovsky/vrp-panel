@@ -1,6 +1,6 @@
-import { CharacterModel } from '../models/CharacterModel';
-import { VehicleModel } from '../models/VehicleModel';
-import { BuildingModel } from '../models/BuildingModel';
+import { CharacterModel } from './CharacterModel';
+import { VehicleModel } from './VehicleModel';
+import { BuildingModel } from './BuildingModel';
 
 export class ItemModel {
     id: number;

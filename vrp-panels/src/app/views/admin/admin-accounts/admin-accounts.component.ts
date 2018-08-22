@@ -36,11 +36,6 @@ export class AdminAccountsComponent implements OnInit {
       }
     });
     this._dataSource.sort = this.sort;
-    this.paginator._intl.firstPageLabel = PL_PAGINATOR_INTL.firstPageLabel;
-    this.paginator._intl.itemsPerPageLabel = PL_PAGINATOR_INTL.itemsPerPageLabel;
-    this.paginator._intl.lastPageLabel = PL_PAGINATOR_INTL.lastPageLabel;
-    this.paginator._intl.nextPageLabel = PL_PAGINATOR_INTL.nextPageLabel;
-    this.paginator._intl.previousPageLabel = PL_PAGINATOR_INTL.previousPageLabel;
     this._dataSource.paginator = this.paginator;
   }
 

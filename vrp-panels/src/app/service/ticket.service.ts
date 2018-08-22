@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { Observable } from '../../../node_modules/rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { TicketModel } from '../models/TicketModel';
 import { environment } from '../../environments/environment';
-import { catchError } from '../../../node_modules/rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import AbstractService from './abstract.service';
-import { ToastrService } from '../../../node_modules/ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'

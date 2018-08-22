@@ -1,14 +1,14 @@
 import { FormControl } from '@angular/forms';
-import { ITEM_TYPES } from './../../../../../const/Misc';
-import { VehicleService } from './../../../../../service/vehicle.service';
-import { BuildingService } from './../../../../../service/building.service';
-import { ItemService } from './../../../../../service/item.service';
-import { CharacterService } from './../../../../../service/character.service';
+import { ITEM_TYPES } from '../../../../../const/Misc';
+import { VehicleService } from '../../../../../service/vehicle.service';
+import { BuildingService } from '../../../../../service/building.service';
+import { ItemService } from '../../../../../service/item.service';
+import { CharacterService } from '../../../../../service/character.service';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, Validators } from '@angular/forms';
-import { ItemModel } from './../../../../../models/ItemModel';
+import { ItemModel } from '../../../../../models/ItemModel';
 import { Component, OnInit } from '@angular/core';
-import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/validators';
+import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validators';
 
 @Component({
   selector: 'app-admin-add-item',

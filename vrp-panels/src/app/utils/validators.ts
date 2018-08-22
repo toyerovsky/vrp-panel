@@ -1,4 +1,4 @@
-import { BuildingService } from './../service/building.service';
+import { BuildingService } from '../service/building.service';
 import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors, FormControl, AsyncValidatorFn } from "@angular/forms";
 import { VEHICLES } from "../const/Misc";
 import { VehicleService } from "../service/vehicle.service";

@@ -4,7 +4,7 @@ import { BuildingModel } from '../../../../../models/BuildingModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { mutuallyExclusiveWith, characterWithIdExists, groupWithIdExists } from '../../../../../utils/validators';
+import { mutuallyExclusiveWith, characterWithIdExists, groupWithIdExists } from '../../../../../utils/Validators';
 
 @Component({
   selector: 'app-admin-edit-building',

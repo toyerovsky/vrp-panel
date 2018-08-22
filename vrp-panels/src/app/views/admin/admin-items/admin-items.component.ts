@@ -1,11 +1,11 @@
-import { AdminEditBuildingComponent } from './../admin-buildings/elements/admin-edit-building/admin-edit-building.component';
+import { AdminEditBuildingComponent } from '../admin-buildings/elements/admin-edit-building/admin-edit-building.component';
 import { AdminAddItemComponent } from './elements/admin-add-item/admin-add-item.component';
-import { ItemModel } from './../../../models/ItemModel';
-import { PL_PAGINATOR_INTL } from './../../../const/MaterialConstants';
+import { ItemModel } from '../../../models/ItemModel';
+import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 import { ToastrService } from 'ngx-toastr';
-import { BuildingService } from './../../../service/building.service';
-import { VehicleService } from './../../../service/vehicle.service';
-import { CharacterService } from './../../../service/character.service';
+import { BuildingService } from '../../../service/building.service';
+import { VehicleService } from '../../../service/vehicle.service';
+import { CharacterService } from '../../../service/character.service';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ItemService } from '../../../service/item.service';
@@ -24,8 +24,8 @@ export class AdminItemsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private _addBuildingDialog: MatDialog,
-    private _editBuildingDialog: MatDialog,
+    private _addItemDialog: MatDialog,
+    private _editItemDialog: MatDialog,
     private _toastrService: ToastrService,
     private _itemService: ItemService
   ) {
@@ -39,16 +39,11 @@ export class AdminItemsComponent implements OnInit {
       }
     });
     this._dataSource.sort = this.sort;
-    this.paginator._intl.firstPageLabel = PL_PAGINATOR_INTL.firstPageLabel;
-    this.paginator._intl.itemsPerPageLabel = PL_PAGINATOR_INTL.itemsPerPageLabel;
-    this.paginator._intl.lastPageLabel = PL_PAGINATOR_INTL.lastPageLabel;
-    this.paginator._intl.nextPageLabel = PL_PAGINATOR_INTL.nextPageLabel;
-    this.paginator._intl.previousPageLabel = PL_PAGINATOR_INTL.previousPageLabel;
     this._dataSource.paginator = this.paginator;
   }
 
   addItemClickHandler() {
-    const dialogRef = this._addBuildingDialog.open(AdminAddItemComponent);
+    const dialogRef = this._addItemDialog.open(AdminAddItemComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -63,7 +58,7 @@ export class AdminItemsComponent implements OnInit {
   }
 
   editItemClickHandler(itemModel: ItemModel) {
-    const dialogRef = this._editBuildingDialog.open(AdminEditBuildingComponent, {
+    const dialogRef = this._editItemDialog.open(AdminEditBuildingComponent, {
       data: itemModel
     });
 
