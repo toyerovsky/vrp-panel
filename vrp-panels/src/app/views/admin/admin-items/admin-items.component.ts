@@ -1,7 +1,6 @@
 import { AdminEditBuildingComponent } from '../admin-buildings/elements/admin-edit-building/admin-edit-building.component';
 import { AdminAddItemComponent } from './elements/admin-add-item/admin-add-item.component';
 import { ItemModel } from '../../../models/ItemModel';
-import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 import { ToastrService } from 'ngx-toastr';
 import { BuildingService } from '../../../service/building.service';
 import { VehicleService } from '../../../service/vehicle.service';

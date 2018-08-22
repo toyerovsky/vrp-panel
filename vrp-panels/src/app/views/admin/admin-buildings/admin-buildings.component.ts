@@ -6,7 +6,6 @@ import { GroupService } from '../../../service/group.service';
 import { AdminAddBuildingComponent } from './elements/admin-add-building/admin-add-building.component';
 import { ToastrService } from 'ngx-toastr';
 import { AdminEditBuildingComponent } from './elements/admin-edit-building/admin-edit-building.component';
-import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 import { BuildingModel } from '../../../models/BuildingModel';
 
 @Component({

@@ -3,7 +3,6 @@ import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl 
 import { VehicleService } from '../../../service/vehicle.service';
 import { VehicleModel } from '../../../models/VehicleModel';
 import { ToastrService } from 'ngx-toastr';
-import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 // dialogs
 import { AdminAddVehicleComponent } from './elements/admin-add-vehicle/admin-add-vehicle.component';
 import { AdminEditVehicleComponent } from './elements/admin-edit-vehicle/admin-edit-vehicle.component';

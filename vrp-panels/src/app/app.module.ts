@@ -176,7 +176,7 @@ registerLocaleData(localePl);
 
     TicketService,
     { provide: LOCALE_ID, useValue: "pl" },
-    { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl()}
+    { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl()},
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]

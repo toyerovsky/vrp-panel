@@ -3,7 +3,6 @@ import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl 
 import { AccountService } from '../../../service/account.service';
 import { AccountModel } from '../../../models/AccountModel';
 import { ToastrService } from 'ngx-toastr';
-import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 import { AdminEditAccountComponent } from './elements/admin-edit-account/admin-edit-account.component';
 // dialogs
 

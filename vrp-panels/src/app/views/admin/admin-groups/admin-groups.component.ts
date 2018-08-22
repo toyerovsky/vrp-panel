@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSort, MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { GroupService } from "../../../service/group.service";
 import { GroupModel } from "../../../models/GroupModel";
-import { PL_PAGINATOR_INTL } from "../../../const/MaterialConstants";
 import { ToastrService } from "ngx-toastr";
 import { AdminAddGroupComponent } from "./elements/admin-add-group/admin-add-group.component";
 import { AdminEditGroupComponent } from "./elements/admin-edit-group/admin-edit-group.component";

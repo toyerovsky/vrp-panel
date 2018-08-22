@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { CharacterService } from '../../../service/character.service';
 import { CharacterModel } from '../../../models/CharacterModel';
 import { AdminAddCharacterComponent } from './elements/admin-add-character/admin-add-character.component';
 import { ToastrService } from 'ngx-toastr';
 import { AdminEditCharacterComponent } from './elements/admin-edit-character/admin-edit-character.component';
-import { PL_PAGINATOR_INTL } from '../../../const/MaterialConstants';
 
 @Component({
   selector: 'app-admin-characters',
