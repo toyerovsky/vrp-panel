@@ -1,14 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MatAutocomplete } from '@angular/material';
-import { VehicleModel } from '../../../../../models/VehicleModel';
-import { FormControl, FormGroup, Validators, AbstractControlOptions } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { startWith, map, max } from 'rxjs/operators';
-import { VEHICLES, GROUP_TYPES } from '../../../../../const/Misc';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CharacterService } from '../../../../../service/character.service';
-import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists } from '../../../../../utils/Validator';
+import { characterWithIdExists } from '../../../../../utils/Validator';
 import { GroupModel } from '../../../../../models/GroupModel';
+import { GROUP_TYPES } from '../../../../../const/Names';
 
 @Component({
   selector: 'app-admin-add-group',

@@ -4,7 +4,7 @@
       <div class="userBox" *ngIf="_accountModel">
         <div class="userImg">
           <img class="avatar" [src]="_accountModel.useGravatar == false ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl :
-        this._accountService.getGravatarUrl(this._accountModel.gravatarEmail)" />
+        this._accountService.getGravatarUrl(this._accountModel.gravatarEmail) + '.jpg'" />
         </div>
 
         <div class="userInfo">

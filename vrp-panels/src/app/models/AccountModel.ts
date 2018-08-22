@@ -7,4 +7,5 @@ export class AccountModel {
     avatarUrl?: string;
     passwordSalt?: string;
     useGravatar?: boolean;
+    gravatarEmail?: string;
 }

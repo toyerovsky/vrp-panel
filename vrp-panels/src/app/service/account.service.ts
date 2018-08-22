@@ -38,7 +38,7 @@ export class AccountService extends AbstractService {
   }
 
   public getGravatarUrl(email: string): string {
-    return `https://www.gravatar.com/avatar/${md5(email)}`;
+    return `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
   }
 
   public getById(id: number): Observable<AccountModel> {

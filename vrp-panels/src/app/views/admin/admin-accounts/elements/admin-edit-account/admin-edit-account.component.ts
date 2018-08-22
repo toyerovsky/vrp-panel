@@ -1,8 +1,7 @@
+import { RANK_NAMES } from './../../../../../const/Names';
 import { Component, OnInit, Inject } from '@angular/core';
 import { AccountModel } from '../../../../../models/AccountModel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { AccountService } from '../../../../../service/account.service';
-import { RANKS } from '../../../../../const/Misc';
 
 @Component({
   selector: 'app-admin-edit-account',
@@ -10,7 +9,7 @@ import { RANKS } from '../../../../../const/Misc';
   styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminEditAccountComponent implements OnInit {
-  private _ranks: string[] = RANKS;
+  private _ranks: string[] = RANK_NAMES;
 
   constructor(
     private _dialogRef: MatDialogRef<AdminEditAccountComponent>,

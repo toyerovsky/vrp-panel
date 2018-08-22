@@ -1,5 +1,4 @@
 import { FormControl } from '@angular/forms';
-import { ITEM_TYPES } from '../../../../../const/Misc';
 import { VehicleService } from '../../../../../service/vehicle.service';
 import { BuildingService } from '../../../../../service/building.service';
 import { ItemService } from '../../../../../service/item.service';
@@ -9,6 +8,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { ItemModel } from '../../../../../models/ItemModel';
 import { Component, OnInit } from '@angular/core';
 import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validator';
+import { ITEM_TYPES } from '../../../../../const/Names';
 
 @Component({
   selector: 'app-admin-add-item',
