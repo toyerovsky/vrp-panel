@@ -5,7 +5,6 @@ import { VehicleService } from "../service/vehicle.service";
 import { map } from "rxjs/operators";
 import { CharacterService } from "../service/character.service";
 import { GroupService } from "../service/group.service";
-import { forEach } from '@angular/router/src/utils/collection';
 
 export function isVehicleName(): ValidatorFn {
   return (control: FormGroup): ValidationErrors | null => {

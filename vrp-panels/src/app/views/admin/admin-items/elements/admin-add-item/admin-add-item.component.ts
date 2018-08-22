@@ -8,7 +8,7 @@ import { MatDialogRef } from '@angular/material';
 import { FormGroup, Validators } from '@angular/forms';
 import { ItemModel } from '../../../../../models/ItemModel';
 import { Component, OnInit } from '@angular/core';
-import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validators';
+import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validator';
 
 @Component({
   selector: 'app-admin-add-item',

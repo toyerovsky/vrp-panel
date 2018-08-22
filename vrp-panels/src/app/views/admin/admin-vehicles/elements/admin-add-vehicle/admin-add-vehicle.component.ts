@@ -8,7 +8,7 @@ import { startWith, map, max } from 'rxjs/operators';
 import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists, groupWithIdExists } from '../../../../../utils/Validators';
+import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists, groupWithIdExists } from '../../../../../utils/Validator';
 import { VehicleService } from '../../../../../service/vehicle.service';
 
 @Component({

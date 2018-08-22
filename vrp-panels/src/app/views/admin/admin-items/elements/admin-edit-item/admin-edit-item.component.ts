@@ -8,7 +8,7 @@ import { CharacterService } from '../../../../../service/character.service';
 import { ItemService } from '../../../../../service/item.service';
 import { BuildingService } from '../../../../../service/building.service';
 import { VehicleService } from '../../../../../service/vehicle.service';
-import { characterWithIdExists, buildingWithIdExists, vehicleWithIdExists, mutuallyExclusiveWith } from '../../../../../utils/Validators';
+import { characterWithIdExists, buildingWithIdExists, vehicleWithIdExists, mutuallyExclusiveWith } from '../../../../../utils/Validator';
 
 @Component({
   selector: 'app-admin-edit-item',
