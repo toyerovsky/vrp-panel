@@ -11,6 +11,30 @@
       <strong>wymagane</strong>
     </mat-error>
   </mat-form-field>
+  <mat-form-field *ngIf="!_currentForm?.firstParamValues" class="full-width">
+    <input type="number" formControlName="firstParameter" matInput placeholder="{{_currentForm?.firstParamLabel || 'Pierwszy parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field *ngIf="_currentForm?.firstParamValues" class="full-width">
+    <mat-select formControlName="firstParameter" placeholder={{_currentForm.firstParamLabel}}>
+      <mat-option *ngFor="let item of _currentForm?.firstParamValues" [value]="item.value">
+        {{item.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="secondParameter" matInput placeholder="{{_currentForm?.secondParamLabel || 'Drugi parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="thirdParameter" matInput placeholder="{{_currentForm?.thirdParamLabel || 'Trzeci parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="fourthParameter" matInput placeholder="{{_currentForm?.fourthParamLabel || 'Czwarty parametr'}}"
+    />
+  </mat-form-field>
+
   <mat-form-field class="full-width">
     <input formControlName="name" matInput placeholder="Nazwa" />
   </mat-form-field>

@@ -42,7 +42,9 @@ export class AdminItemsComponent implements OnInit {
   }
 
   addItemClickHandler() {
-    const dialogRef = this._addItemDialog.open(AdminAddItemComponent);
+    const dialogRef = this._addItemDialog.open(AdminAddItemComponent, {
+      maxWidth: '60vh'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -58,7 +60,8 @@ export class AdminItemsComponent implements OnInit {
 
   editItemClickHandler(itemModel: ItemModel) {
     const dialogRef = this._editItemDialog.open(AdminEditBuildingComponent, {
-      data: itemModel
+      data: itemModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,24 +1,20 @@
-export interface ItemFormInfo {
-  itemType: string;
-  firstParamLabel?: string;
-  secondParamLabel?: string;
-  thirdParamLabel?: string;
-  fourthParamLabel?: string;
-}
+import { WEAPONS } from './Names';
 
-export const ITEMS_FORM: ItemFormInfo[] = [
+export const ADMIN_ITEMS_FORM = [
   {
     itemType: 'Jedzenie',
-    firstParamLabel: 'Liczba HP do zregenerowania'
+    firstParamLabel: 'Liczba HP do zregenerowania',
   },
   {
     itemType: 'Broń',
-    firstParamLabel: 'Skrót broni',
+    firstParamLabel: 'Typ broni',
+    firstParamValues: WEAPONS,
     secondParamLabel: 'Liczba amunicji'
   },
   {
     itemType: 'Magazynek',
-    firstParamLabel: 'Skrót broni do jakiej pasuje',
+    firstParamLabel: 'Typ broni',
+    firstParamValues: WEAPONS,
     secondParamLabel: 'Liczba amunicji jaką dodaje'
   },
   {
@@ -42,9 +38,13 @@ export const ITEMS_FORM: ItemFormInfo[] = [
     thirdParamLabel: 'Numer',
     fourthParamLabel: 'Skórka'
   },
-  { 
+  {
     itemType: 'Tuning pojazdu',
     firstParamLabel: 'Typ tuningu',
+    firstParamValues: [
+      { value: 0, viewValue: 'Prędkość' },
+      { value: 1, viewValue: 'Hamowanie' }
+    ],
     secondParamLabel: 'Mnożnik przyśpieszenia/hamowania',
     thirdParamLabel: 'Moment obrotowy'
   }

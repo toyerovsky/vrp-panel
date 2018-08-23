@@ -40,7 +40,9 @@ export class AdminGroupsComponent implements OnInit {
   }
 
   addGroupClickHandler() {
-    const dialogRef = this._addGroupDialog.open(AdminAddGroupComponent);
+    const dialogRef = this._addGroupDialog.open(AdminAddGroupComponent, {
+      maxWidth: '60vh'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
@@ -56,7 +58,8 @@ export class AdminGroupsComponent implements OnInit {
 
   editGroupClickHandler(groupModel: GroupModel) {
     const dialogRef = this._editGroupDialog.open(AdminEditGroupComponent, {
-      data: groupModel
+      data: groupModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

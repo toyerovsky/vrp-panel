@@ -9,6 +9,7 @@ import { BuildingService } from '../../../../../service/building.service';
 import { VehicleService } from '../../../../../service/vehicle.service';
 import { characterWithIdExists, buildingWithIdExists, vehicleWithIdExists, mutuallyExclusiveWith } from '../../../../../utils/Validator';
 import { ITEM_TYPES } from '../../../../../const/Names';
+import { ADMIN_ITEMS_FORM } from '../../../../../const/AdminItemsForm';
 
 @Component({
   selector: 'app-admin-edit-item',
@@ -18,6 +19,7 @@ import { ITEM_TYPES } from '../../../../../const/Names';
 export class AdminEditItemComponent implements OnInit {
   private _itemTypes = ITEM_TYPES;
   private _editItemForm: FormGroup;
+  private _currentForm;
 
   constructor(
     private _dialogRef: MatDialogRef<AdminAddItemComponent>,
@@ -35,6 +37,10 @@ export class AdminEditItemComponent implements OnInit {
         Validators.required
       ]),
       'name': new FormControl(this.itemModel.name),
+      'firstParameter': new FormControl({ value: this.itemModel.firstParameter, disabled: true }),
+      'secondParameter': new FormControl({ value: this.itemModel.secondParameter, disabled: true }),
+      'thirdParameter': new FormControl({ value: this.itemModel.thirdParameter, disabled: true }),
+      'fourthParameter': new FormControl({ value: this.itemModel.fourthParameter, disabled: true }),
       'characterId': new FormControl(this.itemModel.characterId, {
         asyncValidators: [
           characterWithIdExists(this._characterService)
@@ -57,6 +63,15 @@ export class AdminEditItemComponent implements OnInit {
     this.characterId.setValidators([mutuallyExclusiveWith(this.buildingId, this.vehicleId)]);
     this.buildingId.setValidators([mutuallyExclusiveWith(this.characterId, this.vehicleId)]);
     this.vehicleId.setValidators([mutuallyExclusiveWith(this.characterId, this.buildingId)])
+    this.itemType.valueChanges.subscribe(selectValue => {
+      this._currentForm = ADMIN_ITEMS_FORM.find(item => item.itemType == this._itemTypes.find(item => item.value == selectValue).viewValue);
+      if (this._currentForm != undefined) {
+        this._currentForm.firstParamLabel ? this.firstParameter.enable() : this.firstParameter.disable();
+        this._currentForm.secondParamLabel ? this.secondParameter.enable() : this.secondParameter.disable();
+        this._currentForm.thirdParamLabel ? this.thirdParameter.enable() : this.thirdParameter.disable();
+        this._currentForm.fourthParamLabel ? this.fourthParameter.enable() : this.fourthParameter.disable();
+      }
+    })
   }
 
   get itemType(): FormControl {
@@ -77,6 +92,22 @@ export class AdminEditItemComponent implements OnInit {
 
   get buildingId(): FormControl {
     return this._editItemForm.controls.buildingId as FormControl;
+  }
+
+  get firstParameter(): FormControl {
+    return this._editItemForm.controls.firstParameter as FormControl;
+  }
+
+  get secondParameter(): FormControl {
+    return this._editItemForm.controls.secondParameter as FormControl;
+  }
+
+  get thirdParameter(): FormControl {
+    return this._editItemForm.controls.thirdParameter as FormControl;
+  }
+
+  get fourthParameter(): FormControl {
+    return this._editItemForm.controls.fourthParameter as FormControl;
   }
 
   closeDialog(): void {

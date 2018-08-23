@@ -40,7 +40,8 @@ export class AdminAccountsComponent implements OnInit {
 
   editAccountClickHandler(accountModel: AccountModel) {
     const dialogRef = this._editAccountDialog.open(AdminEditAccountComponent, {
-      data: accountModel
+      data: accountModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

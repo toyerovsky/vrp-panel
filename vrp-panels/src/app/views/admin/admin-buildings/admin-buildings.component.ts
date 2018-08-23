@@ -43,7 +43,9 @@ export class AdminBuildingsComponent implements OnInit {
   }
 
   addBuildingClickHandler() {
-    const dialogRef = this._addBuildingDialog.open(AdminAddBuildingComponent);
+    const dialogRef = this._addBuildingDialog.open(AdminAddBuildingComponent, {
+      maxWidth: '60vh'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
@@ -59,7 +61,8 @@ export class AdminBuildingsComponent implements OnInit {
 
   editBuildingClickHandler(buildingModel: BuildingModel) {
     const dialogRef = this._editBuildingDialog.open(AdminEditBuildingComponent, {
-      data: buildingModel
+      data: buildingModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

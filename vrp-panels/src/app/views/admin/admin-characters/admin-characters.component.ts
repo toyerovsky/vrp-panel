@@ -39,7 +39,9 @@ export class AdminCharactersComponent implements OnInit {
   }
 
   addCharacterClickHandler() {
-    const dialogRef = this._addCharacterDialog.open(AdminAddCharacterComponent);
+    const dialogRef = this._addCharacterDialog.open(AdminAddCharacterComponent, {
+      maxWidth: '60vh'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
@@ -55,7 +57,8 @@ export class AdminCharactersComponent implements OnInit {
 
   editCharacterClickHandler(characterModel: CharacterModel) {
     const dialogRef = this._editCharacterDialog.open(AdminEditCharacterComponent, {
-      data: characterModel
+      data: characterModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {

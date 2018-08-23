@@ -40,7 +40,9 @@ export class AdminVehiclesComponent implements OnInit {
   }
 
   addVehicleClickHandler() {
-    const dialogRef = this._addVehicleDialog.open(AdminAddVehicleComponent);
+    const dialogRef = this._addVehicleDialog.open(AdminAddVehicleComponent, {
+      maxWidth: '60vh'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
@@ -56,7 +58,8 @@ export class AdminVehiclesComponent implements OnInit {
 
   editVehicleClickHandler(vehicleModel: VehicleModel) {
     const dialogRef = this._editVehicleDialog.open(AdminEditVehicleComponent, {
-      data: vehicleModel
+      data: vehicleModel,
+      maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(result => {
