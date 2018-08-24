@@ -9,7 +9,7 @@ import { BuildingService } from '../../../../../service/building.service';
 import { VehicleService } from '../../../../../service/vehicle.service';
 import { characterWithIdExists, buildingWithIdExists, vehicleWithIdExists, mutuallyExclusiveWith } from '../../../../../utils/Validator';
 import { ITEM_TYPES } from '../../../../../const/Names';
-import { ADMIN_ITEMS_FORM } from '../../../../../const/AdminItemsForm';
+import { ADMIN_ITEMS_FORM } from '../../../../../const/Forms';
 
 @Component({
   selector: 'app-admin-edit-item',

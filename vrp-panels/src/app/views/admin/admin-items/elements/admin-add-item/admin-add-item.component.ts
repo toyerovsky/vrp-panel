@@ -9,7 +9,7 @@ import { ItemModel } from '../../../../../models/ItemModel';
 import { Component, OnInit } from '@angular/core';
 import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validator';
 import { ITEM_TYPES } from '../../../../../const/Names';
-import { ADMIN_ITEMS_FORM } from '../../../../../const/AdminItemsForm';
+import { ADMIN_ITEMS_FORM } from '../../../../../const/Forms';
 
 @Component({
   selector: 'app-admin-add-item',
@@ -63,13 +63,14 @@ export class AdminAddItemComponent implements OnInit {
     this.characterId.setValidators([mutuallyExclusiveWith(this.buildingId, this.vehicleId)]);
     this.buildingId.setValidators([mutuallyExclusiveWith(this.characterId, this.vehicleId)]);
     this.vehicleId.setValidators([mutuallyExclusiveWith(this.characterId, this.buildingId)])
+    // enable/disable parameters input depending on the item type
     this.itemType.valueChanges.subscribe(selectValue => {
       this._currentForm = ADMIN_ITEMS_FORM.find(item => item.itemType == this._itemTypes.find(item => item.value == selectValue).viewValue);
       if (this._currentForm != undefined) {
-        this._currentForm.firstParamLabel ? this.firstParameter.enable() : this.firstParameter.disable();
-        this._currentForm.secondParamLabel ? this.secondParameter.enable() : this.secondParameter.disable();
-        this._currentForm.thirdParamLabel ? this.thirdParameter.enable() : this.thirdParameter.disable();
-        this._currentForm.fourthParamLabel ? this.fourthParameter.enable() : this.fourthParameter.disable();
+        this._currentForm.firstParamLabel ? this.firstParameter.enable() : this.disableAndReset(this.firstParameter);
+        this._currentForm.secondParamLabel ? this.secondParameter.enable() : this.disableAndReset(this.secondParameter);
+        this._currentForm.thirdParamLabel ? this.thirdParameter.enable() : this.disableAndReset(this.thirdParameter);
+        this._currentForm.fourthParamLabel ? this.fourthParameter.enable() : this.disableAndReset(this.fourthParameter);
       }
     })
   }
@@ -140,5 +141,10 @@ export class AdminAddItemComponent implements OnInit {
       .subscribe(data => {
         this._itemModel.vehicle = data
       });
+  }
+
+  disableAndReset(form: FormControl) {
+    form.disable();
+    form.reset();
   }
 }

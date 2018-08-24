@@ -2,13 +2,17 @@ import { AccountModel } from './AccountModel';
 import { CharacterModel } from './CharacterModel';
 
 export class PenaltyModel {
-  public creatorName: string;
-  public date: Date | string;
-  public expiryDate: Date | string;
-  public reason: string;
-  public penaltyType: string;
-  public creator: AccountModel;
-  public creatorId: AccountModel;
-  public character: CharacterModel;
-  public characterId?: number;
+  id: number;
+  date: Date | string;
+  expiryDate: Date | string;
+  penaltyType: string;
+  reason: string;
+  creatorId: number;
+  creator: AccountModel;
+  characterId: number;
+  character: CharacterModel;
+  accountId: number;
+  account: AccountModel;
+  deactivatorId: number;
+  deactivator: AccountModel;
 }

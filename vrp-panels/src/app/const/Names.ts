@@ -128,3 +128,11 @@ export const GENDERS = [
   { value: false, viewValue: 'Kobieta' },
   { value: true, viewValue: 'Mężczyzna' },
 ];
+
+export const PENALTY_TYPES = [
+  { value: 0, viewValue: 'Ostrzeżenie' },
+  { value: 1, viewValue: 'Admin Jail' },
+  { value: 2, viewValue: 'Ban' },
+  { value: 3, viewValue: 'Kick' },
+  { value: 4, viewValue: 'Blokada postaci' }
+];

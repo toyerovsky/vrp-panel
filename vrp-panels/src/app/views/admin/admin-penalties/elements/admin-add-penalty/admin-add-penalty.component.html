@@ -1,0 +1,59 @@
+<h2>Dodaj karę</h2>
+<form [formGroup]="_addPenaltyForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-select formControlName="penaltyType" placeholder="Typ kary">
+      <mat-option *ngFor="let type of _penaltyTypes" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="penaltyType.errors?.required">
+      Pole typ kary jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="expiryDate" [matDatepicker]="picker" matInput placeholder="Data wygaśnięcia">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="expiryDate.errors?.required">
+      Pole data wygaśnięcia jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Powód" formControlName="reason">
+    <mat-error *ngIf="reason.errors?.required">
+      Pole powód jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="accountId" (blur)="loadAccountHandler($event.target.value)" type="number" matInput placeholder="Id konta"
+    />
+    <mat-hint *ngIf="_penaltyModel.account">Id konta: {{_penaltyModel.account.accountId}} {{_penaltyModel.account.forumUserName}}</mat-hint>
+    <mat-error *ngIf="accountId.errors?.required">
+      Pole id konta jest
+      <strong>wymagane</strong>
+    </mat-error>
+    <mat-error *ngIf="accountId.errors?.accountWithIdExists">
+      Konto o podanym id
+      <strong>nie istnieje</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_penaltyModel.character">Id postaci: {{_penaltyModel.character.id}} {{_penaltyModel.character.name}} {{_penaltyModel.character.surname}}</mat-hint>
+    <mat-error *ngIf="accountId.errors?.requiredIfValue">
+      Pole id konta jest
+      <strong>wymagane</strong> w przypadku blokady postaci
+    </mat-error>
+    <mat-error *ngIf="characterId.errors?.characterWithIdExists">
+      Postać o podanym id
+      <strong>nie istnieje</strong>
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

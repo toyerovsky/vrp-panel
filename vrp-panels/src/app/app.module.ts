@@ -52,6 +52,17 @@ import { AdminAddVehicleComponent } from './views/admin/admin-vehicles/elements/
 import { AdminEditVehicleComponent } from './views/admin/admin-vehicles/elements/admin-edit-vehicle/admin-edit-vehicle.component';
 import { AdminAddGroupComponent } from './views/admin/admin-groups/elements/admin-add-group/admin-add-group.component';
 import { AdminEditGroupComponent } from './views/admin/admin-groups/elements/admin-edit-group/admin-edit-group.component';
+import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
+import { TicketsComponent } from './views/tickets/tickets.component';
+import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
+import { AdminAddBuildingComponent } from './views/admin/admin-buildings/elements/admin-add-building/admin-add-building.component';
+import { AdminEditBuildingComponent } from './views/admin/admin-buildings/elements/admin-edit-building/admin-edit-building.component';
+import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
+import { AdminAddItemComponent } from './views/admin/admin-items/elements/admin-add-item/admin-add-item.component';
+import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin-edit-item/admin-edit-item.component';
+import { AdminPenaltiesComponent } from './views/admin/admin-penalties/admin-penalties.component';
+import { AdminAddPenaltyComponent } from './views/admin/admin-penalties/elements/admin-add-penalty/admin-add-penalty.component';
+import { AdminEditPenaltyComponent } from './views/admin/admin-penalties/elements/admin-edit-penalty/admin-edit-penalty.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -67,19 +78,13 @@ import { GroupService } from './service/group.service';
 import { VehicleService } from './service/vehicle.service';
 import { JsonService } from './service/json.service';
 import { BuildingService } from './service/building.service';
+import { PenaltyService } from './service/penalty.service';
+import { TicketService } from './service/ticket.service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
-import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
-import { TicketsComponent } from './views/tickets/tickets.component';
-import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
-import { AdminAddBuildingComponent } from './views/admin/admin-buildings/elements/admin-add-building/admin-add-building.component';
-import { AdminEditBuildingComponent } from './views/admin/admin-buildings/elements/admin-edit-building/admin-edit-building.component';
-import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
-import { AdminAddItemComponent } from './views/admin/admin-items/elements/admin-add-item/admin-add-item.component';
-import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin-edit-item/admin-edit-item.component';
-import { TicketService } from './service/ticket.service';
 import { getPolishPaginatorIntl } from './utils/PolishPaginator';
+
 registerLocaleData(localePl);
 
 
@@ -111,7 +116,10 @@ registerLocaleData(localePl);
     AdminEditBuildingComponent,
     AdminItemsComponent,
     AdminAddItemComponent,
-    AdminEditItemComponent
+    AdminEditItemComponent,
+    AdminPenaltiesComponent,
+    AdminAddPenaltyComponent,
+    AdminEditPenaltyComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +170,9 @@ registerLocaleData(localePl);
     AdminAddBuildingComponent,
     AdminEditBuildingComponent,
     AdminAddItemComponent,
-    AdminEditItemComponent
+    AdminEditItemComponent,
+    AdminAddPenaltyComponent,
+    AdminEditPenaltyComponent
   ],
   providers: [
     // services
@@ -173,8 +183,9 @@ registerLocaleData(localePl);
     VehicleService,
     JsonService,
     BuildingService,
-
+    PenaltyService,
     TicketService,
+
     { provide: LOCALE_ID, useValue: "pl" },
     { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl()},
     { provide: MatDialogRef, useValue: {} },
