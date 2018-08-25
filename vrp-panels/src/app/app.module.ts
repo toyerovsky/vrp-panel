@@ -68,7 +68,6 @@ import { AdminEditPenaltyComponent } from './views/admin/admin-penalties/element
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CdkTableModule } from '@angular/cdk/table';
 
 // services
 import { CharacterService } from './service/character.service';
@@ -76,7 +75,6 @@ import { AccountService } from './service/account.service';
 import { CookieService } from 'ngx-cookie-service';
 import { GroupService } from './service/group.service';
 import { VehicleService } from './service/vehicle.service';
-import { JsonService } from './service/json.service';
 import { BuildingService } from './service/building.service';
 import { PenaltyService } from './service/penalty.service';
 import { TicketService } from './service/ticket.service';
@@ -181,7 +179,6 @@ registerLocaleData(localePl);
     CookieService,
     GroupService,
     VehicleService,
-    JsonService,
     BuildingService,
     PenaltyService,
     TicketService,

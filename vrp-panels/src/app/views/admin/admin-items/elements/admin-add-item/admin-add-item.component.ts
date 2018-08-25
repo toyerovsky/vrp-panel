@@ -7,7 +7,7 @@ import { MatDialogRef } from '@angular/material';
 import { FormGroup, Validators } from '@angular/forms';
 import { ItemModel } from '../../../../../models/ItemModel';
 import { Component, OnInit } from '@angular/core';
-import { mutuallyExclusiveWith, characterWithIdExists, buildingWithIdExists, vehicleWithIdExists } from '../../../../../utils/Validator';
+import { mutuallyExclusiveWith, noCharacterWithId, noBuildingWithId, noVehicleWithId } from '../../../../../utils/Validator';
 import { ITEM_TYPES } from '../../../../../const/Names';
 import { ADMIN_ITEMS_FORM } from '../../../../../const/Forms';
 
@@ -43,19 +43,19 @@ export class AdminAddItemComponent implements OnInit {
       'fourthParameter': new FormControl({ value: this._itemModel.fourthParameter, disabled: true }),
       'characterId': new FormControl(this._itemModel.characterId, {
         asyncValidators: [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ],
         updateOn: 'blur'
       }),
       'buildingId': new FormControl(this._itemModel.buildingId, {
         asyncValidators: [
-          buildingWithIdExists(this._buildingService)
+          noBuildingWithId(this._buildingService)
         ],
         updateOn: 'blur'
       }),
       'vehicleId': new FormControl(this._itemModel.vehicleId, {
         asyncValidators: [
-          vehicleWithIdExists(this._vehicleService)
+          noVehicleWithId(this._vehicleService)
         ],
         updateOn: 'blur'
       })

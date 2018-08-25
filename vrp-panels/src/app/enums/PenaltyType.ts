@@ -1,3 +1,7 @@
 export enum PenaltyType {
-    CharacterBlockage = 4
+  Warn,
+  AdminJail,
+  Ban,
+  Kick,
+  CharacterBlockage
 }

@@ -20,32 +20,32 @@ export class VehicleService extends AbstractService {
 
   public getAllByCharacterId(characterId: number): Observable<VehicleModel[]> {
     return this._http.get<VehicleModel[]>(`${environment.apiUrl}/vehicle/character/${characterId}`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel[]>()));
   }
 
   public getById(vehicleId: number): Observable<VehicleModel> {
     return this._http.get<VehicleModel>(`${environment.apiUrl}/vehicle/${vehicleId}`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel>()));
   }
 
   public getAll(): Observable<VehicleModel[]> {
     return this._http.get<VehicleModel[]>(`${environment.apiUrl}/vehicle/`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel[]>()));
   }
 
   public post(vehicleModel: VehicleModel): Observable<VehicleModel> {
     return this._http.post<VehicleModel>(`${environment.apiUrl}/vehicle/`, vehicleModel, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel>()));
   }
 
   public put(vehicleId: number, vehicleModel: VehicleModel): Observable<VehicleModel> {
     return this._http.put<VehicleModel>(`${environment.apiUrl}/vehicle/${vehicleId}`, vehicleModel, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel>()));
   }
 
   public getByNumberPlate(numberPlate: string): Observable<VehicleModel> {
     return this._http.get<VehicleModel>(`${environment.apiUrl}/vehicle/numberplate/${numberPlate}`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<VehicleModel>()));
   }
 
   public checkIfNumberPlateTaken(numberPlate: string): Observable<Boolean> {

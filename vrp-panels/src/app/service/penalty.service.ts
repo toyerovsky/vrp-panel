@@ -15,26 +15,26 @@ export class PenaltyService extends AbstractService {
 
   public getAllByAccountId(accountId: number): Observable<PenaltyModel[]> {
     return this._http.get<PenaltyModel[]>(`${environment.apiUrl}/penalty/account/${accountId}`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<PenaltyModel[]>()));
   }
 
   public getAll(): Observable<PenaltyModel[]> {
     return this._http.get<PenaltyModel[]>(`${environment.apiUrl}/penalty/`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<PenaltyModel[]>()));
   }
 
   public getById(id: number): Observable<PenaltyModel> {
     return this._http.get<PenaltyModel>(`${environment.apiUrl}/penalty/${id}`, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<PenaltyModel>()));
   }
 
   public post(penaltyModel: PenaltyModel): Observable<PenaltyModel> {
     return this._http.post<PenaltyModel>(`${environment.apiUrl}/penalty/`, penaltyModel, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<PenaltyModel>()));
   }
 
   public put(id: number, penaltyModel: PenaltyModel): Observable<PenaltyModel> {
     return this._http.post<PenaltyModel>(`${environment.apiUrl}/penalty/${id}`, penaltyModel, { withCredentials: true })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError<PenaltyModel>()));
   }
 }

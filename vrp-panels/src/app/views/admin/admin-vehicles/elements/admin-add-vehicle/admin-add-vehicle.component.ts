@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EntityInfo, JsonService } from '../../../../../service/json.service';
 import { MatDialogRef, MatAutocomplete } from '@angular/material';
 import { VehicleModel } from '../../../../../models/VehicleModel';
 import { FormControl, FormGroup, Validators, AbstractControlOptions } from '@angular/forms';
@@ -8,7 +7,7 @@ import { startWith, map, max } from 'rxjs/operators';
 import { VEHICLES } from '../../../../../const/Misc';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, characterWithIdExists, groupWithIdExists } from '../../../../../utils/Validator';
+import { isVehicleName, mutuallyExclusiveWith, isNumberPlateTaken, noCharacterWithId, noGroupWithId } from '../../../../../utils/Validator';
 import { VehicleService } from '../../../../../service/vehicle.service';
 
 @Component({
@@ -51,13 +50,13 @@ export class AdminAddVehicleComponent implements OnInit {
       }),
       'characterId': new FormControl(this._vehicleModel.characterId, {
         asyncValidators: [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ],
         updateOn: 'blur'
       }),
       'groupId': new FormControl(this._vehicleModel.groupId, {
         asyncValidators: [
-          groupWithIdExists(this._groupService)
+          noGroupWithId(this._groupService)
         ],
         updateOn: 'blur'
       }),

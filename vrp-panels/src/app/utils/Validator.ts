@@ -1,9 +1,10 @@
+import { Observable } from 'rxjs';
 import { AccountService } from './../service/account.service';
 import { BuildingService } from '../service/building.service';
 import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors, FormControl, AsyncValidatorFn } from "@angular/forms";
 import { VEHICLES } from "../const/Misc";
 import { VehicleService } from "../service/vehicle.service";
-import { map } from "rxjs/operators";
+import { map, defaultIfEmpty, startWith, catchError } from "rxjs/operators";
 import { CharacterService } from "../service/character.service";
 import { GroupService } from "../service/group.service";
 
@@ -35,49 +36,48 @@ export function mutuallyExclusiveWith(...excludedControls: FormControl[]): Valid
   };
 }
 
-export function requiredIfValue(formControl: FormControl, value: number): ValidatorFn {
-  return (control: AbstractControl) : { [key: string]: any } | null =>  {
-    if (formControl.value == value && !control.dirty) {
+export function requiredIfValues(formControl: FormControl, ...values: any[]): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (values.some(v => v == formControl.value) && control.value == null) {
       return {
-        requiredIfValue: {
+        requiredIfValues: {
           value: control.value
         }
       }
     }
     else {
-      return null
+      return null;
     }
   }
 }
 
 export function isNumberPlateTaken(vehicleService: VehicleService): AsyncValidatorFn {
   return (control: AbstractControl) => {
-    return vehicleService.checkIfNumberPlateTaken(control.value)
-      .pipe(
-        map(res => { return res ? null : { isNumberPlateTaken: { value: control.value } } })
-      );
+    return vehicleService.checkIfNumberPlateTaken(control.value).pipe(
+      map(res => res ? null : { isNumberPlateTaken: { value: control.value } })
+    );
   }
 }
 
-export function accountWithIdExists(accountService: AccountService): AsyncValidatorFn {
-  return (control: AbstractControl) => {
+export function noAccountWithId(accountService: AccountService): AsyncValidatorFn {
+  return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
     return accountService.getById(control.value)
       .pipe(
-        map(res => { return res ? null : { accountWithIdExists: false } })
+        map(res => res == null ? { noAccountWithId: true } : null)
       );
   }
 }
 
-export function characterWithIdExists(characterService: CharacterService): AsyncValidatorFn {
+export function noCharacterWithId(characterService: CharacterService): AsyncValidatorFn {
   return (control: AbstractControl) => {
     return characterService.getById(control.value)
       .pipe(
-        map(res => { return res ? null : { characterWithIdExists: false } })
+        map(res => res ? null : { characterWithIdExists: false })
       );
   }
 }
 
-export function buildingWithIdExists(buildingService: BuildingService): AsyncValidatorFn {
+export function noBuildingWithId(buildingService: BuildingService): AsyncValidatorFn {
   return (control: AbstractControl) => {
     return buildingService.getById(control.value)
       .pipe(
@@ -86,7 +86,7 @@ export function buildingWithIdExists(buildingService: BuildingService): AsyncVal
   }
 }
 
-export function vehicleWithIdExists(vehicleService: VehicleService): AsyncValidatorFn {
+export function noVehicleWithId(vehicleService: VehicleService): AsyncValidatorFn {
   return (control: AbstractControl) => {
     return vehicleService.getById(control.value)
       .pipe(
@@ -95,7 +95,7 @@ export function vehicleWithIdExists(vehicleService: VehicleService): AsyncValida
   }
 }
 
-export function groupWithIdExists(groupService: GroupService): AsyncValidatorFn {
+export function noGroupWithId(groupService: GroupService): AsyncValidatorFn {
   return (control: AbstractControl) => {
     return groupService.getById(control.value)
       .pipe(

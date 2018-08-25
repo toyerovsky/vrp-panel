@@ -1,3 +1,6 @@
+import { defaultIfEmpty, map, every, tap } from 'rxjs/operators';
+import { AccountModel } from './../../../../../models/AccountModel';
+import { catchError, finalize } from 'rxjs/operators';
 import { PenaltyType } from './../../../../../enums/PenaltyType';
 import { CharacterService } from './../../../../../service/character.service';
 import { AccountService } from './../../../../../service/account.service';
@@ -6,7 +9,8 @@ import { PenaltyModel } from './../../../../../models/PenaltyModel';
 import { PENALTY_TYPES } from './../../../../../const/Names';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { characterWithIdExists, accountWithIdExists, requiredIfValue } from '../../../../../utils/Validator';
+import { noCharacterWithId, noAccountWithId, requiredIfValues } from '../../../../../utils/Validator';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-admin-add-penalty',
@@ -36,27 +40,15 @@ export class AdminAddPenaltyComponent implements OnInit {
       'reason': new FormControl(this._penaltyModel.reason, [
         Validators.required
       ]),
-      'accountId': new FormControl(this._penaltyModel.accountId, {
-        validators: [
-          Validators.required
-        ],
-        asyncValidators: [
-          accountWithIdExists(this._accountService)
-        ],
-        updateOn: 'blur'
-      }),
-      'characterId': new FormControl({ value: this._penaltyModel.characterId, disabled: true }, {
-        asyncValidators: [
-          characterWithIdExists(this._characterService)
-        ],
-        updateOn: 'blur'
-      })
+      'accountId': new FormControl(this._penaltyModel.accountId),
+      'characterId': new FormControl({ value: this._penaltyModel.characterId, disabled: true })
     });
-    this.characterId.setValidators([requiredIfValue(this.penaltyType, PenaltyType.CharacterBlockage)]);
+    this.characterId.setValidators([requiredIfValues(this.penaltyType, PenaltyType.CharacterBlockage)]);
+    this.accountId.setValidators([requiredIfValues(this.penaltyType, null, 0, 1, 2, 3)])
     // disable or enable character id
     this.penaltyType.valueChanges.subscribe(selectValue => {
       selectValue == PenaltyType.CharacterBlockage ? this.characterId.enable() : this.disableAndReset(this.characterId);
-    })
+    });
   }
 
   get penaltyType(): FormControl {
@@ -93,6 +85,9 @@ export class AdminAddPenaltyComponent implements OnInit {
   loadAccountHandler(value: number): void {
     this._accountService.getById(value)
       .subscribe(data => {
+        if (data == null) {
+          this.accountId.setErrors([{ noAccountWithId: { value: true } }]);
+        }
         this._penaltyModel.account = data
       });
   }

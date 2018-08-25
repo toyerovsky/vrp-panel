@@ -2,12 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { VehicleModel } from '../../../../../models/VehicleModel';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AdminEditCharacterComponent } from '../../../admin-characters/elements/admin-edit-character/admin-edit-character.component';
-import { EntityInfo, JsonService } from '../../../../../service/json.service';
 import { VEHICLES } from '../../../../../const/Misc';
 import { Observable, of } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
-import { mutuallyExclusiveWith, isVehicleName, isNumberPlateTaken, groupWithIdExists, characterWithIdExists } from '../../../../../utils/Validator';
+import { mutuallyExclusiveWith, isVehicleName, isNumberPlateTaken, noGroupWithId, noCharacterWithId } from '../../../../../utils/Validator';
 import { VehicleService } from '../../../../../service/vehicle.service';
 import { GroupService } from '../../../../../service/group.service';
 import { CharacterService } from '../../../../../service/character.service';
@@ -52,13 +51,13 @@ export class AdminEditVehicleComponent implements OnInit {
       }),
       'characterId': new FormControl(this.vehicleModel.characterId, {
         asyncValidators: [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ],
         updateOn: 'blur'
       }),
       'groupId': new FormControl(this.vehicleModel.groupId, {
         asyncValidators: [
-          groupWithIdExists(this._groupService)
+          noGroupWithId(this._groupService)
         ],
         updateOn: 'blur'
       }),

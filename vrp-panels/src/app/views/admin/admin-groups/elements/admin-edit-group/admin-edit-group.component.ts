@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CharacterService } from '../../../../../service/character.service';
-import { characterWithIdExists } from '../../../../../utils/Validator';
+import { noCharacterWithId } from '../../../../../utils/Validator';
 import { GroupModel } from '../../../../../models/GroupModel';
 import { GROUP_TYPES } from '../../../../../const/Names';
 
@@ -40,7 +40,7 @@ export class AdminEditGroupComponent implements OnInit {
       'bossCharacterId': new FormControl(this.groupModel.bossId, [
         Validators.required
       ], [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ]),
       'color': new FormControl(this.groupModel.maxPayday, [
         Validators.pattern('/[0-9A-Fa-f]{6}/g') // hex color

@@ -7,7 +7,7 @@ import { CharacterService } from '../../../../../service/character.service';
 import { ItemService } from '../../../../../service/item.service';
 import { BuildingService } from '../../../../../service/building.service';
 import { VehicleService } from '../../../../../service/vehicle.service';
-import { characterWithIdExists, buildingWithIdExists, vehicleWithIdExists, mutuallyExclusiveWith } from '../../../../../utils/Validator';
+import { noCharacterWithId, noBuildingWithId, noVehicleWithId, mutuallyExclusiveWith } from '../../../../../utils/Validator';
 import { ITEM_TYPES } from '../../../../../const/Names';
 import { ADMIN_ITEMS_FORM } from '../../../../../const/Forms';
 
@@ -43,19 +43,19 @@ export class AdminEditItemComponent implements OnInit {
       'fourthParameter': new FormControl({ value: this.itemModel.fourthParameter, disabled: true }),
       'characterId': new FormControl(this.itemModel.characterId, {
         asyncValidators: [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ],
         updateOn: 'blur'
       }),
       'buildingId': new FormControl(this.itemModel.buildingId, {
         asyncValidators: [
-          buildingWithIdExists(this._buildingService)
+          noBuildingWithId(this._buildingService)
         ],
         updateOn: 'blur'
       }),
       'vehicleId': new FormControl(this.itemModel.vehicleId, {
         asyncValidators: [
-          vehicleWithIdExists(this._vehicleService)
+          noVehicleWithId(this._vehicleService)
         ],
         updateOn: 'blur'
       })

@@ -31,11 +31,11 @@
     <input formControlName="accountId" (blur)="loadAccountHandler($event.target.value)" type="number" matInput placeholder="Id konta"
     />
     <mat-hint *ngIf="_penaltyModel.account">Id konta: {{_penaltyModel.account.accountId}} {{_penaltyModel.account.forumUserName}}</mat-hint>
-    <mat-error *ngIf="accountId.errors?.required">
+    <mat-error *ngIf="accountId.errors?.requiredIfValues">
       Pole id konta jest
       <strong>wymagane</strong>
     </mat-error>
-    <mat-error *ngIf="accountId.errors?.accountWithIdExists">
+    <mat-error *ngIf="accountId.errors?.noAccountWithId">
       Konto o podanym id
       <strong>nie istnieje</strong>
     </mat-error>
@@ -44,7 +44,7 @@
     <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
     />
     <mat-hint *ngIf="_penaltyModel.character">Id postaci: {{_penaltyModel.character.id}} {{_penaltyModel.character.name}} {{_penaltyModel.character.surname}}</mat-hint>
-    <mat-error *ngIf="accountId.errors?.requiredIfValue">
+    <mat-error *ngIf="characterId.errors?.requiredIfValues">
       Pole id konta jest
       <strong>wymagane</strong> w przypadku blokady postaci
     </mat-error>

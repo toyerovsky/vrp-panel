@@ -4,7 +4,7 @@ import { BuildingModel } from '../../../../../models/BuildingModel';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CharacterService } from '../../../../../service/character.service';
 import { GroupService } from '../../../../../service/group.service';
-import { mutuallyExclusiveWith, characterWithIdExists, groupWithIdExists } from '../../../../../utils/Validator';
+import { mutuallyExclusiveWith, noCharacterWithId, noGroupWithId } from '../../../../../utils/Validator';
 
 @Component({
   selector: 'app-admin-add-building',
@@ -39,13 +39,13 @@ export class AdminAddBuildingComponent implements OnInit {
       }),
       'characterId': new FormControl(this._buildingModel.characterId, {
         asyncValidators: [
-          characterWithIdExists(this._characterService)
+          noCharacterWithId(this._characterService)
         ],
         updateOn: 'blur'
       }),
       'groupId': new FormControl(this._buildingModel.groupId, {
         asyncValidators: [
-          groupWithIdExists(this._groupService)
+          noGroupWithId(this._groupService)
         ],
         updateOn: 'blur'
       }),

@@ -15,15 +15,15 @@ export class TicketsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._tickets.GetByAccountId(this._account.currentUserId)
-    .subscribe(tickets => {
-      console.log(tickets);
-    })
+    this._tickets.getByAccountId(this._account.currentUserId)
+      .subscribe(tickets => {
+        console.log(tickets);
+      })
 
-    this._tickets.GetById(1)
-    .subscribe(tickets => {
-      console.log(tickets);
-    })
+    this._tickets.getById(1)
+      .subscribe(tickets => {
+        console.log(tickets);
+      })
   }
 
 }
