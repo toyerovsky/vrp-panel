@@ -13,12 +13,12 @@ import { Router } from "@angular/router";
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
   constructor(
-    toastr: ToastrService,
+    private _toastr: ToastrService,
     private _http: HttpClient,
     private _cookie: CookieService,
-    private _router: Router,
+    private _router: Router
   ) {
-    super(toastr);
+    super(_toastr, _router);
   }
 
   public get currentUserId(): number {

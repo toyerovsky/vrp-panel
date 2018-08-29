@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import AbstractService from './abstract.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,19 @@ import { ToastrService } from 'ngx-toastr';
 export class TicketService extends AbstractService {
 
   constructor(
-    toastr: ToastrService,
-    private _http: HttpClient) {
-    super(toastr);
+    private _toastr: ToastrService,
+    private _http: HttpClient,
+    private _router: Router) {
+    super(_toastr, _router);
   }
 
-  public getByAccountId(id: number): Observable<TicketModel[]>{
-    return this._http.get<TicketModel[]>(`${environment.apiUrl}/ticket/account/${id}`,{withCredentials: true})
-    .pipe(catchError(this.handleError<TicketModel[]>()))
+  public getByAccountId(id: number): Observable<TicketModel[]> {
+    return this._http.get<TicketModel[]>(`${environment.apiUrl}/ticket/account/${id}`, { withCredentials: true })
+      .pipe(catchError(this.handleError<TicketModel[]>()))
   }
 
-  public getById(id: number): Observable<TicketModel>{
-    return this._http.get<TicketModel>(`${environment.apiUrl}/ticket/${id}`,{withCredentials: true})
-    .pipe(catchError(this.handleError<TicketModel>()))
+  public getById(id: number): Observable<TicketModel> {
+    return this._http.get<TicketModel>(`${environment.apiUrl}/ticket/${id}`, { withCredentials: true })
+      .pipe(catchError(this.handleError<TicketModel>()))
   }
 }

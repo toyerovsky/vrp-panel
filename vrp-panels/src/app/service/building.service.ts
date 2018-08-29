@@ -6,15 +6,17 @@ import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
 import { BuildingModel } from "../models/BuildingModel";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuildingService extends AbstractService {
   constructor(
-    toastr: ToastrService,
-    private _http: HttpClient) {
-    super(toastr);
+    private _toastr: ToastrService,
+    private _http: HttpClient,
+    private _router: Router) {
+    super(_toastr, _router);
   }
 
   public getAllByCharacterId(characterId: number): Observable<BuildingModel[]> {

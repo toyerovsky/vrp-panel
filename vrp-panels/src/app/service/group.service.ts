@@ -8,11 +8,15 @@ import AbstractService from './abstract.service';
 import { ToastrService } from 'ngx-toastr';
 import { GroupModel } from '../models/GroupModel';
 import { WorkerModel } from '../models/WorkerModel';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class GroupService extends AbstractService {
-  constructor(toastr: ToastrService, private _http: HttpClient) {
-    super(toastr);
+  constructor(
+    private _toastr: ToastrService,
+    private _http: HttpClient,
+    private _router: Router) {
+    super(_toastr, _router);
   }
 
   public getAllByAccountId(accountId: number): Observable<WorkerModel[]> {

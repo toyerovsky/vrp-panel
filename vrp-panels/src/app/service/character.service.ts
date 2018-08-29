@@ -7,13 +7,15 @@ import { environment } from '../../environments/environment';
 import { catchError } from "rxjs/operators";
 import AbstractService from "./abstract.service";
 import { ToastrService } from "ngx-toastr";
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterService extends AbstractService {
   constructor(
-    toastr: ToastrService,
-    private _http: HttpClient) {
-    super(toastr);
+    private _toastr: ToastrService,
+    private _http: HttpClient,
+    private _router: Router) {
+    super(_toastr, _router);
   }
 
   public getAllByAccountId(accountId: number): Observable<CharacterModel[]> {
