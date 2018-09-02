@@ -42,9 +42,8 @@ export class PenaltyService extends AbstractService {
       .pipe(catchError(this.handleError<PenaltyModel>()));
   }
 
-  public deactivate(deactivatorId: number, penaltyId: number, penaltyModel: PenaltyModel) {
-    penaltyModel.deactivatorId = deactivatorId;
-    return this._http.post<PenaltyModel>(`${environment.apiUrl}/penalty/deactivate/${penaltyId}`, penaltyModel, { withCredentials: true })
+  public deactivate(penaltyId: number) {
+    return this._http.put<PenaltyModel>(`${environment.apiUrl}/penalty/deactivate/${penaltyId}`, {}, { withCredentials: true })
       .pipe(catchError(this.handleError<PenaltyModel>()));
   }
 }

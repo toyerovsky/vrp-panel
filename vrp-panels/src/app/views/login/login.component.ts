@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   loginClickHandler() {
     this._accountService.getByEmail(this._loginModel.email).subscribe(account => {
       hash(this._loginModel.password, account.passwordSalt).then(result => {
-        alert(result)
         this._accountService.login(this._loginModel.email, result).subscribe(data => {
           if (data === undefined) {
             setTimeout(() => this._toastrService.error('Podane dane logowania są niepoprawne.'));
