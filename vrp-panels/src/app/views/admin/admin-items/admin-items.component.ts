@@ -59,6 +59,10 @@ export class AdminItemsComponent implements OnInit {
   }
 
   editItemClickHandler(itemModel: ItemModel) {
+    this._itemService.getById(itemModel.id).subscribe(item => {
+      Object.assign(itemModel, item);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editItemDialog.open(AdminEditBuildingComponent, {
       data: itemModel,
       maxWidth: '60vh'

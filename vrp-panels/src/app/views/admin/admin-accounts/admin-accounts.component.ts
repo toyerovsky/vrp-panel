@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminEditAccountComponent } from './elements/admin-edit-account/admin-edit-account.component';
 // dialogs
 
-
 @Component({
   selector: 'app-admin-accounts',
   templateUrl: './admin-accounts.component.html',
@@ -15,7 +14,6 @@ import { AdminEditAccountComponent } from './elements/admin-edit-account/admin-e
 export class AdminAccountsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'forumUserName', 'email', 'serverRank', 'lastLogin'];
   private _dataSource = new MatTableDataSource<AccountModel>();
-  private _lastAccounts: AccountModel[];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,8 +28,7 @@ export class AdminAccountsComponent implements OnInit {
   ngOnInit() {
     this._accountService.getAll().subscribe(accounts => {
       if (accounts != undefined) {
-        this._lastAccounts = accounts;
-        this._dataSource.data = this._lastAccounts;
+        this._dataSource.data = accounts;
       }
     });
     this._dataSource.sort = this.sort;
@@ -39,8 +36,12 @@ export class AdminAccountsComponent implements OnInit {
   }
 
   editAccountClickHandler(accountModel: AccountModel) {
+    this._accountService.getById(accountModel.id).subscribe(account => {
+      Object.assign(accountModel, account);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editAccountDialog.open(AdminEditAccountComponent, {
-      data: accountModel,
+      data: accountModel, 
       maxWidth: '60vh'
     });
 

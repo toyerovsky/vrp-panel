@@ -1,6 +1,3 @@
-import { defaultIfEmpty, map, every, tap } from 'rxjs/operators';
-import { AccountModel } from './../../../../../models/AccountModel';
-import { catchError, finalize } from 'rxjs/operators';
 import { PenaltyType } from './../../../../../enums/PenaltyType';
 import { CharacterService } from './../../../../../service/character.service';
 import { AccountService } from './../../../../../service/account.service';
@@ -9,8 +6,7 @@ import { PenaltyModel } from './../../../../../models/PenaltyModel';
 import { PENALTY_TYPES } from './../../../../../const/Names';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { noCharacterWithId, noAccountWithId, requiredIfValues } from '../../../../../utils/Validator';
-import { of } from 'rxjs';
+import { requiredIfValues } from '../../../../../utils/Validator';
 
 @Component({
   selector: 'app-admin-add-penalty',

@@ -37,6 +37,10 @@ export class AccountService extends AbstractService {
       .pipe(catchError(this.handleError<void>()));
   }
 
+  public logOut(): Observable<void> {
+    return this._http.post<void>(`${environment.apiUrl}/account/logout`, {}, { withCredentials: true })
+  }
+
   public getGravatarUrl(email: string): string {
     return `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}`;
   }

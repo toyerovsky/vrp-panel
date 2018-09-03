@@ -1,7 +1,7 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../service/account.service';
 import { AccountModel } from '../../models/AccountModel';
-import { TrustedStyleService } from '../../service/trusted-style.service';
 
 @Component({
   selector: 'app-app-root',
@@ -12,7 +12,8 @@ export class AppRootComponent implements OnInit {
   private _accountModel: AccountModel;
 
   constructor(
-    private _accountService: AccountService) {
+    private _accountService: AccountService,
+    private _cookie: CookieService) {
   }
 
   ngOnInit() {
@@ -32,5 +33,10 @@ export class AppRootComponent implements OnInit {
       return '#ebc11a';
     else if (serverRank.startsWith('Support'))
       return '#52aeff'
+  }
+
+  public logOut(): void {
+    this._accountService.logOut().subscribe();
+    this._cookie.delete("AccountId");
   }
 }

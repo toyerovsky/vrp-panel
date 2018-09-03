@@ -1,4 +1,4 @@
-import { MatPaginatorIntl } from '@angular/material';
+import { MatPaginatorIntl, MatProgressSpinnerModule } from '@angular/material';
 // modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -82,6 +82,9 @@ import { TicketService } from './service/ticket.service';
 // misc
 import localePl from '@angular/common/locales/pl';
 import { getPolishPaginatorIntl } from './utils/PolishPaginator';
+import { AdminItemTemplatesComponent } from './views/admin/admin-item-templates/admin-item-templates.component';
+import { ForbiddenComponent } from './views/forbidden/forbidden.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 registerLocaleData(localePl);
 
@@ -117,7 +120,10 @@ registerLocaleData(localePl);
     AdminEditItemComponent,
     AdminPenaltiesComponent,
     AdminAddPenaltyComponent,
-    AdminEditPenaltyComponent
+    AdminEditPenaltyComponent,
+    AdminItemTemplatesComponent,
+    ForbiddenComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +157,8 @@ registerLocaleData(localePl);
     MatNativeDateModule,
     MatPaginatorModule,
     MatAutocompleteModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,

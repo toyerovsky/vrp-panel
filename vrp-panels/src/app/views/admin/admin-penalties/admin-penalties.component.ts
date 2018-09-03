@@ -55,6 +55,10 @@ export class AdminPenaltiesComponent implements OnInit {
   }
 
   editPenaltyClickHandler(penaltyModel: PenaltyModel) {
+    this._penaltyService.getById(penaltyModel.id).subscribe(penalty => {
+      Object.assign(penaltyModel, penalty);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editPenaltyDialog.open(AdminEditPenaltyComponent, {
       data: penaltyModel,
       maxWidth: '60vh'

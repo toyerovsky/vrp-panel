@@ -16,10 +16,16 @@ export default class AbstractService {
 
   protected handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error);
-      if (error.status == 403) {
+      if (error.status === 0) {
+        this.toastr.error("Nie udało się nawiązać bezpiecznego połączenia z API.")
+      }
+      else if (error.status === 401) /* unauthorized */ {
+        this.router.navigate(['login']);
+      }
+      else if (error.status === 403) /* forbidden */ {
         this.router.navigate(['forbidden']);
       }
+      console.error(error);
       return of(result as T);
     };
   }

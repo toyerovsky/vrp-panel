@@ -60,6 +60,10 @@ export class AdminBuildingsComponent implements OnInit {
   }
 
   editBuildingClickHandler(buildingModel: BuildingModel) {
+    this._buildingService.getById(buildingModel.id).subscribe(building => {
+      Object.assign(buildingModel, building);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editBuildingDialog.open(AdminEditBuildingComponent, {
       data: buildingModel,
       maxWidth: '60vh'

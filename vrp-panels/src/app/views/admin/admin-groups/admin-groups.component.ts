@@ -57,6 +57,10 @@ export class AdminGroupsComponent implements OnInit {
   }
 
   editGroupClickHandler(groupModel: GroupModel) {
+    this._groupService.getById(groupModel.id).subscribe(group => {
+      Object.assign(groupModel, group);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editGroupDialog.open(AdminEditGroupComponent, {
       data: groupModel,
       maxWidth: '60vh'

@@ -1,3 +1,5 @@
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { ForbiddenComponent } from './views/forbidden/forbidden.component';
 import { AdminPenaltiesComponent } from './views/admin/admin-penalties/admin-penalties.component';
 import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
 import { NgModule } from '@angular/core';
@@ -39,11 +41,13 @@ const routes: Routes = [
           { path: 'penalties', component: AdminPenaltiesComponent }
         ]
       },
-      { path: 'tickets', component: TicketsComponent }
+      { path: 'tickets', component: TicketsComponent },
+      { path: 'forbidden', component: ForbiddenComponent },
+      { path: 'notfound', component: NotFoundComponent }
     ]
   },
   //ALWAYS AT THE END OF ROUTES
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/notfound' }
 ];
 
 @NgModule({

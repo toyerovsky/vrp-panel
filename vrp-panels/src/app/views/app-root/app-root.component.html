@@ -1,7 +1,14 @@
-<main class="app-container">
+<div *ngIf="!_accountModel" class="loading">
+  <div>
+    <mat-spinner></mat-spinner>
+    <p>Tylko chwilka...</p>
+  </div>
+</div>
+
+<main *ngIf="_accountModel" class="app-container">
   <aside class="asideContent">
     <header class="panelHeader">
-      <div class="userBox" *ngIf="_accountModel">
+      <div class="userBox">
         <div class="userImg">
           <img class="avatar" [src]="_accountModel.useGravatar == false ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl :
         this._accountService.getGravatarUrl(this._accountModel.gravatarEmail) + '.jpg'" />
@@ -109,7 +116,7 @@
           Przejdź do forum
         </a>
 
-        <a class="button" href="#">
+        <a class="button" (click)="logOut()">
           Wyloguj się
         </a>
       </div>

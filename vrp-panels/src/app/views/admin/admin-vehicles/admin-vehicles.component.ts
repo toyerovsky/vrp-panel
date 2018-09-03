@@ -56,6 +56,10 @@ export class AdminVehiclesComponent implements OnInit {
   }
 
   editVehicleClickHandler(vehicleModel: VehicleModel) {
+    this._vehicleService.getById(vehicleModel.id).subscribe(vehicle => {
+      Object.assign(vehicleModel, vehicle);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editVehicleDialog.open(AdminEditVehicleComponent, {
       data: vehicleModel,
       maxWidth: '60vh'

@@ -1,3 +1,4 @@
+import { CharacterModel } from './CharacterModel';
 export class AccountModel {
   public id: number;
   public forumUserName: string;
@@ -8,4 +9,5 @@ export class AccountModel {
   public passwordSalt?: string;
   public useGravatar?: boolean;
   public gravatarEmail?: string;
+  public characters: CharacterModel[];
 }

@@ -56,6 +56,10 @@ export class AdminCharactersComponent implements OnInit {
   }
 
   editCharacterClickHandler(characterModel: CharacterModel) {
+    this._characterService.getById(characterModel.id).subscribe(character => {
+      Object.assign(characterModel, character);
+    }); // we do this to get all of the properties
+
     const dialogRef = this._editCharacterDialog.open(AdminEditCharacterComponent, {
       data: characterModel,
       maxWidth: '60vh'
