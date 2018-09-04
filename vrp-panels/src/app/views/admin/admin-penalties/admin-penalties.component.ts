@@ -33,8 +33,8 @@ export class AdminPenaltiesComponent implements OnInit {
       if (vehicles !== undefined) {
         this._lastPenalties = vehicles;
         this._dataSource.data = this._lastPenalties;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

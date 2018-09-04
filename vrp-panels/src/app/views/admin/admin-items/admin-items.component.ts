@@ -37,8 +37,8 @@ export class AdminItemsComponent implements OnInit {
       if (items !== undefined) {
         this._lastItems = items;
         this._dataSource.data = this._lastItems;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

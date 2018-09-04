@@ -37,8 +37,8 @@ export class AdminBuildingsComponent implements OnInit {
       if (buildings != undefined) {
         this._lastBuildings = buildings;
         this._dataSource.data = this._lastBuildings;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

@@ -34,8 +34,8 @@ export class AdminVehiclesComponent implements OnInit {
       if (vehicles !== undefined) {
         this._lastVehicles = vehicles;
         this._dataSource.data = this._lastVehicles;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

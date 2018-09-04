@@ -33,8 +33,8 @@ export class AdminCharactersComponent implements OnInit {
       if (characters != undefined) {
         this._lastCharacters = characters;
         this._dataSource.data = this._lastCharacters;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

@@ -34,8 +34,8 @@ export class AdminGroupsComponent implements OnInit {
       if (groups != undefined) {
         this._lastGroups = groups;
         this._dataSource.data = this._lastGroups;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });

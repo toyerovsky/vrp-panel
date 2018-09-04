@@ -29,8 +29,8 @@ export class AdminAccountsComponent implements OnInit {
     this._accountService.getAll().subscribe(accounts => {
       if (accounts != undefined) {
         this._dataSource.data = accounts;
-        this._dataReady = true;
       }
+      this._dataReady = true;
       this._dataSource.sort = this.sort;
       this._dataSource.paginator = this.paginator;
     });
