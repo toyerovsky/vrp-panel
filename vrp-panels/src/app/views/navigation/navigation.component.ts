@@ -33,31 +33,31 @@ const TREE_DATA: UrlNode[] = [
     children: [
       {
         displayName: 'Konta',
-        src: 'admin/accounts'
+        src: '/admin/accounts'
       },
       {
         displayName: 'Postacie',
-        src: 'admin/characters'
+        src: '/admin/characters'
       },
       {
         displayName: 'Grupy',
-        src: 'admin/groups'
+        src: '/admin/groups'
       },
       {
         displayName: 'Pojazdy',
-        src: 'admin/vehicles'
+        src: '/admin/vehicles'
       },
       {
         displayName: 'Kary',
-        src: 'admin/penalties'
+        src: '/admin/penalties'
       },
       {
         displayName: 'Budynki',
-        src: 'admin/buildings'
+        src: '/admin/buildings'
       },
       {
         displayName: 'Przedmioty',
-        src: 'admin/items'
+        src: '/admin/items'
       }
     ]
   },
@@ -69,7 +69,7 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Moje konto',
     icon: 'person',
-    src: '/admin/characters'
+    src: '/player/characters'
   }
 ];
 
