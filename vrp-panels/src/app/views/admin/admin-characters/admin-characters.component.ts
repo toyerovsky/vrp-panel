@@ -15,6 +15,7 @@ export class AdminCharactersComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'accountId', 'name', 'money', 'bank', 'gender', 'isAlive'];
   private _dataSource = new MatTableDataSource<CharacterModel>();
   private _lastCharacters: CharacterModel[];
+  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,10 +33,11 @@ export class AdminCharactersComponent implements OnInit {
       if (characters != undefined) {
         this._lastCharacters = characters;
         this._dataSource.data = this._lastCharacters;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addCharacterClickHandler() {

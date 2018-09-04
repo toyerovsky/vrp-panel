@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource, MatDialog, MatPaginator, MatPaginatorIntl } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { AccountService } from '../../../service/account.service';
 import { AccountModel } from '../../../models/AccountModel';
 import { ToastrService } from 'ngx-toastr';
 import { AdminEditAccountComponent } from './elements/admin-edit-account/admin-edit-account.component';
-// dialogs
 
 @Component({
   selector: 'app-admin-accounts',
@@ -14,6 +13,7 @@ import { AdminEditAccountComponent } from './elements/admin-edit-account/admin-e
 export class AdminAccountsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'forumUserName', 'email', 'serverRank', 'lastLogin'];
   private _dataSource = new MatTableDataSource<AccountModel>();
+  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -29,10 +29,11 @@ export class AdminAccountsComponent implements OnInit {
     this._accountService.getAll().subscribe(accounts => {
       if (accounts != undefined) {
         this._dataSource.data = accounts;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   editAccountClickHandler(accountModel: AccountModel) {
@@ -41,7 +42,7 @@ export class AdminAccountsComponent implements OnInit {
     }); // we do this to get all of the properties
 
     const dialogRef = this._editAccountDialog.open(AdminEditAccountComponent, {
-      data: accountModel, 
+      data: accountModel,
       maxWidth: '60vh'
     });
 

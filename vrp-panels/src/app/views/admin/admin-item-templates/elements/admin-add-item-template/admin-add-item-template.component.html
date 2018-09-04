@@ -1,0 +1,71 @@
+<h2>Dodaj przedmiot</h2>
+<form [formGroup]="_addItemForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-select formControlName="itemType" placeholder="Typ przedmiotu">
+      <mat-option *ngFor="let type of _itemTypes" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="itemType.errors?.required">
+      Pole typ przedmiotu jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="!_currentForm?.firstParamValues" class="full-width">
+    <input type="number" formControlName="firstParameter" matInput placeholder="{{_currentForm?.firstParamLabel || 'Pierwszy parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field *ngIf="_currentForm?.firstParamValues" class="full-width">
+    <mat-select formControlName="firstParameter" placeholder={{_currentForm.firstParamLabel}}>
+      <mat-option *ngFor="let item of _currentForm?.firstParamValues" [value]="item.value">
+        {{item.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="secondParameter" matInput placeholder="{{_currentForm?.secondParamLabel || 'Drugi parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="thirdParameter" matInput placeholder="{{_currentForm?.thirdParamLabel || 'Trzeci parametr'}}"
+    />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input type="number" formControlName="fourthParameter" matInput placeholder="{{_currentForm?.fourthParamLabel || 'Czwarty parametr'}}"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Nazwa" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="characterId" (blur)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    />
+    <mat-hint *ngIf="_itemModel.character">Id konta: {{_itemModel.character.accountId}} Id postaci: {{_itemModel.character.id}} {{_itemModel.character.name}} {{_itemModel.character.surname}}</mat-hint>
+    <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="buildingId" (blur)="loadBuildingHandler($event.target.value)" type="number" matInput placeholder="Id budynku"
+    />
+    <mat-hint *ngIf="_itemModel.building">Id Budynku: {{_itemModel.building.id}} {{_itemModel.building.name}} </mat-hint>
+    <mat-error *ngIf="buildingId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input formControlName="vehicleId" (blur)="loadVehicleHandler($event.target.value)" type="number" matInput placeholder="Id pojazdu"
+    />
+    <mat-hint *ngIf="_itemModel.vehicle">Id Pojazdu: {{_itemModel.vehicle.id}} {{_itemModel.vehicle.name}} </mat-hint>
+    <mat-error *ngIf="vehicleId.errors?.mutuallyExclusiveWith">
+      Pola Id grupy, Id pojazdu oraz Id postaci nie mogą być wypełnione
+      <strong>jednocześnie</strong>
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

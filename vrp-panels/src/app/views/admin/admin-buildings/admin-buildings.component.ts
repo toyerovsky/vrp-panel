@@ -17,6 +17,7 @@ export class AdminBuildingsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'name', 'description', 'spawnPossible', 'owner'];
   private _dataSource = new MatTableDataSource<BuildingModel>();
   private _lastBuildings: BuildingModel[];
+  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,10 +37,11 @@ export class AdminBuildingsComponent implements OnInit {
       if (buildings != undefined) {
         this._lastBuildings = buildings;
         this._dataSource.data = this._lastBuildings;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addBuildingClickHandler() {

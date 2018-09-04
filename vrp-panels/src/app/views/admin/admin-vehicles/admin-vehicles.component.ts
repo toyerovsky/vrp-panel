@@ -16,6 +16,8 @@ export class AdminVehiclesComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'numberPlate', 'name', 'vehicleHash', 'health', 'owner'];
   private _dataSource = new MatTableDataSource<VehicleModel>();
   private _lastVehicles: VehicleModel[];
+  private _dataReady: boolean;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -32,10 +34,11 @@ export class AdminVehiclesComponent implements OnInit {
       if (vehicles !== undefined) {
         this._lastVehicles = vehicles;
         this._dataSource.data = this._lastVehicles;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addVehicleClickHandler() {

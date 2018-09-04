@@ -15,6 +15,8 @@ export class AdminGroupsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'name', 'tag', 'groupType', 'money', 'maxPayday'];
   private _dataSource = new MatTableDataSource<GroupModel>();
   private _lastGroups: GroupModel[];
+  private _dataReady: boolean;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -32,11 +34,11 @@ export class AdminGroupsComponent implements OnInit {
       if (groups != undefined) {
         this._lastGroups = groups;
         this._dataSource.data = this._lastGroups;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addGroupClickHandler() {

@@ -85,6 +85,8 @@ import { getPolishPaginatorIntl } from './utils/PolishPaginator';
 import { AdminItemTemplatesComponent } from './views/admin/admin-item-templates/admin-item-templates.component';
 import { ForbiddenComponent } from './views/forbidden/forbidden.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AdminAddItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-add-item-template/admin-add-item-template.component';
+import { AdminEditItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-edit-item-template/admin-edit-item-template.component';
 
 registerLocaleData(localePl);
 
@@ -123,7 +125,9 @@ registerLocaleData(localePl);
     AdminEditPenaltyComponent,
     AdminItemTemplatesComponent,
     ForbiddenComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminAddItemTemplateComponent,
+    AdminEditItemTemplateComponent
   ],
   imports: [
     BrowserModule,

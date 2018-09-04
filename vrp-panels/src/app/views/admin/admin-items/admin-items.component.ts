@@ -1,3 +1,4 @@
+import { AdminEditItemComponent } from './elements/admin-edit-item/admin-edit-item.component';
 import { AdminEditBuildingComponent } from '../admin-buildings/elements/admin-edit-building/admin-edit-building.component';
 import { AdminAddItemComponent } from './elements/admin-add-item/admin-add-item.component';
 import { ItemModel } from '../../../models/ItemModel';
@@ -18,6 +19,7 @@ export class AdminItemsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'name', 'itemType', 'owner'];
   private _dataSource = new MatTableDataSource<ItemModel>();
   private _lastItems: ItemModel[];
+  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,10 +37,11 @@ export class AdminItemsComponent implements OnInit {
       if (items !== undefined) {
         this._lastItems = items;
         this._dataSource.data = this._lastItems;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addItemClickHandler() {
@@ -63,7 +66,7 @@ export class AdminItemsComponent implements OnInit {
       Object.assign(itemModel, item);
     }); // we do this to get all of the properties
 
-    const dialogRef = this._editItemDialog.open(AdminEditBuildingComponent, {
+    const dialogRef = this._editItemDialog.open(AdminEditItemComponent, {
       data: itemModel,
       maxWidth: '60vh'
     });

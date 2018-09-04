@@ -15,6 +15,8 @@ export class AdminPenaltiesComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'penaltyType', 'reason', 'date', 'expiryDate', 'creator', 'recipient'];
   private _dataSource = new MatTableDataSource<PenaltyModel>();
   private _lastPenalties: PenaltyModel[];
+  private _dataReady: boolean;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,10 +33,11 @@ export class AdminPenaltiesComponent implements OnInit {
       if (vehicles !== undefined) {
         this._lastPenalties = vehicles;
         this._dataSource.data = this._lastPenalties;
+        this._dataReady = true;
       }
+      this._dataSource.sort = this.sort;
+      this._dataSource.paginator = this.paginator;
     });
-    this._dataSource.sort = this.sort;
-    this._dataSource.paginator = this.paginator;
   }
 
   addPenaltyClickHandler() {
