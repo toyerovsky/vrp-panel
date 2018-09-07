@@ -9,8 +9,9 @@
 .asideContent {
   position: fixed;
   width: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   background-color: #1f2127; //21322b
