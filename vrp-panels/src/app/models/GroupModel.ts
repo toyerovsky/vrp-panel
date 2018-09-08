@@ -1,6 +1,7 @@
 import { SafeStyle } from '@angular/platform-browser';
 import { WorkerModel } from './WorkerModel';
 import { CharacterModel } from './CharacterModel';
+import { GroupRankModel } from './GroupRankModel';
 
 export enum GroupTypes {
   Taxi,
@@ -25,6 +26,7 @@ export class GroupModel {
   public money: number;
   public color: string;
   public workers: WorkerModel[];
+  public ranks: GroupRankModel[];
   public bossCharacter: CharacterModel;
   public bossId?: number;
 }

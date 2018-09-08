@@ -1,4 +1,3 @@
-import { MatPaginatorIntl, MatProgressSpinnerModule } from '@angular/material';
 // modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -29,7 +28,9 @@ import {
   MAT_DIALOG_DATA,
   MatPaginatorModule,
   MatAutocompleteModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule, 
+  MatBottomSheetModule
 } from '@angular/material';
 
 // components
@@ -63,6 +64,14 @@ import { AdminEditItemComponent } from './views/admin/admin-items/elements/admin
 import { AdminPenaltiesComponent } from './views/admin/admin-penalties/admin-penalties.component';
 import { AdminAddPenaltyComponent } from './views/admin/admin-penalties/elements/admin-add-penalty/admin-add-penalty.component';
 import { AdminEditPenaltyComponent } from './views/admin/admin-penalties/elements/admin-edit-penalty/admin-edit-penalty.component';
+import { AdminItemTemplatesComponent } from './views/admin/admin-item-templates/admin-item-templates.component';
+import { ForbiddenComponent } from './views/forbidden/forbidden.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AdminAddItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-add-item-template/admin-add-item-template.component';
+import { AdminEditItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-edit-item-template/admin-edit-item-template.component';
+import { GroupManagementComponent } from './views/group-management/group-management.component';
+import { StaffComponent } from './views/group-management/staff/staff.component';
+import { StaffEditWorkerComponent } from './views/group-management/staff/elements/staff-edit-worker/staff-edit-worker.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -82,14 +91,10 @@ import { TicketService } from './service/ticket.service';
 // misc
 import localePl from '@angular/common/locales/pl';
 import { getPolishPaginatorIntl } from './utils/PolishPaginator';
-import { AdminItemTemplatesComponent } from './views/admin/admin-item-templates/admin-item-templates.component';
-import { ForbiddenComponent } from './views/forbidden/forbidden.component';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import { AdminAddItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-add-item-template/admin-add-item-template.component';
-import { AdminEditItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-edit-item-template/admin-edit-item-template.component';
+import { MatPaginatorIntl } from '@angular/material';
+import { ActionBottomSheetComponent } from './views/group-management/staff/elements/action-bottom-sheet/action-bottom-sheet.component';
 
 registerLocaleData(localePl);
-
 
 @NgModule({
   declarations: [
@@ -127,7 +132,11 @@ registerLocaleData(localePl);
     ForbiddenComponent,
     NotFoundComponent,
     AdminAddItemTemplateComponent,
-    AdminEditItemTemplateComponent
+    AdminEditItemTemplateComponent,
+    GroupManagementComponent,
+    StaffComponent,
+    StaffEditWorkerComponent,
+    ActionBottomSheetComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +171,8 @@ registerLocaleData(localePl);
     MatPaginatorModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatBottomSheetModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,
@@ -181,7 +191,11 @@ registerLocaleData(localePl);
     AdminAddItemComponent,
     AdminEditItemComponent,
     AdminAddPenaltyComponent,
-    AdminEditPenaltyComponent
+    AdminEditPenaltyComponent,
+
+    // group management modals
+    StaffEditWorkerComponent,
+    ActionBottomSheetComponent
   ],
   providers: [
     // services
@@ -195,7 +209,7 @@ registerLocaleData(localePl);
     TicketService,
 
     { provide: LOCALE_ID, useValue: "pl" },
-    { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl()},
+    { provide: MatPaginatorIntl, useValue: getPolishPaginatorIntl() },
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]

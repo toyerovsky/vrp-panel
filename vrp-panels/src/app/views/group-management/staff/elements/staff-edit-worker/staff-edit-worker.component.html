@@ -1,0 +1,13 @@
+<h2>Edycja personelu</h2>
+<form [formGroup]="_editWorkerForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <input formControlName="name" matInput placeholder="Dane" />
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-icon matPrefix>dollar</mat-icon>
+    <input formControlName="salary" type="number" matInput placeholder="Wypłata" />
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

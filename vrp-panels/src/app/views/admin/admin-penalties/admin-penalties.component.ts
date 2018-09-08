@@ -29,9 +29,9 @@ export class AdminPenaltiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._penaltyService.getAll().subscribe(vehicles => {
-      if (vehicles !== undefined) {
-        this._lastPenalties = vehicles;
+    this._penaltyService.getAll().subscribe(penalties => {
+      if (penalties !== undefined) {
+        this._lastPenalties = penalties;
         this._dataSource.data = this._lastPenalties;
       }
       this._dataReady = true;

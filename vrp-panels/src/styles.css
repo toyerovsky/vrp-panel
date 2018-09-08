@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 * {
   font-family: 'Roboto', sans-serif;
-  padding:0; margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
-body{
+body {
   background: #eeeeee;
 }
 
@@ -16,19 +17,13 @@ a {
   text-decoration: none;
 }
 
-mat-sidenav[_ngcontent-c1]{
-  padding: 0!important;
-  margin:0!important;
-  width: 16%!important;
-  border:none!important;
-}
-mat-sidenav-content[_ngcontent-c1]{
-  padding-left: 16%;
-  box-sizing: border-box;
+.button {
+  background: none;
+  border: none;
+  outline: none;
 }
 
-.button{
-  background: none;
-  border:none;
-  outline: none;
+.bottom-sheet-container-small {
+  min-width: 256px !important;
+  max-width: calc(100vw - 384px) !important;
 }
