@@ -23,7 +23,8 @@ export class StaffComponent implements OnInit {
   private _dataReady: boolean;
   private _selection = new SelectionModel<WorkerViewModel>(true, []);
   private _rights: GroupRight[];
-  
+  private _bottomSheetOpened: boolean;
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -68,13 +69,29 @@ export class StaffComponent implements OnInit {
       this._dataSource.data.forEach(row => this._selection.select(row));
   }
 
-  openSnackBar() {
+  openBottomSheet() {
     this._bottomSheet.open(ActionBottomSheetComponent, {
       data: this._selection.selected,
       hasBackdrop: false,
       disableClose: true,
       panelClass: 'bottom-sheet-container-small',
     });
-    this._bottomSheet._openedBottomSheetRef.afterDismissed().subscribe(data => this.masterToggle());
+    this._bottomSheet._openedBottomSheetRef.afterDismissed().subscribe(data => {
+      this.masterToggle();
+      this._bottomSheetOpened = false;
+    });
+    this._bottomSheetOpened = true;
+  }
+
+  masterChangeHandler() {
+    this.masterToggle();
+    if (!this._bottomSheetOpened)
+      this.openBottomSheet();
+  }
+
+  childChangeHandler(row: any) {
+    this._selection.toggle(row)
+    if (!this._bottomSheetOpened)
+      this.openBottomSheet();
   }
 }
