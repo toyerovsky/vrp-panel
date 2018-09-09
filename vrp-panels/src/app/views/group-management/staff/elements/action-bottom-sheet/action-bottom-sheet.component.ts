@@ -32,13 +32,21 @@ export class ActionBottomSheetComponent implements OnInit {
       maxWidth: '60vh'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        let observables: Observable<WorkerModel>[] = this.data.map(worker => this._workerService.put(worker.worker.id, result));
+    dialogRef.afterClosed().subscribe(formResult => {
+      if (formResult !== undefined) {
+        this.data.forEach(viewModel => {
+          viewModel.worker.groupRankId = formResult.groupRankId,
+          viewModel.worker.salary = formResult.salary,
+          viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0)
+        });
+
+        let observables: Observable<WorkerModel>[] = this.data.map(
+          worker => this._workerService.put(worker.worker.id, worker.worker)
+        );
         merge(observables).subscribe();
         this._toastrService.success(`Pomyślnie edytowano dane ${observables.length} pracowników.`);
       }
-      this._bottomSheetRef.dismiss();
+      this._bottomSheetRef.dismiss('refresh');
     });
   }
 
@@ -46,6 +54,6 @@ export class ActionBottomSheetComponent implements OnInit {
     let observables: Observable<void>[] = this.data.map(worker => this._workerService.delete(worker.worker.id));
     merge(observables).subscribe();
     this._toastrService.success(`Pomyślnie zwolniono ${observables.length} pracowników.`);
-    this._bottomSheetRef.dismiss();
+    this._bottomSheetRef.dismiss('refresh');
   }
 }

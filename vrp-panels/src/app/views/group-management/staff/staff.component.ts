@@ -1,3 +1,5 @@
+import { StaffEditWorkerComponent } from './elements/staff-edit-worker/staff-edit-worker.component';
+import { WorkerService } from './../../../service/worker.service';
 import { WorkerViewModel } from './../../../viewModels/WorkerViewModel';
 import { GroupRight, GROUP_RIGHTS } from './../../../const/GroupRights';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -6,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../../service/group.service';
 import { ToastrService } from 'ngx-toastr';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource, MatSort, MatPaginator, MatSnackBarRef, MatSnackBar, MatBottomSheet } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatBottomSheet, MatDialog } from '@angular/material';
 import GroupRightsHelper from '../../../helpers/GroupRankHelper';
 import { ActionBottomSheetComponent } from './elements/action-bottom-sheet/action-bottom-sheet.component';
 
@@ -20,10 +22,10 @@ export class StaffComponent implements OnInit {
   private _displayedColumns: string[] =
     ['select', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
   private _dataSource = new MatTableDataSource<WorkerViewModel>();
-  private _dataReady: boolean;
   private _selection = new SelectionModel<WorkerViewModel>(true, []);
   private _rights: GroupRight[];
   private _bottomSheetOpened: boolean;
+  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,26 +34,33 @@ export class StaffComponent implements OnInit {
     private _route: ActivatedRoute,
     private _groupService: GroupService,
     private _toastr: ToastrService,
-    private _bottomSheet: MatBottomSheet) { }
+    private _bottomSheet: MatBottomSheet,
+    private _workerService: WorkerService,
+    private _editWorkerDialog: MatDialog) { }
 
   ngOnInit() {
     this._route.paramMap.subscribe(params => {
       let groupId = +params.get('id');
-      this._groupService.getById(groupId).subscribe(group => {
-        if (group != undefined) {
-          this._group = group;
-          this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
-          this._dataSource.data = group.workers.map(worker => {
-            return {
-              worker: worker,
-              rights: GroupRightsHelper.getRanks(worker)
-            }
-          });
-        } else {
-          this._toastr.error(`Nie odnaleziono grupy o id ${groupId}.`)
-        }
-        this._dataReady = true;
-      })
+      this.refreshData(groupId);
+    });
+  }
+
+  refreshData(groupId: number): void {
+    this._dataReady = false;
+    this._groupService.getById(groupId).subscribe(group => {
+      if (group != undefined) {
+        this._group = group;
+        this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
+        this._dataSource.data = group.workers.map(worker => {
+          return {
+            worker: worker,
+            rights: GroupRightsHelper.getRanks(worker)
+          }
+        });
+      } else {
+        this._toastr.error(`Nie odnaleziono grupy o id ${groupId}.`)
+      }
+      this._dataReady = true;
     });
   }
 
@@ -76,10 +85,15 @@ export class StaffComponent implements OnInit {
       disableClose: true,
       panelClass: 'bottom-sheet-container-small',
     });
+
     this._bottomSheet._openedBottomSheetRef.afterDismissed().subscribe(data => {
+      if (data === 'refresh') {
+        this.refreshData(this._group.id);
+      }
       this.masterToggle();
       this._bottomSheetOpened = false;
     });
+
     this._bottomSheetOpened = true;
   }
 
@@ -93,5 +107,25 @@ export class StaffComponent implements OnInit {
     this._selection.toggle(row)
     if (!this._bottomSheetOpened)
       this.openBottomSheet();
+  }
+
+  editWorkerClickHandler(workerViewModel: WorkerViewModel) {
+    const dialogRef = this._editWorkerDialog.open(StaffEditWorkerComponent, {
+      data: workerViewModel.worker,
+      width: '60vh'
+    });
+
+    dialogRef.afterClosed().subscribe(formResult => {
+      if (formResult !== undefined) {
+        workerViewModel.worker.groupRankId = formResult.groupRankId;
+        workerViewModel.worker.salary = formResult.salary;
+        workerViewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0);
+
+        this._workerService.put(workerViewModel.worker.id, workerViewModel.worker).subscribe(putResult => {
+          this._toastr.success(`Pomyślnie edytowano pracownika ${workerViewModel.worker.character.name} ${workerViewModel.worker.character.surname}.`);
+          this.refreshData(this._group.id);
+        });
+      }
+    });
   }
 }
