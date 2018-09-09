@@ -123,7 +123,7 @@ export default class GroupRightsHelper {
     return right.ninth ? 16384 : 0;
   }
 
-  public static getRanks(workerModel: WorkerModel): WorkerRightsModel {
+  public static getRights(workerModel: WorkerModel): WorkerRightsModel {
     return {
       depositWithdrawMoney: this.getDepositWithdrawMoney(workerModel),
       recruitment: this.getRecruitment(workerModel),
@@ -143,7 +143,7 @@ export default class GroupRightsHelper {
     };
   }
 
-  public static calculateRanks(rights: WorkerRightsModel) : number {
+  public static calculateRights(rights: WorkerRightsModel) : number {
     return this.getDepositWithdrawMoneyValue(rights) |
       this.getRecruitmentValue(rights) |
       this.getOrdersValue(rights) |

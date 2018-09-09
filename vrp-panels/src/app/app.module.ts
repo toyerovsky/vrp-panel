@@ -71,7 +71,8 @@ import { AdminAddItemTemplateComponent } from './views/admin/admin-item-template
 import { AdminEditItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-edit-item-template/admin-edit-item-template.component';
 import { GroupManagementComponent } from './views/group-management/group-management.component';
 import { StaffComponent } from './views/group-management/staff/staff.component';
-import { StaffEditWorkerComponent } from './views/group-management/staff/elements/staff-edit-worker/staff-edit-worker.component';
+import { StaffEditWorkerComponent } from './views/group-management/staff/elements/edition/staff-edit-worker.component';
+import { StaffEditMultipleWorkersComponent } from './views/group-management/staff/elements/edition/staff-edit-multiple-workers.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -136,7 +137,8 @@ registerLocaleData(localePl);
     GroupManagementComponent,
     StaffComponent,
     StaffEditWorkerComponent,
-    ActionBottomSheetComponent
+    ActionBottomSheetComponent,
+    StaffEditMultipleWorkersComponent
   ],
   imports: [
     BrowserModule,

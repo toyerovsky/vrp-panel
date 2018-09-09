@@ -1,4 +1,4 @@
-import { StaffEditWorkerComponent } from './elements/staff-edit-worker/staff-edit-worker.component';
+import { StaffEditWorkerComponent } from './elements/edition/staff-edit-worker.component';
 import { WorkerService } from './../../../service/worker.service';
 import { WorkerViewModel } from './../../../viewModels/WorkerViewModel';
 import { GroupRight, GROUP_RIGHTS } from './../../../const/GroupRights';
@@ -54,7 +54,7 @@ export class StaffComponent implements OnInit {
         this._dataSource.data = group.workers.map(worker => {
           return {
             worker: worker,
-            rights: GroupRightsHelper.getRanks(worker)
+            rights: GroupRightsHelper.getRights(worker)
           }
         });
       } else {
@@ -111,19 +111,14 @@ export class StaffComponent implements OnInit {
 
   editWorkerClickHandler(workerViewModel: WorkerViewModel) {
     const dialogRef = this._editWorkerDialog.open(StaffEditWorkerComponent, {
-      data: workerViewModel.worker,
+      data: workerViewModel,
       width: '60vh'
     });
 
-    dialogRef.afterClosed().subscribe(formResult => {
-      if (formResult !== undefined) {
-        workerViewModel.worker.groupRankId = formResult.groupRankId;
-        workerViewModel.worker.salary = formResult.salary;
-        workerViewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0);
-
+    dialogRef.afterClosed().subscribe(worker => {
+      if (worker !== undefined) {
         this._workerService.put(workerViewModel.worker.id, workerViewModel.worker).subscribe(putResult => {
           this._toastr.success(`Pomyślnie edytowano pracownika ${workerViewModel.worker.character.name} ${workerViewModel.worker.character.surname}.`);
-          this.refreshData(this._group.id);
         });
       }
     });

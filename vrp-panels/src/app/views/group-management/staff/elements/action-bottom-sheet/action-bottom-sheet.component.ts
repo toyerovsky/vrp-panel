@@ -1,11 +1,11 @@
-import { Observable, merge, Subscription } from 'rxjs';
-import { StaffEditWorkerComponent } from './../staff-edit-worker/staff-edit-worker.component';
+import { Observable, merge } from 'rxjs';
 import { WorkerService } from '../../../../../service/worker.service';
 import { WorkerViewModel } from '../../../../../viewModels/WorkerViewModel';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { WorkerModel } from '../../../../../models/WorkerModel';
+import { StaffEditMultipleWorkersComponent } from '../edition/staff-edit-multiple-workers.component';
 
 @Component({
   selector: 'app-action-bottom-sheet',
@@ -27,7 +27,7 @@ export class ActionBottomSheetComponent implements OnInit {
   }
 
   edit() {
-    const dialogRef = this._editWorkerDialog.open(StaffEditWorkerComponent, {
+    const dialogRef = this._editWorkerDialog.open(StaffEditMultipleWorkersComponent, {
       data: this.data,
       maxWidth: '60vh'
     });
@@ -36,8 +36,8 @@ export class ActionBottomSheetComponent implements OnInit {
       if (formResult !== undefined) {
         this.data.forEach(viewModel => {
           viewModel.worker.groupRankId = formResult.groupRankId,
-          viewModel.worker.salary = formResult.salary,
-          viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0)
+            viewModel.worker.salary = formResult.salary,
+            viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0)
         });
 
         let observables: Observable<WorkerModel>[] = this.data.map(

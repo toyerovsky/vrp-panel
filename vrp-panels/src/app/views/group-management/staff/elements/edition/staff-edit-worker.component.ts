@@ -1,3 +1,4 @@
+import { WorkerViewModel } from './../../../../../viewModels/WorkerViewModel';
 import { GroupRankModel } from './../../../../../models/GroupRankModel';
 import { Observable } from 'rxjs';
 import { GroupRankService } from './../../../../../service/group-rank.service';
@@ -5,6 +6,7 @@ import { WorkerModel } from './../../../../../models/WorkerModel';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import GroupRightsHelper from '../../../../../helpers/GroupRankHelper';
 
 @Component({
   selector: 'app-staff-edit-worker',
@@ -17,35 +19,22 @@ export class StaffEditWorkerComponent implements OnInit {
 
   constructor(
     private _dialogRef: MatDialogRef<StaffEditWorkerComponent>,
-    @Inject(MAT_DIALOG_DATA) public workerModel: any,
+    @Inject(MAT_DIALOG_DATA) public viewModel: WorkerViewModel,
     private _groupRankService: GroupRankService,
   ) {
-    this._ranks = _groupRankService.getAllByGroupId(workerModel.groupId);
+    this._ranks = _groupRankService.getAllByGroupId(viewModel.worker.groupId);
   }
 
   ngOnInit() {
-    if (this.workerModel instanceof WorkerModel) { // one worker
-      this._editWorkerForm = new FormGroup({
-        'name': new FormControl({
-          value: `${this.workerModel.character.name} ${this.workerModel.character.surname}`,
-          disabled: true
-        }),
-        'salary': new FormControl(this.workerModel.salary),
-        'groupRank': new FormControl(this.workerModel.groupRank),
-        'customRights': new FormControl(this.workerModel.rights)
-      });
-    } else { // multiple workers
-      this._editWorkerForm = new FormGroup({
-        'name': new FormControl({
-          value:
-            this.workerModel.map(worker => `${worker.character.name} ${worker.character.surname}`).join(', '),
-          disabled: true
-        }),
-        'salary': new FormControl(),
-        'groupRankId': new FormControl(),
-        'rights': new FormControl()
-      });
-    }
+    this._editWorkerForm = new FormGroup({
+      'name': new FormControl({
+        value: `${this.viewModel.worker.character.name} ${this.viewModel.worker.character.surname}`,
+        disabled: true
+      }),
+      'salary': new FormControl(this.viewModel.worker.salary),
+      'groupRank': new FormControl(this.viewModel.worker.groupRank),
+      'customRights': new FormControl(this.viewModel.worker.rights)
+    });
   }
 
   get name() {
@@ -66,7 +55,11 @@ export class StaffEditWorkerComponent implements OnInit {
 
   onSubmit() {
     if (this._editWorkerForm.valid) {
-      this._dialogRef.close(this._editWorkerForm.value);
+      this.viewModel.worker.groupRankId = this._editWorkerForm.value.groupRankId;
+      this.viewModel.worker.salary = this._editWorkerForm.value.salary;
+      this.viewModel.worker.rights = this._editWorkerForm.value.rights.reduce((a, b) => a + b, 0);
+      this.viewModel.rights = GroupRightsHelper.getRights(this.viewModel.worker); 
+      this._dialogRef.close(this.viewModel);
     }
   }
 }
