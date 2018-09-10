@@ -29,7 +29,7 @@ import {
   MatPaginatorModule,
   MatAutocompleteModule,
   MatCheckboxModule,
-  MatProgressSpinnerModule, 
+  MatProgressSpinnerModule,
   MatBottomSheetModule
 } from '@angular/material';
 
@@ -43,7 +43,6 @@ import { AppRootComponent } from './views/app-root/app-root.component';
 import { PlayerCharacterDetailsComponent } from './views/player-characters/elements/player-character-details/player-character-details.component';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
-import { registerLocaleData } from '@angular/common';
 import { AdminEditCharacterComponent } from './views/admin/admin-characters/elements/admin-edit-character/admin-edit-character.component';
 import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
 import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
@@ -69,15 +68,16 @@ import { ForbiddenComponent } from './views/forbidden/forbidden.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { AdminAddItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-add-item-template/admin-add-item-template.component';
 import { AdminEditItemTemplateComponent } from './views/admin/admin-item-templates/elements/admin-edit-item-template/admin-edit-item-template.component';
-import { GroupManagementComponent } from './views/group-management/group-management.component';
 import { StaffComponent } from './views/group-management/staff/staff.component';
 import { StaffEditWorkerComponent } from './views/group-management/staff/elements/edition/staff-edit-worker.component';
 import { StaffEditMultipleWorkersComponent } from './views/group-management/staff/elements/edition/staff-edit-multiple-workers.component';
+import { ActionBottomSheetComponent } from './views/group-management/staff/elements/action-bottom-sheet/action-bottom-sheet.component';
 
 // modules
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData, CommonModule } from '@angular/common';
 
 // services
 import { CharacterService } from './service/character.service';
@@ -93,7 +93,9 @@ import { TicketService } from './service/ticket.service';
 import localePl from '@angular/common/locales/pl';
 import { getPolishPaginatorIntl } from './utils/PolishPaginator';
 import { MatPaginatorIntl } from '@angular/material';
-import { ActionBottomSheetComponent } from './views/group-management/staff/elements/action-bottom-sheet/action-bottom-sheet.component';
+import { RanksComponent } from './views/group-management/ranks/ranks.component';
+import { RanksAddRankComponent } from './views/group-management/ranks/elements/ranks-add-rank/ranks-add-rank.component';
+import { RanksEditRankComponent } from './views/group-management/ranks/elements/ranks-edit-rank/ranks-edit-rank.component';
 
 registerLocaleData(localePl);
 
@@ -134,11 +136,13 @@ registerLocaleData(localePl);
     NotFoundComponent,
     AdminAddItemTemplateComponent,
     AdminEditItemTemplateComponent,
-    GroupManagementComponent,
     StaffComponent,
     StaffEditWorkerComponent,
     ActionBottomSheetComponent,
-    StaffEditMultipleWorkersComponent
+    StaffEditMultipleWorkersComponent,
+    RanksComponent,
+    RanksAddRankComponent,
+    RanksEditRankComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +153,7 @@ registerLocaleData(localePl);
     ToastrModule.forRoot(),
     HttpClientModule,
     ImageCropperModule,
-
+    CommonModule,
     // angular material modules
     MatIconModule,
     MatInputModule,
@@ -197,7 +201,10 @@ registerLocaleData(localePl);
 
     // group management modals
     StaffEditWorkerComponent,
-    ActionBottomSheetComponent
+    StaffEditMultipleWorkersComponent,
+    ActionBottomSheetComponent,
+    RanksAddRankComponent,
+    RanksEditRankComponent
   ],
   providers: [
     // services

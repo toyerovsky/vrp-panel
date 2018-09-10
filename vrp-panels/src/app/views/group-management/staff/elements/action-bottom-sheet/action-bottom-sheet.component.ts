@@ -6,6 +6,7 @@ import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog } from '@angular/ma
 import { ToastrService } from 'ngx-toastr';
 import { WorkerModel } from '../../../../../models/WorkerModel';
 import { StaffEditMultipleWorkersComponent } from '../edition/staff-edit-multiple-workers.component';
+import GroupRightsHelper from '../../../../../helpers/GroupRankHelper';
 
 @Component({
   selector: 'app-action-bottom-sheet',
@@ -28,16 +29,17 @@ export class ActionBottomSheetComponent implements OnInit {
 
   edit() {
     const dialogRef = this._editWorkerDialog.open(StaffEditMultipleWorkersComponent, {
-      data: this.data,
+      data: this.data.map(viewModel => viewModel.worker),
       maxWidth: '60vh'
     });
 
     dialogRef.afterClosed().subscribe(formResult => {
       if (formResult !== undefined) {
         this.data.forEach(viewModel => {
-          viewModel.worker.groupRankId = formResult.groupRankId,
-            viewModel.worker.salary = formResult.salary,
-            viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0)
+          viewModel.worker.groupRankId = formResult.groupRankId;
+          viewModel.worker.salary = formResult.salary;
+          viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0);
+          viewModel.rights = GroupRightsHelper.workerToRights(viewModel.worker);
         });
 
         let observables: Observable<WorkerModel>[] = this.data.map(
@@ -46,7 +48,7 @@ export class ActionBottomSheetComponent implements OnInit {
         merge(observables).subscribe();
         this._toastrService.success(`Pomyślnie edytowano dane ${observables.length} pracowników.`);
       }
-      this._bottomSheetRef.dismiss('refresh');
+      this._bottomSheetRef.dismiss();
     });
   }
 
@@ -54,6 +56,6 @@ export class ActionBottomSheetComponent implements OnInit {
     let observables: Observable<void>[] = this.data.map(worker => this._workerService.delete(worker.worker.id));
     merge(observables).subscribe();
     this._toastrService.success(`Pomyślnie zwolniono ${observables.length} pracowników.`);
-    this._bottomSheetRef.dismiss('refresh');
+    this._bottomSheetRef.dismiss();
   }
 }

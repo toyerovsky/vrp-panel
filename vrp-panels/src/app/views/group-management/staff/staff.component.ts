@@ -18,14 +18,23 @@ import { ActionBottomSheetComponent } from './elements/action-bottom-sheet/actio
   styleUrls: ['./staff.component.scss']
 })
 export class StaffComponent implements OnInit {
+  /** 
+   * Group to display 
+   */
   private _group: GroupModel;
+  /**
+   * Routing parameter
+   */
+  private _groupId: number;
+
+  private _bottomSheetOpened: boolean;
+  private _dataReady: boolean;
+
   private _displayedColumns: string[] =
-    ['select', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
+    ['select', 'index', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
   private _dataSource = new MatTableDataSource<WorkerViewModel>();
   private _selection = new SelectionModel<WorkerViewModel>(true, []);
   private _rights: GroupRight[];
-  private _bottomSheetOpened: boolean;
-  private _dataReady: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,29 +48,37 @@ export class StaffComponent implements OnInit {
     private _editWorkerDialog: MatDialog) { }
 
   ngOnInit() {
-    this._route.paramMap.subscribe(params => {
-      let groupId = +params.get('id');
-      this.refreshData(groupId);
+    this._selection.onChange.subscribe(() => {
+      if (this.isAnythingSelected() && !this._bottomSheetOpened) {
+        this.openBottomSheet();
+      } else if (!this.isAnythingSelected()) {
+        this._bottomSheet.dismiss();
+      }
+    });
+
+    this._route.parent.paramMap.subscribe(params => {
+      this._groupId = +params.get('id');
+      this._dataReady = false;
+      this._groupService.getById(this._groupId).subscribe(group => {
+        if (group != undefined) {
+          this._group = group;
+          this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
+          this._dataSource.data = group.workers.map(worker => {
+            return {
+              worker: worker,
+              rights: GroupRightsHelper.workerToRightsIncludeRankRights(worker)
+            }
+          });
+        } else {
+          this._toastr.error(`Nie odnaleziono grupy o id ${this._groupId}.`)
+        }
+        this._dataReady = true;
+      });
     });
   }
 
-  refreshData(groupId: number): void {
-    this._dataReady = false;
-    this._groupService.getById(groupId).subscribe(group => {
-      if (group != undefined) {
-        this._group = group;
-        this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
-        this._dataSource.data = group.workers.map(worker => {
-          return {
-            worker: worker,
-            rights: GroupRightsHelper.getRights(worker)
-          }
-        });
-      } else {
-        this._toastr.error(`Nie odnaleziono grupy o id ${groupId}.`)
-      }
-      this._dataReady = true;
-    });
+  ngOnDestroy() {
+    this._bottomSheet.dismiss();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -73,9 +90,16 @@ export class StaffComponent implements OnInit {
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-      this._selection.clear() :
+    if (this.isAllSelected()) {
+      this._selection.clear();
+      this._bottomSheet.dismiss();
+    } else {
       this._dataSource.data.forEach(row => this._selection.select(row));
+    }
+  }
+
+  isAnythingSelected() {
+    return this._selection.selected.length != 0;
   }
 
   openBottomSheet() {
@@ -87,10 +111,7 @@ export class StaffComponent implements OnInit {
     });
 
     this._bottomSheet._openedBottomSheetRef.afterDismissed().subscribe(data => {
-      if (data === 'refresh') {
-        this.refreshData(this._group.id);
-      }
-      this.masterToggle();
+      this._selection.clear();
       this._bottomSheetOpened = false;
     });
 
@@ -99,12 +120,6 @@ export class StaffComponent implements OnInit {
 
   masterChangeHandler() {
     this.masterToggle();
-    if (!this._bottomSheetOpened)
-      this.openBottomSheet();
-  }
-
-  childChangeHandler(row: any) {
-    this._selection.toggle(row)
     if (!this._bottomSheetOpened)
       this.openBottomSheet();
   }

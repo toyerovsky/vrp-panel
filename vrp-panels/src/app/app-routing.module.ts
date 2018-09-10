@@ -19,6 +19,7 @@ import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.co
 import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
 import { TicketsComponent } from './views/tickets/tickets.component';
 import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
+import { RanksComponent } from './views/group-management/ranks/ranks.component';
 
 
 const routes: Routes = [
@@ -27,8 +28,10 @@ const routes: Routes = [
   {
     path: '', component: AppRootComponent, children: [
       {
-        path: 'groupmanagement/:id', component: GroupManagementComponent, children: [
-          { path: '', component: StaffComponent }
+        path: 'groupmanagement/:id', children: [
+          { path: '', redirectTo: 'staff', pathMatch: 'full' },
+          { path: 'staff', component: StaffComponent },
+          { path: 'ranks', component: RanksComponent }
         ]
       },
       {

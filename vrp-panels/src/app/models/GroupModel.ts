@@ -21,12 +21,14 @@ export class GroupModel {
   public groupType: string;
   public gImg: SafeStyle;
   public tag: string;
-  public dotation: number;
+  public grant: number;
   public maxPayday: number;
   public money: number;
   public color: string;
   public workers: WorkerModel[];
-  public ranks: GroupRankModel[];
+  public groupRanks: GroupRankModel[];
   public bossCharacter: CharacterModel;
-  public bossId?: number;
+  public bossCharacterId: number;
+  public defaultRankId: number;
+  public defaultRank: GroupRankModel;
 }

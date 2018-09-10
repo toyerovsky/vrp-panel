@@ -32,8 +32,11 @@ export class StaffEditWorkerComponent implements OnInit {
         disabled: true
       }),
       'salary': new FormControl(this.viewModel.worker.salary),
-      'groupRank': new FormControl(this.viewModel.worker.groupRank),
-      'customRights': new FormControl(this.viewModel.worker.rights)
+      'groupRankId': new FormControl(this.viewModel.worker.groupRank),
+      'rights': new FormControl(
+        GroupRightsHelper.rightsToArray(
+          GroupRightsHelper.workerToRights(this.viewModel.worker)
+      ))
     });
   }
 
@@ -58,7 +61,7 @@ export class StaffEditWorkerComponent implements OnInit {
       this.viewModel.worker.groupRankId = this._editWorkerForm.value.groupRankId;
       this.viewModel.worker.salary = this._editWorkerForm.value.salary;
       this.viewModel.worker.rights = this._editWorkerForm.value.rights.reduce((a, b) => a + b, 0);
-      this.viewModel.rights = GroupRightsHelper.getRights(this.viewModel.worker); 
+      this.viewModel.rights = GroupRightsHelper.workerToRights(this.viewModel.worker);
       this._dialogRef.close(this.viewModel);
     }
   }

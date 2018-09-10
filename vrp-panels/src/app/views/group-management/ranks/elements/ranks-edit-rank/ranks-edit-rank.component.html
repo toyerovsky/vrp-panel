@@ -1,16 +1,12 @@
-<h2>Edycja personelu</h2>
-<form [formGroup]="_editWorkerForm" (ngSubmit)="onSubmit()">
+<h2>Edycja rangi</h2>
+<form [formGroup]="_editRankForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="full-width">
-    <input formControlName="name" matInput placeholder="Dane" />
+    <input formControlName="name" matInput placeholder="Nazwa" />
   </mat-form-field>
+  <mat-checkbox class="full-width" formControlName="isDefault">Domyślna</mat-checkbox>
   <mat-form-field class="full-width">
     <span matPrefix style="padding-right: 5px;">$</span>
     <input formControlName="salary" type="number" matInput placeholder="Wypłata" />
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <mat-select formControlName="groupRankId" placeholder="Ranga">
-      <mat-option *ngFor="let rank of (_ranks | async)" [value]="rank.id">{{rank.name}}</mat-option>
-    </mat-select>
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-select formControlName="rights" placeholder="Uprawnienia" multiple>
@@ -25,7 +21,7 @@
       <mat-option *ngFor="let rank of (_ranks | async)" [value]="rank.id">{{rank.name}}</mat-option>
     </mat-select>
   </mat-form-field>
-
+  
   <button type="submit" mat-button>
     Zapisz
   </button>

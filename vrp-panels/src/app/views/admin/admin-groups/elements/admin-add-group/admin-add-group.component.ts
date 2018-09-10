@@ -35,15 +35,15 @@ export class AdminAddGroupComponent implements OnInit {
       'tag': new FormControl(this._groupModel.tag, [
         Validators.required
       ]),
-      'dotation': new FormControl(this._groupModel.dotation),
+      'grant': new FormControl(this._groupModel.grant),
       'maxPayday': new FormControl(this._groupModel.maxPayday),
-      'bossCharacterId': new FormControl(this._groupModel.bossId, [
+      'bossCharacterId': new FormControl(this._groupModel.bossCharacterId, [
         Validators.required
       ], [
         noCharacterWithId(this._characterService)
       ]),
-      'color': new FormControl(this._groupModel.maxPayday, [
-        Validators.pattern('/[0-9A-Fa-f]{6}/g') // hex color
+      'color': new FormControl(this._groupModel.color, [
+        Validators.pattern(new RegExp('[0-9a-f]{3,6}', 'i')) // hex color
       ])
     });
   }
@@ -60,7 +60,7 @@ export class AdminAddGroupComponent implements OnInit {
     return this._addGroupForm.controls.tag as FormControl;
   }
 
-  get dotation(): FormControl {
+  get grant(): FormControl {
     return this._addGroupForm.controls.dotation as FormControl;
   }
 
@@ -85,6 +85,7 @@ export class AdminAddGroupComponent implements OnInit {
       Object.assign(this._groupModel, this._addGroupForm.value);
       this._dialogRef.close(this._groupModel);
     }
+    console.log(this.color.errors)
   }
 
   loadBossCharacterHandler(value: number): void {

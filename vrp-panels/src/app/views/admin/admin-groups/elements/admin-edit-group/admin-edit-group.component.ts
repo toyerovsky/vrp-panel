@@ -35,18 +35,18 @@ export class AdminEditGroupComponent implements OnInit {
       'tag': new FormControl(this.groupModel.tag, [
         Validators.required
       ]),
-      'dotation': new FormControl(this.groupModel.dotation),
+      'dotation': new FormControl(this.groupModel.grant),
       'maxPayday': new FormControl(this.groupModel.maxPayday),
-      'bossCharacterId': new FormControl(this.groupModel.bossId, [
+      'bossCharacterId': new FormControl(this.groupModel.bossCharacterId, [
         Validators.required
       ], [
           noCharacterWithId(this._characterService)
         ]),
       'color': new FormControl(this.groupModel.maxPayday, [
-        Validators.pattern('/[0-9A-Fa-f]{6}/g') // hex color
+        Validators.pattern(new RegExp('[0-9a-f]{3,6}', 'i')) // hex color
       ])
     });
-    this.loadBossCharacterHandler(this.groupModel.bossId)
+    this.loadBossCharacterHandler(this.groupModel.bossCharacterId)
   }
 
   get groupType(): FormControl {
