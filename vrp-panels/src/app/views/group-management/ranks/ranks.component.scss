@@ -6,3 +6,30 @@ table {
 .mat-row:hover {
   background-color: rgb(250, 250, 250);
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.bottom-right {
+  position: fixed;
+  bottom: 3vh;
+  right: 10vh;
+}
+
+.mat-fab {
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+.loading {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

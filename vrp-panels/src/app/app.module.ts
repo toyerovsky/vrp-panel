@@ -30,7 +30,8 @@ import {
   MatAutocompleteModule,
   MatCheckboxModule,
   MatProgressSpinnerModule,
-  MatBottomSheetModule
+  MatBottomSheetModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 // components
@@ -96,6 +97,8 @@ import { MatPaginatorIntl } from '@angular/material';
 import { RanksComponent } from './views/group-management/ranks/ranks.component';
 import { RanksAddRankComponent } from './views/group-management/ranks/elements/ranks-add-rank/ranks-add-rank.component';
 import { RanksEditRankComponent } from './views/group-management/ranks/elements/ranks-edit-rank/ranks-edit-rank.component';
+import { PropertiesComponent } from './views/group-management/properties/properties.component';
+import { VehiclesComponent } from './views/group-management/vehicles/vehicles.component';
 
 registerLocaleData(localePl);
 
@@ -142,7 +145,9 @@ registerLocaleData(localePl);
     StaffEditMultipleWorkersComponent,
     RanksComponent,
     RanksAddRankComponent,
-    RanksEditRankComponent
+    RanksEditRankComponent,
+    PropertiesComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,
@@ -178,7 +183,8 @@ registerLocaleData(localePl);
     MatAutocompleteModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,

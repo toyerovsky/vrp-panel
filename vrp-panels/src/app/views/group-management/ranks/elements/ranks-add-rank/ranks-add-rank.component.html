@@ -1,3 +1,32 @@
-<p>
-  ranks-add-rank works!
-</p>
+<h2>Dodaj rangę</h2>
+<form [formGroup]="_addRankForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+    <mat-label>Nazwa</mat-label>
+    <input formControlName="name" matInput />
+    <mat-error *ngIf="name.errors?.required">
+      Pole nazwa jest
+      <strong>wymagane</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="three-quarters-width">
+    <mat-label>Wypłata</mat-label>
+    <span matPrefix style="padding-right: 5px;">$</span>
+    <input formControlName="salary" type="number" matInput />
+  </mat-form-field>
+  <mat-checkbox color="primary" style="margin-left: 2vh;" class="quarter-width" formControlName="isDefault">Domyślna</mat-checkbox>
+  <mat-form-field class="full-width">
+    <mat-label>Uprawnienia</mat-label>
+    <mat-select formControlName="rights" multiple>
+      <mat-option [value]="1">Wpłata/Wypłata środków</mat-option>
+      <mat-option [value]="2">Rekrutacja</mat-option>
+      <mat-option [value]="4">Zamawianie</mat-option>
+      <mat-option [value]="8">Otwieranie/Zamykanie drzwi</mat-option>
+      <mat-option [value]="16">Czat</mat-option>
+      <mat-option [value]="32">Wysyłanie ofert</mat-option>
+      <mat-option *ngFor="let right of _rights" [value]="right.value">{{right.label}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" mat-button>
+    Zapisz
+  </button>
+</form>

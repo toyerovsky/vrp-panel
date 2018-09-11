@@ -2,11 +2,12 @@ import { Observable, merge } from 'rxjs';
 import { WorkerService } from '../../../../../service/worker.service';
 import { WorkerViewModel } from '../../../../../viewModels/WorkerViewModel';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog } from '@angular/material';
+import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { WorkerModel } from '../../../../../models/WorkerModel';
 import { StaffEditMultipleWorkersComponent } from '../edition/staff-edit-multiple-workers.component';
 import GroupRightsHelper from '../../../../../helpers/GroupRankHelper';
+import { GroupModel } from '../../../../../models/GroupModel';
 
 @Component({
   selector: 'app-action-bottom-sheet',
@@ -17,10 +18,11 @@ export class ActionBottomSheetComponent implements OnInit {
 
   constructor(
     private _bottomSheetRef: MatBottomSheetRef<ActionBottomSheetComponent>,
-    @Inject(MAT_BOTTOM_SHEET_DATA) public data: WorkerViewModel[],
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: { group: GroupModel, workerViewModels: WorkerViewModel[] },
     private _workerService: WorkerService,
     private _editWorkerDialog: MatDialog,
-    private _toastrService: ToastrService
+    private _toastrService: ToastrService,
+    private _acceptSnackbar: MatSnackBar
   ) {
   }
 
@@ -29,33 +31,40 @@ export class ActionBottomSheetComponent implements OnInit {
 
   edit() {
     const dialogRef = this._editWorkerDialog.open(StaffEditMultipleWorkersComponent, {
-      data: this.data.map(viewModel => viewModel.worker),
+      data: this.data,
       maxWidth: '60vh'
     });
 
-    dialogRef.afterClosed().subscribe(formResult => {
-      if (formResult !== undefined) {
-        this.data.forEach(viewModel => {
-          viewModel.worker.groupRankId = formResult.groupRankId;
-          viewModel.worker.salary = formResult.salary;
-          viewModel.worker.rights = formResult.rights.reduce((a, b) => a + b, 0);
-          viewModel.rights = GroupRightsHelper.workerToRights(viewModel.worker);
-        });
-
-        let observables: Observable<WorkerModel>[] = this.data.map(
+    dialogRef.afterClosed().subscribe(workers => {
+      if (workers !== undefined) {
+        let observables: Observable<WorkerModel>[] = workers.map(
           worker => this._workerService.put(worker.worker.id, worker.worker)
         );
-        merge(observables).subscribe();
-        this._toastrService.success(`Pomyślnie edytowano dane ${observables.length} pracowników.`);
+        merge(...observables).subscribe();
+        this._toastrService.success(`Pomyślnie edytowano dane ${workers.length} pracowników.`);
       }
       this._bottomSheetRef.dismiss();
     });
   }
 
   delete() {
-    let observables: Observable<void>[] = this.data.map(worker => this._workerService.delete(worker.worker.id));
-    merge(observables).subscribe();
-    this._toastrService.success(`Pomyślnie zwolniono ${observables.length} pracowników.`);
     this._bottomSheetRef.dismiss();
+    this._bottomSheetRef.afterDismissed().subscribe(data => {
+      const ref = this._acceptSnackbar.open(
+        `Zwolnić ${this.data.workerViewModels.length} pracownika?`,
+        "Tak.",
+        {
+          duration: 3000
+        }
+      );
+
+      ref.afterDismissed().subscribe(data => {
+        if (data.dismissedByAction) {
+          let observables: Observable<void>[] = this.data.workerViewModels.map(worker => this._workerService.delete(worker.worker.id));
+          merge(observables).subscribe();
+          this._toastrService.success(`Pomyślnie zwolniono ${observables.length} pracowników.`);
+        }
+      });
+    });
   }
 }

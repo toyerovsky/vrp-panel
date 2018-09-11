@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'staff']">Personel</button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'ranks']">Rangi</button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'properties']">Nieruchomości</button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'vehicles']">Pojazdy</button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'log']">Historia</button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'staff']"><mat-icon>people</mat-icon>Personel</button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'ranks']"><mat-icon>class</mat-icon>Rangi</button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'properties']"><mat-icon>home</mat-icon>Nieruchomości</button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'vehicles']"><mat-icon>directions_car</mat-icon>Pojazdy</button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'log']"><mat-icon>history</mat-icon>Historia</button>
 </mat-toolbar>
 
 <div *ngIf="!_dataReady" class="loading">
@@ -14,23 +14,17 @@
 
 <div [hidden]="!_dataReady">
   <table mat-table [dataSource]="_dataSource" matSort class="mat-elevation-z8">
-
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="masterChangeHandler()" [checked]="_selection.hasValue() && isAllSelected()"
+        <mat-checkbox color="primary" (change)="masterChangeHandler()" [checked]="_selection.hasValue() && isAllSelected()"
           [indeterminate]="_selection.hasValue() && !isAllSelected()">
         </mat-checkbox>
       </th>
       <td mat-cell *matCellDef="let element">
-        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? this._selection.toggle(element) : null"
+        <mat-checkbox color="primary" (click)="$event.stopPropagation()" (change)="$event ? this._selection.toggle(element) : null"
           [checked]="_selection.isSelected(element)">
         </mat-checkbox>
       </td>
-    </ng-container>
-
-    <ng-container matColumnDef="index">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
-      <td mat-cell *matCellDef="let element; let i = index;">{{i + 1}}</td>
     </ng-container>
 
     <ng-container matColumnDef="name">
@@ -120,9 +114,13 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="_displayedColumns; sticky: true;"></tr>
     <tr mat-row *matRowDef="let row; columns: _displayedColumns;" (click)="editWorkerClickHandler(row)"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[10, 5, 15, 20]" showFirstLastButtons></mat-paginator>
 </div>
+
+<button mat-fab color="primary" class="bottom-right">
+    <mat-icon>add</mat-icon>
+  </button>

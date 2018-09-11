@@ -1,4 +1,4 @@
-<h2>Edycja personelu</h2>
+<h2>Edytuj personel</h2>
 <form [formGroup]="_editWorkerForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="full-width">
     <input formControlName="name" matInput placeholder="Dane" />
@@ -9,7 +9,7 @@
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-select formControlName="groupRankId" placeholder="Ranga">
-      <mat-option *ngFor="let rank of (_ranks | async)" [value]="rank.id">{{rank.name}}</mat-option>
+      <mat-option *ngFor="let rank of (_ranks | async)" [value]="rank.id">{{rank.name}}</mat-option> 
     </mat-select>
   </mat-form-field>
   <mat-form-field class="full-width">
@@ -22,7 +22,7 @@
       <mat-option [value]="32">Wysyłanie ofert</mat-option>
       <mat-option [value]="64">Czat</mat-option>
       <mat-option [value]="128">Czat</mat-option>
-      <mat-option *ngFor="let rank of (_ranks | async)" [value]="rank.id">{{rank.name}}</mat-option>
+      <mat-option *ngFor="let right of _rights" [value]="right.id">{{right.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 

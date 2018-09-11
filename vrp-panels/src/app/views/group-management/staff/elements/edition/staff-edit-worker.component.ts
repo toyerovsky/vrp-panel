@@ -1,3 +1,4 @@
+import { GroupRight, GROUP_RIGHTS } from './../../../../../const/GroupRights';
 import { WorkerViewModel } from './../../../../../viewModels/WorkerViewModel';
 import { GroupRankModel } from './../../../../../models/GroupRankModel';
 import { Observable } from 'rxjs';
@@ -16,6 +17,7 @@ import GroupRightsHelper from '../../../../../helpers/GroupRankHelper';
 export class StaffEditWorkerComponent implements OnInit {
   private _editWorkerForm: FormGroup;
   private _ranks: Observable<GroupRankModel[]>;
+  private _rights: GroupRight[];
 
   constructor(
     private _dialogRef: MatDialogRef<StaffEditWorkerComponent>,
@@ -36,8 +38,9 @@ export class StaffEditWorkerComponent implements OnInit {
       'rights': new FormControl(
         GroupRightsHelper.rightsToArray(
           GroupRightsHelper.workerToRights(this.viewModel.worker)
-      ))
+        ))
     });
+    this._rights = GROUP_RIGHTS.find(right => right.groupType == this.viewModel.worker.group.groupType).rights;
   }
 
   get name() {
@@ -58,10 +61,10 @@ export class StaffEditWorkerComponent implements OnInit {
 
   onSubmit() {
     if (this._editWorkerForm.valid) {
-      this.viewModel.worker.groupRankId = this._editWorkerForm.value.groupRankId;
+      this.viewModel.worker.groupRankId = this._editWorkerForm.value.groupRankId.id;
       this.viewModel.worker.salary = this._editWorkerForm.value.salary;
       this.viewModel.worker.rights = this._editWorkerForm.value.rights.reduce((a, b) => a + b, 0);
-      this.viewModel.rights = GroupRightsHelper.workerToRights(this.viewModel.worker);
+      this.viewModel.rights = GroupRightsHelper.workerToRightsIncludeRankRights(this.viewModel.worker);
       this._dialogRef.close(this.viewModel);
     }
   }

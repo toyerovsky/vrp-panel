@@ -1,3 +1,4 @@
+import { GroupRight, GROUP_RIGHTS } from './../../../../../const/GroupRights';
 import { GroupRankViewModel } from './../../../../../viewModels/GroupRankViewModel';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupRankService } from './../../../../../service/group-rank.service';
@@ -13,6 +14,7 @@ import { GroupModel } from '../../../../../models/GroupModel';
 })
 export class RanksEditRankComponent implements OnInit {
   private _editRankForm: FormGroup;
+  private _rights: GroupRight[];
 
   constructor(
     private _dialogRef: MatDialogRef<RanksEditRankComponent>,
@@ -20,17 +22,17 @@ export class RanksEditRankComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._rights = GROUP_RIGHTS.find(right => right.groupType == this.data.group.groupType).rights;
     this._editRankForm = new FormGroup({
       'name': new FormControl(this.data.viewModel.rank.name, [
         Validators.required
       ]),
-      'salary': new FormControl({
-        value: this.data.viewModel.rank.salary
-      }),
-      'isDefault': new FormControl({
-        value:
-          this.data.group.defaultRankId == this.data.viewModel.rank.id
-      }),
+      'salary': new FormControl(
+        this.data.viewModel.rank.salary
+      ),
+      'isDefault': new FormControl(
+        this.data.group.defaultRankId == this.data.viewModel.rank.id
+      ),
       'rights': new FormControl(GroupRightsHelper.rightsToArray(this.data.viewModel.rights))
     });
   }
@@ -49,5 +51,14 @@ export class RanksEditRankComponent implements OnInit {
 
   get rights() {
     return this._editRankForm.controls.rights as FormControl;
+  }
+
+  onSubmit() {
+    if (this._editRankForm.valid) {
+      Object.assign(this.data.viewModel.rank, this._editRankForm.value);
+      this.data.viewModel.rank.rights = this.rights.value.reduce((a, b) => a + b, 0);
+      this.data.viewModel.rights = GroupRightsHelper.rankToRights(this.data.viewModel.rank);
+      this._dialogRef.close(this.data.viewModel);
+    }
   }
 }

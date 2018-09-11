@@ -31,13 +31,13 @@ export class StaffComponent implements OnInit {
   private _dataReady: boolean;
 
   private _displayedColumns: string[] =
-    ['select', 'index', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
+    ['select', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
   private _dataSource = new MatTableDataSource<WorkerViewModel>();
   private _selection = new SelectionModel<WorkerViewModel>(true, []);
   private _rights: GroupRight[];
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _route: ActivatedRoute,
@@ -70,7 +70,7 @@ export class StaffComponent implements OnInit {
             }
           });
         } else {
-          this._toastr.error(`Nie odnaleziono grupy o id ${this._groupId}.`)
+          this._toastr.error(`Nie odnaleziono grupy o id ${this._groupId}.`);
         }
         this._dataReady = true;
       });
@@ -104,7 +104,10 @@ export class StaffComponent implements OnInit {
 
   openBottomSheet() {
     this._bottomSheet.open(ActionBottomSheetComponent, {
-      data: this._selection.selected,
+      data: {
+        group: this._group,
+        workerViewModels: this._selection.selected
+      },
       hasBackdrop: false,
       disableClose: true,
       panelClass: 'bottom-sheet-container-small',

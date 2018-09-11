@@ -1,5 +1,4 @@
 import { StaffComponent } from './views/group-management/staff/staff.component';
-import { GroupManagementComponent } from './views/group-management/group-management.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { ForbiddenComponent } from './views/forbidden/forbidden.component';
 import { AdminPenaltiesComponent } from './views/admin/admin-penalties/admin-penalties.component';
