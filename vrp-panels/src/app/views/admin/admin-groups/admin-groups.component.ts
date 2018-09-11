@@ -14,11 +14,11 @@ import { AdminEditGroupComponent } from "./elements/admin-edit-group/admin-edit-
 export class AdminGroupsComponent implements OnInit {
   private _displayedColumns: string[] = ['id', 'name', 'tag', 'groupType', 'money', 'maxPayday'];
   private _dataSource = new MatTableDataSource<GroupModel>();
-  private _lastGroups: GroupModel[];
+  private _lastGroups: GroupModel[] = [];
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _groupService: GroupService,
@@ -32,7 +32,7 @@ export class AdminGroupsComponent implements OnInit {
   ngOnInit() {
     this._groupService.getAll().subscribe(groups => {
       if (groups != undefined) {
-        this._lastGroups = groups;
+        this._lastGroups = groups || [];
         this._dataSource.data = this._lastGroups;
       }
       this._dataReady = true;

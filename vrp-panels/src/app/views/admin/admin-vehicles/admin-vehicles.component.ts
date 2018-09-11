@@ -32,7 +32,7 @@ export class AdminVehiclesComponent implements OnInit {
   ngOnInit() {
     this._vehicleService.getAll().subscribe(vehicles => {
       if (vehicles !== undefined) {
-        this._lastVehicles = vehicles;
+        this._lastVehicles = vehicles || [];
         this._dataSource.data = this._lastVehicles;
       }
       this._dataReady = true;

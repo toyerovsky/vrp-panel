@@ -17,8 +17,8 @@ export class AdminCharactersComponent implements OnInit {
   private _lastCharacters: CharacterModel[];
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _characterService: CharacterService,
@@ -31,7 +31,7 @@ export class AdminCharactersComponent implements OnInit {
   ngOnInit() {
     this._characterService.getAll().subscribe(characters => {
       if (characters != undefined) {
-        this._lastCharacters = characters;
+        this._lastCharacters = characters || [];
         this._dataSource.data = this._lastCharacters;
       }
       this._dataReady = true;

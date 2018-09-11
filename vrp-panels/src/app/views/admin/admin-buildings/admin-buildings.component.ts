@@ -19,8 +19,8 @@ export class AdminBuildingsComponent implements OnInit {
   private _lastBuildings: BuildingModel[];
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _characterService: CharacterService,
@@ -35,7 +35,7 @@ export class AdminBuildingsComponent implements OnInit {
   ngOnInit() {
     this._buildingService.getAll().subscribe(buildings => {
       if (buildings != undefined) {
-        this._lastBuildings = buildings;
+        this._lastBuildings = buildings || [];
         this._dataSource.data = this._lastBuildings;
       }
       this._dataReady = true;

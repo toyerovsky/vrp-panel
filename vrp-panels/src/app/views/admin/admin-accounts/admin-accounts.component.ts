@@ -15,8 +15,8 @@ export class AdminAccountsComponent implements OnInit {
   private _dataSource = new MatTableDataSource<AccountModel>();
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _accountService: AccountService,

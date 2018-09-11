@@ -17,8 +17,8 @@ export class AdminItemTemplatesComponent implements OnInit {
   private _lastItems: ItemTemplateModel[];
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _addItemTemplateDialog: MatDialog,
@@ -31,7 +31,7 @@ export class AdminItemTemplatesComponent implements OnInit {
   ngOnInit() {
     this._itemTemplateService.getAll().subscribe(items => {
       if (items !== undefined) {
-        this._lastItems = items;
+        this._lastItems = items || [];
         this._dataSource.data = this._lastItems;
       }
       this._dataReady = true;

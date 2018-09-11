@@ -17,8 +17,8 @@ export class AdminPenaltiesComponent implements OnInit {
   private _lastPenalties: PenaltyModel[];
   private _dataReady: boolean;
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) public sort: MatSort;
+  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   constructor(
     private _penaltyService: PenaltyService,
@@ -31,7 +31,7 @@ export class AdminPenaltiesComponent implements OnInit {
   ngOnInit() {
     this._penaltyService.getAll().subscribe(penalties => {
       if (penalties !== undefined) {
-        this._lastPenalties = penalties;
+        this._lastPenalties = penalties || [];
         this._dataSource.data = this._lastPenalties;
       }
       this._dataReady = true;
