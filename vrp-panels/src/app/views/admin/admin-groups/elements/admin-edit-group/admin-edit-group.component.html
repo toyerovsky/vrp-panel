@@ -1,5 +1,5 @@
 <h2>Edytuj grupę</h2>
-<form [formGroup]="_addGroupForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="_editGroupForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="full-width">
     <mat-select formControlName="groupType" placeholder="Typ grupy">
       <mat-option *ngFor="let type of _groupTypes" [value]="type.value">
@@ -26,9 +26,10 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input formControlName="bossCharacterId" (blur)="loadBossCharacterHandler($event.target.value)" type="number" matInput placeholder="Id szefa"
-    />
-    <mat-hint *ngIf="groupModel.bossCharacter">Id konta: {{groupModel.bossCharacter.accountId}} {{groupModel.bossCharacter.name}} {{groupModel.bossCharacter.surname}}</mat-hint>
+    <input formControlName="bossCharacterId" (blur)="loadBossCharacterHandler($event.target.value)" type="number"
+      matInput placeholder="Id szefa" />
+    <mat-hint *ngIf="groupModel.bossCharacter">Id konta: {{groupModel.bossCharacter.accountId}}
+      {{groupModel.bossCharacter.name}} {{groupModel.bossCharacter.surname}}</mat-hint>
     <mat-error *ngIf="bossCharacterId.errors?.required">
       Pole Id szefa jest
       <strong>wymagane</strong>
@@ -39,14 +40,15 @@
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
+    <span matPrefix style="padding-right:2px;">$</span>
     <input formControlName="grant" type="number" matInput placeholder="Dotacja" />
   </mat-form-field>
   <mat-form-field class="full-width">
+    <span matPrefix style="padding-right:2px;">$</span>
     <input formControlName="maxPayday" type="number" matInput placeholder="Maksymalna wypłata" />
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input #colorInput [style.color]="'#' + colorInput.value" formControlName="color" type="text" matInput placeholder="Kolor"
-    />
+    <input #colorInput [style.color]="'#' + colorInput.value" formControlName="color" type="text" matInput placeholder="Kolor" />
     <span style="padding-right: 2px;" matPrefix>#</span>
     <mat-error *ngIf="color.errors?.pattern">
       Wprowadzony kolor jest

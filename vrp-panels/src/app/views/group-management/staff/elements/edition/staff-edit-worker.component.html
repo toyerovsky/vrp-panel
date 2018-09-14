@@ -13,16 +13,14 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <mat-select formControlName="rights" placeholder="Uprawnienia" multiple>
+    <mat-select formControlName="rights" multiple>
       <mat-option [value]="1">Wpłata/Wypłata środków</mat-option>
       <mat-option [value]="2">Rekrutacja</mat-option>
       <mat-option [value]="4">Zamawianie</mat-option>
       <mat-option [value]="8">Otwieranie/Zamykanie drzwi</mat-option>
       <mat-option [value]="16">Czat</mat-option>
       <mat-option [value]="32">Wysyłanie ofert</mat-option>
-      <mat-option [value]="64">Czat</mat-option>
-      <mat-option [value]="128">Czat</mat-option>
-      <mat-option *ngFor="let right of _rights" [value]="right.id">{{right.name}}</mat-option>
+      <mat-option *ngFor="let right of _rights" [value]="right.value">{{right.label}}</mat-option>
     </mat-select>
   </mat-form-field>
 

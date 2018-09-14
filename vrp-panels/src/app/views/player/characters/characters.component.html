@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'staff']">
+    <mat-icon>people</mat-icon>Postacie
+  </button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'ranks']">
+    <mat-icon>business_center</mat-icon>Grupy
+  </button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'properties']">
+    <mat-icon>sentiment_very_dissatisfied</mat-icon>Kary
+  </button>
+  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'vehicles']">
+    <mat-icon>insert_invitation</mat-icon>Zaproszenia
+  </button>
+</mat-toolbar>
+
+<div *ngIf="!_dataReady" class="loading">
+  <div>
+    <mat-spinner [strokeWidth]="3" [diameter]="100"></mat-spinner>
+  </div>
+</div>
+
+<div [hidden]="!_dataReady">
+  <h3 class="title">Moje postacie</h3>
+  <mat-card class="card" *ngFor="let character of _playerCharacters" (click)="openDetails(character)">
+    <mat-card-content>
+      <img mat-card-sm-image [src]="character.imageUrl || 'https://i.imgur.com/SdoQNnk.png'">
+      <h4>{{character.name}} {{character.surname}}</h4>
+      <p>{{character.playedTime}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

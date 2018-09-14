@@ -31,12 +31,7 @@ export class AdminAddBuildingComponent implements OnInit {
         updateOn: 'blur'
       }),
       'description': new FormControl(this._buildingModel.description),
-      'spawnPossible': new FormControl(this._buildingModel.spawnPossible, {
-        validators: [
-          Validators.required
-        ],
-        updateOn: 'blur'
-      }),
+      'spawnPossible': new FormControl(this._buildingModel.spawnPossible),
       'characterId': new FormControl(this._buildingModel.characterId, {
         asyncValidators: [
           noCharacterWithId(this._characterService)

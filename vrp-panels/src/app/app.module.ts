@@ -38,14 +38,12 @@ import {
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { NavigationComponent } from './views/navigation/navigation.component';
-import { PlayerGroupsComponent } from './views/player-groups/player-groups.component';
-import { PlayerCharactersComponent } from './views/player-characters/player-characters.component';
+import { CharactersComponent } from './views/player/characters/characters.component';
 import { AppRootComponent } from './views/app-root/app-root.component';
-import { PlayerCharacterDetailsComponent } from './views/player-characters/elements/player-character-details/player-character-details.component';
+import { PlayerCharacterDetailsComponent } from './views/player/characters/elements/player-character-details/player-character-details.component';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
 import { AdminAddCharacterComponent } from './views/admin/admin-characters/elements/admin-add-character/admin-add-character.component';
 import { AdminEditCharacterComponent } from './views/admin/admin-characters/elements/admin-edit-character/admin-edit-character.component';
-import { PlayerGroupDetailsComponent } from './views/player-characters/elements/player-group-details/player-group-details.component';
 import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
 import { AdminEditAccountComponent } from './views/admin/admin-accounts/elements/admin-edit-account/admin-edit-account.component';
 import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
@@ -107,20 +105,17 @@ registerLocaleData(localePl);
     AppComponent,
     LoginComponent,
     NavigationComponent,
-    PlayerGroupsComponent,
     AppRootComponent,
-    PlayerCharactersComponent,
+    CharactersComponent,
     PlayerCharacterDetailsComponent,
     AdminCharactersComponent,
     AdminAddCharacterComponent,
     AdminEditCharacterComponent,
-    PlayerGroupDetailsComponent,
     AdminAccountsComponent,
     AdminEditAccountComponent,
     AdminVehiclesComponent,
     AdminAddVehicleComponent,
     AdminEditVehicleComponent,
-    PlayerGroupDetailsComponent,
     AdminGroupsComponent,
     AdminAddGroupComponent,
     AdminEditGroupComponent,
@@ -188,7 +183,6 @@ registerLocaleData(localePl);
   ],
   entryComponents: [
     PlayerCharacterDetailsComponent,
-    PlayerGroupDetailsComponent,
 
     // admin panel modals
     AdminAddCharacterComponent,

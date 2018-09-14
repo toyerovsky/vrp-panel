@@ -19,7 +19,7 @@
   <mat-form-field class="full-width">
     <input formControlName="groupId" (blur)="loadGroupHandler($event.target.value)" type="number" matInput placeholder="Id grupy"
     />
-    <mat-hint *ngIf="buildingModel.group">Id Grupy: {{buildingModel.character.accountId}} {{buildingModel.group.name}} </mat-hint>
+    <mat-hint *ngIf="buildingModel.group">Id Grupy: {{buildingModel.group.id}} {{buildingModel.group.name}} </mat-hint>
     <mat-error *ngIf="groupId.errors?.mutuallyExclusiveWith">
       Pola Id grupy, oraz Id postaci nie mogą być wypełnione
       <strong>jednocześnie</strong>

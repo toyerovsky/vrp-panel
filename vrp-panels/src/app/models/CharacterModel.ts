@@ -1,5 +1,8 @@
-import { SafeStyle } from '@angular/platform-browser';
+import { BuildingModel } from './BuildingModel';
+import { ItemModel } from './ItemModel';
+import { VehicleModel } from './VehicleModel';
 import { AccountModel } from './AccountModel';
+import { WorkerModel } from './WorkerModel';
 
 export class CharacterModel {
   public id: number;
@@ -27,7 +30,11 @@ export class CharacterModel {
   public lastRotationY: number;
   public lastRotationZ: number;
   public minutesToRespawn: number;
-  public characterImage?: SafeStyle;
+  public imageUrl: string;
   public accountId?: number;
   public account: AccountModel;
+  public vehicles: VehicleModel[];
+  public items: ItemModel[];
+  public buildings: BuildingModel[];
+  public workers: WorkerModel[];
 }

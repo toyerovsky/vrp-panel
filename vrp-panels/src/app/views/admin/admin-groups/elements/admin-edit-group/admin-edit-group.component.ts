@@ -12,7 +12,7 @@ import { GROUP_TYPES } from '../../../../../const/Names';
   styleUrls: ['../../../admin-dialog.scss']
 })
 export class AdminEditGroupComponent implements OnInit {
-  private _addGroupForm: FormGroup;
+  private _editGroupForm: FormGroup;
   private _groupTypes = GROUP_TYPES;
 
   constructor(
@@ -23,8 +23,9 @@ export class AdminEditGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._addGroupForm = new FormGroup({
-      'groupType': new FormControl(this.groupModel.groupType,
+    this._editGroupForm = new FormGroup({
+      'groupType': new FormControl(
+        GROUP_TYPES.find(type => type.viewValue == this.groupModel.groupType).value,
         [
           Validators.required
         ]),
@@ -35,46 +36,46 @@ export class AdminEditGroupComponent implements OnInit {
       'tag': new FormControl(this.groupModel.tag, [
         Validators.required
       ]),
-      'dotation': new FormControl(this.groupModel.grant),
+      'grant': new FormControl(this.groupModel.grant),
       'maxPayday': new FormControl(this.groupModel.maxPayday),
       'bossCharacterId': new FormControl(this.groupModel.bossCharacterId, [
         Validators.required
       ], [
           noCharacterWithId(this._characterService)
         ]),
-      'color': new FormControl(this.groupModel.maxPayday, [
+      'color': new FormControl(this.groupModel.color, [
         Validators.pattern(new RegExp('[0-9a-f]{3,6}', 'i')) // hex color
       ])
     });
-    this.loadBossCharacterHandler(this.groupModel.bossCharacterId)
+    this.loadBossCharacterHandler(this.groupModel.bossCharacterId);
   }
 
   get groupType(): FormControl {
-    return this._addGroupForm.controls.groupType as FormControl;
+    return this._editGroupForm.controls.groupType as FormControl;
   }
 
   get name(): FormControl {
-    return this._addGroupForm.controls.name as FormControl;
+    return this._editGroupForm.controls.name as FormControl;
   }
 
   get tag(): FormControl {
-    return this._addGroupForm.controls.tag as FormControl;
+    return this._editGroupForm.controls.tag as FormControl;
   }
 
-  get dotation(): FormControl {
-    return this._addGroupForm.controls.dotation as FormControl;
+  get grant(): FormControl {
+    return this._editGroupForm.controls.grant as FormControl;
   }
 
   get maxPayday(): FormControl {
-    return this._addGroupForm.controls.maxPayday as FormControl;
+    return this._editGroupForm.controls.maxPayday as FormControl;
   }
 
   get color(): FormControl {
-    return this._addGroupForm.controls.color as FormControl;
+    return this._editGroupForm.controls.color as FormControl;
   }
 
   get bossCharacterId(): FormControl {
-    return this._addGroupForm.controls.bossCharacterId as FormControl;
+    return this._editGroupForm.controls.bossCharacterId as FormControl;
   }
 
   closeDialog(): void {
@@ -82,8 +83,8 @@ export class AdminEditGroupComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this._addGroupForm.valid) {
-      Object.assign(this.groupModel, this._addGroupForm.value);
+    if (this._editGroupForm.valid) {
+      Object.assign(this.groupModel, this._editGroupForm.value);
       this._dialogRef.close(this.groupModel);
     }
   }

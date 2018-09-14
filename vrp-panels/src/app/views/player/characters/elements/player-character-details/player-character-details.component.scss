@@ -1,0 +1,23 @@
+.title {
+  font-weight: 700;
+  padding: 1vh;
+}
+
+.info-container {
+  display: block;
+  margin: 1vh;
+}
+
+.cropper {
+  max-height: 200px;
+  height: 200px;
+}
+
+.upload-info {
+  margin: 1vh;
+  float: right;
+}
+
+mat-form-field {
+  margin: 1vh;
+}

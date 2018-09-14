@@ -1,4 +1,5 @@
 import { CharacterModel } from './CharacterModel';
+import { PenaltyModel } from './PenaltyModel';
 export class AccountModel {
   public id: number;
   public forumUserName: string;
@@ -10,4 +11,5 @@ export class AccountModel {
   public useGravatar?: boolean;
   public gravatarEmail?: string;
   public characters: CharacterModel[];
+  public penalties: PenaltyModel[];
 }

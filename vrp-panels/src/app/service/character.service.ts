@@ -1,3 +1,4 @@
+import { ImageModel } from './../models/ImageModel';
 import { CharacterModel } from './../models/CharacterModel';
 import { AccountModel } from './../models/AccountModel';
 import { Injectable } from "@angular/core";
@@ -40,6 +41,12 @@ export class CharacterService extends AbstractService {
 
   public put(characterId: number, characterModel: CharacterModel): Observable<CharacterModel> {
     return this._http.put<CharacterModel>(`${environment.apiUrl}/character/${characterId}`, characterModel, { withCredentials: true })
+      .pipe(catchError(this.handleError<CharacterModel>()));
+  }
+
+  public uploadImage(characterId: number, imageModel: ImageModel): Observable<CharacterModel> {
+    console.log(this.uploadImage)
+    return this._http.put<CharacterModel>(`${environment.apiUrl}/character/image/${characterId}`, imageModel, { withCredentials: true })
       .pipe(catchError(this.handleError<CharacterModel>()));
   }
 }

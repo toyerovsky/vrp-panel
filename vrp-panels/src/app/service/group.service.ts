@@ -43,8 +43,8 @@ export class GroupService extends AbstractService {
     }).pipe(catchError(this.handleError<GroupModel>()));
   }
 
-  public put(groupModel: GroupModel, id: number): Observable<GroupModel> {
-    return this._http.put<GroupModel>(`${environment.apiUrl}/group/${id}`, groupModel, {
+  public put(groupId: number, groupModel: GroupModel): Observable<GroupModel> {
+    return this._http.put<GroupModel>(`${environment.apiUrl}/group/${groupId}`, groupModel, {
       withCredentials: true
     }).pipe(catchError(this.handleError<GroupModel>()));
   }

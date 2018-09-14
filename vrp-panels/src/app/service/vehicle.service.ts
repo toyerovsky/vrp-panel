@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import AbstractService from './abstract.service';
 import { ToastrService } from 'ngx-toastr';
 import { VehicleModel } from '../models/VehicleModel';
@@ -21,6 +21,11 @@ export class VehicleService extends AbstractService {
 
   public getAllByCharacterId(characterId: number): Observable<VehicleModel[]> {
     return this._http.get<VehicleModel[]>(`${environment.apiUrl}/vehicle/character/${characterId}`, { withCredentials: true })
+      .pipe(catchError(this.handleError<VehicleModel[]>()));
+  }
+
+  public getAllByGroupId(groupId: number): Observable<VehicleModel[]> {
+    return this._http.get<VehicleModel[]>(`${environment.apiUrl}/vehicle/group/${groupId}`, { withCredentials: true })
       .pipe(catchError(this.handleError<VehicleModel[]>()));
   }
 
@@ -52,7 +57,8 @@ export class VehicleService extends AbstractService {
   public checkIfNumberPlateTaken(numberPlate: string): Observable<Boolean> {
     return this.getByNumberPlate(numberPlate)
       .pipe(
-        map(vehicle => vehicle != null)
+        map(vehicle => vehicle != null),
+        catchError(this.handleError<Boolean>())
       );
   }
 }

@@ -30,17 +30,17 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input formControlName="characterId" (input)="loadCharacterHandler($event.target.value)" type="number" matInput placeholder="Id postaci"
+    <input formControlName="characterId" (input)="$event.target.value ? loadCharacterHandler($event.target.value) : null" type="number" matInput placeholder="Id postaci"
     />
-    <mat-hint *ngIf="_vehicleModel.character">Id konta: {{_vehicleModel.character.accountId}} {{_vehicleModel.character.name}} {{_vehicleModel.character.surname}}</mat-hint>
+    <mat-hint *ngIf="vehicleModel.character">Id konta: {{vehicleModel.character.accountId}} {{vehicleModel.character.name}} {{vehicleModel.character.surname}}</mat-hint>
     <mat-error *ngIf="characterId.errors?.mutuallyExclusiveWith">
       Pola Id grupy, oraz Id postaci nie mogą być wypełnione
       <strong>jednocześnie</strong>
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input formControlName="groupId" (input)="loadGroupHandler($event.target.value)" type="number" matInput placeholder="Id grupy" />
-    <mat-hint *ngIf="_vehicleModel.group">Id Grupy: {{_vehicleModel.character.accountId}} {{_vehicleModel.group.name}} </mat-hint>
+    <input formControlName="groupId" (input)="$event.target.value ? loadGroupHandler($event.target.value) : null" type="number" matInput placeholder="Id grupy" />
+    <mat-hint *ngIf="vehicleModel.group">Id Grupy: {{vehicleModel.group.id}} {{vehicleModel.group.name}} </mat-hint>
     <mat-error *ngIf="groupId.errors?.mutuallyExclusiveWith">
       Pola Id grupy, oraz Id postaci nie mogą być wypełnione
       <strong>jednocześnie</strong>

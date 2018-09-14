@@ -1,3 +1,5 @@
+import { VehiclesComponent } from './views/group-management/vehicles/vehicles.component';
+import { PropertiesComponent } from './views/group-management/properties/properties.component';
 import { StaffComponent } from './views/group-management/staff/staff.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { ForbiddenComponent } from './views/forbidden/forbidden.component';
@@ -8,8 +10,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // components
-import { PlayerGroupsComponent } from './views/player-groups/player-groups.component';
-import { PlayerCharactersComponent } from './views/player-characters/player-characters.component';
 import { LoginComponent } from './views/login/login.component';
 import { AppRootComponent } from './views/app-root/app-root.component';
 import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
@@ -19,6 +19,7 @@ import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accou
 import { TicketsComponent } from './views/tickets/tickets.component';
 import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
 import { RanksComponent } from './views/group-management/ranks/ranks.component';
+import { CharactersComponent } from './views/player/characters/characters.component';
 
 
 const routes: Routes = [
@@ -30,13 +31,14 @@ const routes: Routes = [
         path: 'groupmanagement/:id', children: [
           { path: '', redirectTo: 'staff', pathMatch: 'full' },
           { path: 'staff', component: StaffComponent },
-          { path: 'ranks', component: RanksComponent }
+          { path: 'ranks', component: RanksComponent },
+          { path: 'properties', component: PropertiesComponent },
+          { path: 'vehicles', component: VehiclesComponent },
         ]
       },
       {
         path: 'player', children: [
-          { path: 'groups', component: PlayerGroupsComponent },
-          { path: 'characters', component: PlayerCharactersComponent }
+          { path: 'characters', component: CharactersComponent }
         ]
       },
       {

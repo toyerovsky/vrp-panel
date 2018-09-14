@@ -19,7 +19,7 @@ export class GroupModel {
   public id: number;
   public name: string;
   public groupType: string;
-  public gImg: SafeStyle;
+  public imageUploadUrl: string;
   public tag: string;
   public grant: number;
   public maxPayday: number;
