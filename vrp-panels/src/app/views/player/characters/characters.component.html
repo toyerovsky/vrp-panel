@@ -23,7 +23,7 @@
   <h3 class="title">Moje postacie</h3>
   <mat-card class="card" *ngFor="let character of _playerCharacters" (click)="openDetails(character)">
     <mat-card-content>
-      <img mat-card-sm-image [src]="character.imageUrl || 'https://i.imgur.com/SdoQNnk.png'">
+      <img mat-card-sm-image src="https://i.imgur.com/SdoQNnk.png">
       <h4>{{character.name}} {{character.surname}}</h4>
       <p>{{character.playedTime}}</p>
     </mat-card-content>

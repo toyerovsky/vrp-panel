@@ -2,6 +2,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../service/account.service';
 import { AccountModel } from '../../models/AccountModel';
+import { GroupModel } from '../../models/GroupModel';
 
 @Component({
   selector: 'app-app-root',

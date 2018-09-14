@@ -27,7 +27,6 @@ export class CharactersComponent implements OnInit {
   ngOnInit() {
     this._characterService.getAllByAccountId(this._accountService.currentUserId)
       .subscribe(characters => {
-        console.log(characters)
         this._playerCharacters = characters;
         characters.forEach(character => {
           character.workers.forEach(worker => {

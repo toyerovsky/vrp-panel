@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { GroupService } from './../../service/group.service';
+import { AccountService } from './../../service/account.service';
+import { GroupModel } from './../../models/GroupModel';
+import { Component, OnInit, Input } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { Observable, of as observableOf } from 'rxjs';
@@ -26,7 +29,13 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Zarządzaj grupami',
     icon: 'business',
-    src: '/player/characters'
+    more: true,
+    children: [
+      {
+        displayName: 'Testowa grupa',
+        src: '/groupmanagement/1'
+      }
+    ]
   },
   {
     displayName: 'Panel admistracyjny',
@@ -85,7 +94,11 @@ export class NavigationComponent implements OnInit {
   treeFlattener: MatTreeFlattener<UrlNode, UrlFlatNode>;
   dataSource: MatTreeFlatDataSource<UrlNode, UrlFlatNode>;
 
-  constructor() {
+  constructor(
+    private _accountService: AccountService,
+    private _groupService: GroupService
+  ) {
+
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
 
