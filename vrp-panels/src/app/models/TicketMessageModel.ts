@@ -1,5 +1,5 @@
-import { AccountModel } from "./AccountModel";
-import { TicketModel } from "./TicketModel";
+import { AccountModel } from './AccountModel';
+import { TicketModel } from './TicketModel';
 
 export class TicketMessageModel {
   public id: number;

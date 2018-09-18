@@ -22,11 +22,11 @@ export class TicketService extends AbstractService {
 
   public getByAccountId(id: number): Observable<TicketModel[]> {
     return this._http.get<TicketModel[]>(`${environment.apiUrl}/ticket/account/${id}`, { withCredentials: true })
-      .pipe(catchError(this.handleError<TicketModel[]>()))
+      .pipe(catchError(this.handleError<TicketModel[]>()));
   }
 
   public getById(id: number): Observable<TicketModel> {
     return this._http.get<TicketModel>(`${environment.apiUrl}/ticket/${id}`, { withCredentials: true })
-      .pipe(catchError(this.handleError<TicketModel>()))
+      .pipe(catchError(this.handleError<TicketModel>()));
   }
 }

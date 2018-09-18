@@ -1,26 +1,22 @@
-import { VehiclesComponent } from './views/group-management/vehicles/vehicles.component';
-import { PropertiesComponent } from './views/group-management/properties/properties.component';
-import { StaffComponent } from './views/group-management/staff/staff.component';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import { ForbiddenComponent } from './views/forbidden/forbidden.component';
-import { AdminPenaltiesComponent } from './views/admin/admin-penalties/admin-penalties.component';
-import { AdminItemsComponent } from './views/admin/admin-items/admin-items.component';
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
 
 // components
-import { LoginComponent } from './views/login/login.component';
-import { AppRootComponent } from './views/app-root/app-root.component';
-import { AdminCharactersComponent } from './views/admin/admin-characters/admin-characters.component';
-import { AdminVehiclesComponent } from './views/admin/admin-vehicles/admin-vehicles.component';
-import { AdminGroupsComponent } from './views/admin/admin-groups/admin-groups.component';
-import { AdminAccountsComponent } from './views/admin/admin-accounts/admin-accounts.component';
-import { TicketsComponent } from './views/tickets/tickets.component';
-import { AdminBuildingsComponent } from './views/admin/admin-buildings/admin-buildings.component';
-import { RanksComponent } from './views/group-management/ranks/ranks.component';
-import { CharactersComponent } from './views/player/characters/characters.component';
-
+import { PropertiesComponent } from './components/group-management/properties/properties.component';
+import { StaffComponent } from './components/group-management/staff/staff.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { PenaltiesComponent } from './components/admin/penalties/penalties.component';
+import { ItemsComponent } from './components/admin/items/items.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRootComponent } from './components/app-root/app-root.component';
+import { VehiclesComponent as GroupVehiclesComponent } from './components/group-management/vehicles/vehicles.component';
+import { VehiclesComponent } from './components/admin/vehicles/vehicles.component';
+import { GroupsComponent } from './components/admin/groups/groups.component';
+import { AccountsComponent } from './components/admin/accounts/accounts.component';
+import { BuildingsComponent } from './components/admin/buildings/buildings.component';
+import { RanksComponent } from './components/group-management/ranks/ranks.component';
+import { CharactersComponent } from './components/player/characters/characters.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
@@ -28,12 +24,13 @@ const routes: Routes = [
   {
     path: '', component: AppRootComponent, children: [
       {
-        path: 'groupmanagement/:id', children: [
+        path: 'groupmanagement/:id',
+        children: [
           { path: '', redirectTo: 'staff', pathMatch: 'full' },
           { path: 'staff', component: StaffComponent },
           { path: 'ranks', component: RanksComponent },
           { path: 'properties', component: PropertiesComponent },
-          { path: 'vehicles', component: VehiclesComponent },
+          { path: 'vehicles', component: GroupVehiclesComponent },
         ]
       },
       {
@@ -42,22 +39,22 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'admin', children: [
-          { path: 'characters', component: AdminCharactersComponent },
-          { path: 'accounts', component: AdminAccountsComponent },
-          { path: 'groups', component: AdminGroupsComponent },
-          { path: 'vehicles', component: AdminVehiclesComponent },
-          { path: 'buildings', component: AdminBuildingsComponent },
-          { path: 'items', component: AdminItemsComponent },
-          { path: 'penalties', component: AdminPenaltiesComponent }
+        path: 'admin',
+        children: [
+          { path: 'characters', component: CharactersComponent },
+          { path: 'accounts', component: AccountsComponent },
+          { path: 'groups', component: GroupsComponent },
+          { path: 'vehicles', component: VehiclesComponent },
+          { path: 'buildings', component: BuildingsComponent },
+          { path: 'items', component: ItemsComponent },
+          { path: 'penalties', component: PenaltiesComponent }
         ]
       },
-      { path: 'tickets', component: TicketsComponent },
       { path: 'forbidden', component: ForbiddenComponent },
       { path: 'notfound', component: NotFoundComponent }
     ]
   },
-  //ALWAYS AT THE END OF ROUTES
+  // ALWAYS AT THE END OF ROUTES
   { path: '**', redirectTo: '/notfound' }
 ];
 
@@ -68,4 +65,5 @@ const routes: Routes = [
   exports: [RouterModule]
 
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

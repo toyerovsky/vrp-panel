@@ -44,7 +44,7 @@ export class WorkerService extends AbstractService {
       .pipe(catchError(this.handleError<WorkerModel>()));
   }
 
-  public delete(workerId: number) : Observable<void> {
+  public delete(workerId: number): Observable<void> {
     return this._http.delete<void>(`${environment.apiUrl}/worker/${workerId}`, { withCredentials: true })
       .pipe(catchError(this.handleError<void>()));
   }

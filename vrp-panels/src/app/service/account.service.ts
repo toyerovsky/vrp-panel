@@ -1,14 +1,14 @@
 import { AccountModel } from './../models/AccountModel';
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable} from 'rxjs';
 import { environment } from '../../environments/environment';
-import { catchError } from "rxjs/operators";
-import AbstractService from "./abstract.service";
-import { ToastrService } from "ngx-toastr";
+import { catchError } from 'rxjs/operators';
+import AbstractService from './abstract.service';
+import { ToastrService } from 'ngx-toastr';
 import md5 from 'md5';
-import { CookieService } from "ngx-cookie-service";
-import { Router } from "@angular/router";
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService extends AbstractService {
@@ -38,7 +38,7 @@ export class AccountService extends AbstractService {
   }
 
   public logOut(): Observable<void> {
-    return this._http.post<void>(`${environment.apiUrl}/account/logout`, {}, { withCredentials: true })
+    return this._http.post<void>(`${environment.apiUrl}/account/logout`, {}, { withCredentials: true });
   }
 
   public getGravatarUrl(email: string): string {

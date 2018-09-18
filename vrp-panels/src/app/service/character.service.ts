@@ -1,13 +1,12 @@
 import { ImageModel } from './../models/ImageModel';
 import { CharacterModel } from './../models/CharacterModel';
-import { AccountModel } from './../models/AccountModel';
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { catchError } from "rxjs/operators";
-import AbstractService from "./abstract.service";
-import { ToastrService } from "ngx-toastr";
+import { catchError } from 'rxjs/operators';
+import AbstractService from './abstract.service';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
@@ -45,7 +44,7 @@ export class CharacterService extends AbstractService {
   }
 
   public uploadImage(characterId: number, imageModel: ImageModel): Observable<CharacterModel> {
-    console.log(this.uploadImage)
+    console.log(this.uploadImage);
     return this._http.put<CharacterModel>(`${environment.apiUrl}/character/image/${characterId}`, imageModel, { withCredentials: true })
       .pipe(catchError(this.handleError<CharacterModel>()));
   }

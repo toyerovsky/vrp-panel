@@ -1,5 +1,5 @@
-import { TicketMessageModel } from "./TicketMessageModel";
-import { AccountModel } from "./AccountModel";
+import { TicketMessageModel } from './TicketMessageModel';
+import { AccountModel } from './AccountModel';
 
 export enum TicketStatusType {
   Expectant,
