@@ -13,7 +13,7 @@ export class VehiclesComponent implements OnInit {
   private _groupId: number;
   private _displayedColumns: string[] = ['index', 'name', 'numberPlate', 'fuel', 'milage', 'health'];
   private _dataReady: boolean;
-  private _dataSource: MatTableDataSource<VehicleModel> = new MatTableDataSource<VehicleModel>();
+  private _dataSource = new MatTableDataSource<VehicleModel>();
 
   @ViewChild(MatSort) public sort: MatSort;
   @ViewChild(MatPaginator) public paginator: MatPaginator;
@@ -26,13 +26,12 @@ export class VehiclesComponent implements OnInit {
     this._route.parent.paramMap.subscribe(params => {
       this._groupId = +params.get('id');
       this._dataReady = false;
-      this._vehicleService.getAllByGroupId(this._groupId).subscribe(buildings => {
-        if (buildings !== undefined) {
-          this._dataSource.data = buildings;
+      this._vehicleService.getAllByGroupId(this._groupId).subscribe(vehicles => {
+        if (vehicles !== undefined) {
+          this._dataSource.data = vehicles;
         }
         this._dataReady = true;
       });
     });
   }
-
 }

@@ -1,9 +1,9 @@
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-    <a routerLink={{node.src}} title={{node.displayName}}>
+    <a [routerLink]="node.src" [title]="node.displayName">
       <mat-icon *ngIf="node.icon">{{node.icon}}</mat-icon>
       <span class="name">{{node.displayName}}</span>
-      <mat-icon class="more" *ngIf="node.more">expand_more</mat-icon>
+      <mat-icon *ngIf="node.expandable" class="more">expand_more</mat-icon>
     </a>
   </mat-tree-node>
 </mat-tree>

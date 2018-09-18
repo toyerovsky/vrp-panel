@@ -16,7 +16,8 @@ import { GroupsComponent } from './components/admin/groups/groups.component';
 import { AccountsComponent } from './components/admin/accounts/accounts.component';
 import { BuildingsComponent } from './components/admin/buildings/buildings.component';
 import { RanksComponent } from './components/group-management/ranks/ranks.component';
-import { CharactersComponent } from './components/player/characters/characters.component';
+import { CharactersComponent as PlayerCharactersComponent } from './components/player/characters/characters.component';
+import { CharactersComponent as AdminCharactersComponent } from './components/admin/characters/characters.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
@@ -35,13 +36,13 @@ const routes: Routes = [
       },
       {
         path: 'player', children: [
-          { path: 'characters', component: CharactersComponent }
+          { path: 'characters', component: PlayerCharactersComponent }
         ]
       },
       {
         path: 'admin',
         children: [
-          { path: 'characters', component: CharactersComponent },
+          { path: 'characters', component: AdminCharactersComponent },
           { path: 'accounts', component: AccountsComponent },
           { path: 'groups', component: GroupsComponent },
           { path: 'vehicles', component: VehiclesComponent },

@@ -1,5 +1,5 @@
-import { BuildingService } from './../../../service/building.service';
-import { BuildingModel } from './../../../models/BuildingModel';
+import { BuildingService } from '../../../service/building.service';
+import { BuildingModel } from '../../../models/BuildingModel';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ export class PropertiesComponent implements OnInit {
   private _groupId: number;
   private _displayedColumns: string[] = ['index', 'name', 'description', 'spawnPossible', 'position'];
   private _dataReady: boolean;
-  private _dataSource: MatTableDataSource<BuildingModel> = new MatTableDataSource<BuildingModel>();
+  private _dataSource = new MatTableDataSource<BuildingModel>();
 
   @ViewChild(MatSort) public sort: MatSort;
   @ViewChild(MatPaginator) public paginator: MatPaginator;
@@ -27,7 +27,7 @@ export class PropertiesComponent implements OnInit {
       this._groupId = +params.get('id');
       this._dataReady = false;
       this._buildingService.getAllByGroupId(this._groupId).subscribe(buildings => {
-        if (buildings != undefined) {
+        if (buildings !== undefined) {
           this._dataSource.data = buildings;
         }
         this._dataReady = true;

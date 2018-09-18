@@ -2,7 +2,7 @@ import { EditWorkerComponent } from './elements/edition/edit-worker.component';
 import { WorkerService } from '../../../service/worker.service';
 import { WorkerViewModel } from '../../../view-models/WorkerViewModel';
 import { GroupRight, GROUP_RIGHTS } from '../../../const/GroupRights';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { GroupModel } from '../../../models/GroupModel';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../../service/group.service';
@@ -17,7 +17,7 @@ import { ActionBottomSheetComponent } from './elements/action-bottom-sheet/actio
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.scss']
 })
-export class StaffComponent implements OnInit {
+export class StaffComponent implements OnInit, OnDestroy {
   /**
    * Group to display
    */

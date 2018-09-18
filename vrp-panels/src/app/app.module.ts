@@ -6,6 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AppRootModule } from './modules/app-root/app-root.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { GroupManagementModule } from './modules/group-management/group-management.module';
+import { PlayerModule } from './modules/player/player.module';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './modules/material/material.module';
 
 // components
 import { AppComponent } from './app.component';
@@ -20,13 +26,6 @@ import { CookieService } from 'ngx-cookie-service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
-import { AdminModule } from './modules/admin/admin.module';
-import { GroupManagementModule } from './modules/group-management/group-management.module';
-import { PlayerModule } from './modules/player/player.module';
-import { ToastrModule } from 'ngx-toastr';
-import { MatCardModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './modules/material/material.module';
 
 registerLocaleData(localePl);
 
@@ -53,8 +52,6 @@ registerLocaleData(localePl);
   providers: [
     AccountService,
     CookieService
-    // {provide: MatDialogRef, useValue: {}},
-    // {provide: MAT_DIALOG_DATA, useValue: []}
   ],
   bootstrap: [AppComponent]
 })
