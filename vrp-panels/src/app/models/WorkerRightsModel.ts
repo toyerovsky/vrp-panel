@@ -14,4 +14,5 @@ export class WorkerRightsModel {
     public seventh: boolean;
     public eight: boolean;
     public ninth: boolean;
+    public panel: boolean;
 }
