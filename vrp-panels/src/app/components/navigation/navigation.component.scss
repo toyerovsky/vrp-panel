@@ -7,6 +7,7 @@
   background-color: #272b33;
   border-top: 2px solid #272a31;
   border-bottom: 2px solid #272a31;
+
   mat-tree-node {
     a {
       display: flex;
@@ -42,13 +43,13 @@
     }
   }
 
-  .more{
+  .more {
     position: absolute;
     right: 0;
   }
 }
 
-@media only screen and (max-width:1650px) {
+@media only screen and (max-width: 1650px) {
   mat-tree-node {
     a {
       padding: 10px 7px !important;
@@ -58,7 +59,7 @@
   }
 }
 
-@media only screen and (max-width:1392px) {
+@media only screen and (max-width: 1392px) {
   mat-tree-node {
     a {
       padding: 6px 4px !important;
@@ -67,7 +68,7 @@
   }
 }
 
-@media only screen and (max-width:1236px) {
+@media only screen and (max-width: 1236px) {
   mat-tree-node {
     a {
       font-size: 13px !important;
@@ -75,7 +76,7 @@
   }
 }
 
-@media only screen and (max-width:976px) {
+@media only screen and (max-width: 976px) {
   .material-icons {
     margin: auto !important;
   }

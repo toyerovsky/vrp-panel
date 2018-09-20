@@ -19,6 +19,8 @@ import { RanksComponent } from './components/group-management/ranks/ranks.compon
 import { CharactersComponent as PlayerCharactersComponent } from './components/player/characters/characters.component';
 import { CharactersComponent as AdminCharactersComponent } from './components/admin/characters/characters.component';
 import { GroupInfoComponent } from './components/group-management/group-info/group-info.component';
+import { PenaltiesComponent as PlayerPenaltiesComponent } from './components/player/penalties/penalties.component';
+import { GroupsComponent as PlayerGroupsComponent} from './components/player/groups/groups.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
@@ -26,8 +28,7 @@ const routes: Routes = [
   {
     path: '', component: AppRootComponent, children: [
       {
-        path: 'groupmanagement/:id',
-        children: [
+        path: 'groupmanagement/:id', children: [
           { path: '', redirectTo: 'info', pathMatch: 'full' },
           { path: 'info', component: GroupInfoComponent },
           { path: 'staff', component: StaffComponent },
@@ -38,7 +39,12 @@ const routes: Routes = [
       },
       {
         path: 'player', children: [
-          { path: 'characters', component: PlayerCharactersComponent }
+          { path: '', redirectTo: 'info', pathMatch: 'full' },
+          { path: 'info', component: PlayerCharactersComponent },
+          { path: 'characters', component: PlayerCharactersComponent },
+          { path: 'groups', component: PlayerGroupsComponent },
+          { path: 'penalties', component: PlayerPenaltiesComponent },
+
         ]
       },
       {

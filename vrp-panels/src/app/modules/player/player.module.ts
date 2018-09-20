@@ -6,6 +6,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { PlayerNavigationComponent } from '../../components/player/player-navigation/player-navigation.component';
+import { GroupsComponent } from '../../components/player/groups/groups.component';
+import { PenaltiesComponent } from '../../components/player/penalties/penalties.component';
 
 @NgModule({
   imports: [
@@ -18,10 +21,16 @@ import { MaterialModule } from '../material/material.module';
   ],
   declarations: [
     CharactersComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    PlayerNavigationComponent,
+    GroupsComponent,
+    PenaltiesComponent
   ],
   entryComponents: [
     CharacterDetailsComponent,
+    PlayerNavigationComponent,
+    GroupsComponent,
+    PenaltiesComponent
   ]
 })
 export class PlayerModule {

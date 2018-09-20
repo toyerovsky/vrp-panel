@@ -1,17 +1,4 @@
-<mat-toolbar>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'staff']">
-    <mat-icon>people</mat-icon>Postacie
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'ranks']">
-    <mat-icon>business_center</mat-icon>Grupy
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'properties']">
-    <mat-icon>sentiment_very_dissatisfied</mat-icon>Kary
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'vehicles']">
-    <mat-icon>insert_invitation</mat-icon>Zaproszenia
-  </button>
-</mat-toolbar>
+<player-navigation></player-navigation>
 
 <div *ngIf="!_dataReady" class="loading">
   <div>

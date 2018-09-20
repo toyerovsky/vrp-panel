@@ -14,8 +14,6 @@ import { CharacterService } from '../../../service/character.service';
 })
 export class CharactersComponent implements OnInit {
   private _playerCharacters: CharacterModel[] = [];
-  private _playerWorkers: WorkerModel[] = [];
-  private _playerPenalties: PenaltyModel[] = [];
   private _dataReady: Boolean;
 
   constructor(
@@ -28,16 +26,6 @@ export class CharactersComponent implements OnInit {
     this._characterService.getAllByAccountId(this._accountService.currentUserId)
       .subscribe(characters => {
         this._playerCharacters = characters;
-        characters.forEach(character => {
-          character.workers.forEach(worker => {
-            this._playerWorkers.push(worker);
-          });
-        });
-        characters.forEach(character => {
-          character.account.penalties.forEach(penalty => {
-            this._playerPenalties.push(penalty);
-          });
-        });
         this._dataReady = true;
       });
   }

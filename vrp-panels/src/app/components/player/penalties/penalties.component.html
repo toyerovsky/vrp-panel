@@ -1,0 +1,10 @@
+<player-navigation></player-navigation>
+
+<div *ngIf="!_dataReady" class="loading">
+  <div>
+    <mat-spinner [strokeWidth]="3" [diameter]="100"></mat-spinner>
+  </div>
+</div>
+
+<div [hidden]="!_dataReady">
+</div>

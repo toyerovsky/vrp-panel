@@ -24,7 +24,6 @@ export class AppRootComponent implements OnInit {
       this._accountModel = account;
       this._accountModel.characters.forEach(character => {
         character.workers.forEach(worker => {
-          console.log(GroupRightsHelper.workerToRightsIncludeRankRights(worker))
           if (GroupRightsHelper.workerToRightsIncludeRankRights(worker).panel) {
             this._manageableGroups.push(worker.group);
           }
