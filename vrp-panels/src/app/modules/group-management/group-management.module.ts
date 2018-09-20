@@ -32,6 +32,8 @@ import { getPolishPaginatorIntl } from '../../utils/PolishPaginator';
 import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { GroupInfoComponent } from '../../components/group-management/group-info/group-info.component';
+import { GroupNavigationComponent } from '../../components/group-management/group-navigation/group-navigation.component';
 
 @NgModule({
   imports: [
@@ -44,7 +46,8 @@ import { MaterialModule } from '../material/material.module';
     StaffComponent,
     RanksComponent,
     PropertiesComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    GroupInfoComponent
   ],
   declarations: [
     StaffComponent,
@@ -55,7 +58,9 @@ import { MaterialModule } from '../material/material.module';
     RanksAddRankComponent,
     RanksEditRankComponent,
     PropertiesComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    GroupInfoComponent,
+    GroupNavigationComponent
   ],
   entryComponents: [
     EditWorkerComponent,

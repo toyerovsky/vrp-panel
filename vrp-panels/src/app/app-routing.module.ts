@@ -18,6 +18,7 @@ import { BuildingsComponent } from './components/admin/buildings/buildings.compo
 import { RanksComponent } from './components/group-management/ranks/ranks.component';
 import { CharactersComponent as PlayerCharactersComponent } from './components/player/characters/characters.component';
 import { CharactersComponent as AdminCharactersComponent } from './components/admin/characters/characters.component';
+import { GroupInfoComponent } from './components/group-management/group-info/group-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
@@ -27,7 +28,8 @@ const routes: Routes = [
       {
         path: 'groupmanagement/:id',
         children: [
-          { path: '', redirectTo: 'staff', pathMatch: 'full' },
+          { path: '', redirectTo: 'info', pathMatch: 'full' },
+          { path: 'info', component: GroupInfoComponent },
           { path: 'staff', component: StaffComponent },
           { path: 'ranks', component: RanksComponent },
           { path: 'properties', component: PropertiesComponent },
