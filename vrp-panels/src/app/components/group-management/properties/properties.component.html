@@ -1,20 +1,4 @@
-<mat-toolbar>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'staff']">
-    <mat-icon>people</mat-icon>Personel
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'ranks']">
-    <mat-icon>class</mat-icon>Rangi
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'properties']">
-    <mat-icon>home</mat-icon>Nieruchomości
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'vehicles']">
-    <mat-icon>directions_car</mat-icon>Pojazdy
-  </button>
-  <button mat-button [routerLink]="['/groupmanagement', _groupId, 'log']">
-    <mat-icon>history</mat-icon>Historia
-  </button>
-</mat-toolbar>
+<app-group-navigation></app-group-navigation>
 
 <div *ngIf="!_dataReady" class="loading">
   <div>
