@@ -23,6 +23,8 @@
       <mat-option [value]="8">Otwieranie/Zamykanie drzwi</mat-option>
       <mat-option [value]="16">Czat</mat-option>
       <mat-option [value]="32">Wysyłanie ofert</mat-option>
+      <mat-option [value]="32768">Panel</mat-option>
+
       <mat-option *ngFor="let right of _rights" [value]="right.value">{{right.label}}</mat-option>
     </mat-select>
   </mat-form-field>

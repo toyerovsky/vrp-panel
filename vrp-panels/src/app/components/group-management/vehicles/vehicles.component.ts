@@ -20,7 +20,8 @@ export class VehiclesComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
-    private _vehicleService: VehicleService) { }
+    private _vehicleService: VehicleService) {
+  }
 
   ngOnInit() {
     this._route.parent.paramMap.subscribe(params => {

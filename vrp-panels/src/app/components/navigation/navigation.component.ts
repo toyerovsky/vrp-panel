@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNode } from '@angular/material/tree';
 import { Observable, of as observableOf } from 'rxjs';
+import { GroupModel } from '../../models/GroupModel';
 
 export class UrlNode {
   displayName: string;
@@ -12,6 +13,8 @@ export class UrlNode {
 }
 
 export class UrlFlatNode {
+  public isNodeExpanded: boolean;
+
   constructor(
     public expandable: boolean,
     public displayName: string,
@@ -30,12 +33,7 @@ const TREE_DATA: UrlNode[] = [
   {
     displayName: 'Zarządzaj grupami',
     icon: 'business',
-    children: [
-      {
-        displayName: 'Testowa grupa',
-        src: '/groupmanagement/1'
-      }
-    ]
+    children: []
   },
   {
     displayName: 'Panel admistracyjny',
@@ -93,6 +91,8 @@ export class NavigationComponent implements OnInit {
   treeFlattener: MatTreeFlattener<UrlNode, UrlFlatNode>;
   dataSource: MatTreeFlatDataSource<UrlNode, UrlFlatNode>;
 
+  @Input() public groups: GroupModel[];
+
   constructor() {
   }
 
@@ -117,6 +117,15 @@ export class NavigationComponent implements OnInit {
       this._isExpandable, this._getChildren);
     this.treeControl = new FlatTreeControl<UrlFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+    this.groups.forEach(group => {
+      const element: UrlNode = {
+        displayName: group.name,
+        src: `/groupmanagement/${group.id}`
+      };
+      TREE_DATA[1].children.push(element);
+    });
+
     this.dataSource.data = TREE_DATA;
   }
 

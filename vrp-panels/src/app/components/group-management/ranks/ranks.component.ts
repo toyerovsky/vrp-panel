@@ -1,8 +1,8 @@
 import { RanksAddRankComponent } from './elements/ranks-add-rank/ranks-add-rank.component';
-import { GroupRankService } from './../../../service/group-rank.service';
+import { GroupRankService } from '../../../service/group-rank.service';
 import { GroupRankViewModel } from '../../../view-models/GroupRankViewModel';
-import { GroupRight, GROUP_RIGHTS } from './../../../const/GroupRights';
-import { GroupService } from './../../../service/group.service';
+import { GroupRight, GROUP_RIGHTS } from '../../../const/GroupRights';
+import { GroupService } from '../../../service/group.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatDialog, MatSort, MatPaginator } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -45,14 +45,14 @@ export class RanksComponent implements OnInit {
       this._groupId = +params.get('id');
       this._dataReady = false;
       this._groupService.getById(this._groupId).subscribe(group => {
-        if (group != undefined) {
+        if (group !== undefined) {
           this._group = group;
           this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
           this._lastRanks = group.groupRanks.map(rank => {
             return {
               rank: rank,
               rights: GroupRankHelper.rankToRights(rank)
-            }
+            };
           });
           this._dataSource.data = this._lastRanks;
         }
@@ -78,7 +78,7 @@ export class RanksComponent implements OnInit {
   }
 
   isAnythingSelected() {
-    return this._selection.selected.length != 0;
+    return this._selection.selected.length !== 0;
   }
 
   addRankClickHandler(): void {

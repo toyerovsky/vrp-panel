@@ -34,4 +34,12 @@ mat-toolbar {
   mat-icon {
     margin-right: 2px;
   }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
 }

@@ -31,7 +31,7 @@ export class StaffComponent implements OnInit, OnDestroy {
   private _dataReady: boolean;
 
   private _displayedColumns: string[] =
-    ['select', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers'];
+    ['select', 'name', 'duty', 'rank', 'salary', 'depositWithdrawMoney', 'recruitment', 'orders', 'doors', 'chat', 'offers', 'panel'];
   private _dataSource = new MatTableDataSource<WorkerViewModel>();
   private _selection = new SelectionModel<WorkerViewModel>(true, []);
   private _rights: GroupRight[];
@@ -63,7 +63,7 @@ export class StaffComponent implements OnInit, OnDestroy {
       this._groupService.getById(this._groupId).subscribe(group => {
         if (group !== undefined) {
           this._group = group;
-          this._rights = GROUP_RIGHTS.find(right => right.groupType == this._group.groupType).rights;
+          this._rights = GROUP_RIGHTS.find(right => right.groupType === this._group.groupType).rights;
           this._dataSource.data = group.workers.map(worker => {
             return {
               worker: worker,
@@ -100,7 +100,7 @@ export class StaffComponent implements OnInit, OnDestroy {
   }
 
   isAnythingSelected() {
-    return this._selection.selected.length != 0;
+    return this._selection.selected.length !== 0;
   }
 
   openBottomSheet() {
@@ -143,5 +143,11 @@ export class StaffComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  getSumOfSalaries() {
+    return this._dataSource.data
+      .map(worker => worker.worker.salary)
+      .reduce((sum, current) => sum + current, 0);
   }
 }
