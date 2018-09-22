@@ -33,7 +33,8 @@ export class CharactersComponent implements OnInit {
   openDetails(character: CharacterModel): void {
     const dialogRef = this._dialog.open(CharacterDetailsComponent, {
       data: character,
-      width: '70vh'
+      width: '70vh',
+      minHeight: '250px'
     });
 
     dialogRef.afterClosed().subscribe(result => { });

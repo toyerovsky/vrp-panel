@@ -30,7 +30,6 @@ import { MatPaginatorIntl } from '@angular/material';
 import { AppRoutingModule } from '../../app-routing.module';
 import { MaterialModule } from '../material/material.module';
 
-
 @NgModule({
   imports: [
     CommonModule,

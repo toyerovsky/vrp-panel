@@ -8,16 +8,18 @@
   margin: 1vh;
 }
 
-.cropper {
-  max-height: 200px;
-  height: 200px;
-}
-
-.upload-info {
-  margin: 1vh;
-  float: right;
-}
-
 mat-form-field {
   margin: 1vh;
+}
+
+.mat-list-avatar {
+  width: 100px !important;
+  height: 60px !important;
+  border-radius: 0 !important;
+}
+
+mat-list-item {
+  span {
+    color: #777;
+  }
 }

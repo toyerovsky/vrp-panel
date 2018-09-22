@@ -299,5 +299,4 @@ export default class GroupRightsHelper {
     ];
     return rightsArray.filter(right => right !== 0);
   }
-
 }

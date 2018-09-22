@@ -1,6 +1,6 @@
 .card {
-  max-width: 200px;
-  max-height: 300px;
+  min-width: 110px;
+  max-width: 128px;
   display: inline-block;
   margin: .4em .2em;
   text-align: center;
@@ -31,4 +31,12 @@ mat-toolbar {
 
 .title {
   margin: 1vh;
+}
+
+.mat-card-content {
+  mat-icon {
+    height: 64px;
+    width: 64px;
+    font-size: 64px;
+  }
 }

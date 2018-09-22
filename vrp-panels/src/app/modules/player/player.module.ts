@@ -9,6 +9,7 @@ import { MaterialModule } from '../material/material.module';
 import { PlayerNavigationComponent } from '../../components/player/player-navigation/player-navigation.component';
 import { GroupsComponent } from '../../components/player/groups/groups.component';
 import { PenaltiesComponent } from '../../components/player/penalties/penalties.component';
+import { GroupDetailsComponent } from '../../components/player/groups/elements/group-details/group-details.component';
 
 @NgModule({
   imports: [
@@ -24,13 +25,13 @@ import { PenaltiesComponent } from '../../components/player/penalties/penalties.
     CharacterDetailsComponent,
     PlayerNavigationComponent,
     GroupsComponent,
-    PenaltiesComponent
+    PenaltiesComponent,
   ],
   entryComponents: [
     CharacterDetailsComponent,
     PlayerNavigationComponent,
     GroupsComponent,
-    PenaltiesComponent
+    PenaltiesComponent,
   ]
 })
 export class PlayerModule {

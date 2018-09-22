@@ -2,6 +2,7 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 // components
 import { StaffComponent } from '../../components/group-management/staff/staff.component';
@@ -25,9 +26,7 @@ import { PenaltyService } from '../../service/penalty.service';
 import { TicketService } from '../../service/ticket.service';
 
 // misc
-import {
-  MatPaginatorIntl
-} from '@angular/material';
+import { MatPaginatorIntl } from '@angular/material';
 import { getPolishPaginatorIntl } from '../../utils/PolishPaginator';
 import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from '../../app-routing.module';
@@ -40,7 +39,8 @@ import { GroupNavigationComponent } from '../../components/group-management/grou
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ImageCropperModule
   ],
   exports: [
     StaffComponent,

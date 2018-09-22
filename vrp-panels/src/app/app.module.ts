@@ -26,9 +26,6 @@ import { CookieService } from 'ngx-cookie-service';
 
 // misc
 import localePl from '@angular/common/locales/pl';
-import { PlayerNavigationComponent } from './components/player/player-navigation/player-navigation.component';
-import { GroupsComponent } from './components/player/groups/groups.component';
-import { PenaltiesComponent } from './components/player/penalties/penalties.component';
 
 registerLocaleData(localePl);
 

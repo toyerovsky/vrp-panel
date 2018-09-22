@@ -34,13 +34,32 @@
       <mat-icon>directions_car</mat-icon>
       Pojazdy
     </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let vehicle of character.vehicles; let last = last">
+        <img mat-list-avatar [src]="getVehicleImageUrl(vehicle.vehicleHash)">
+        <h1 mat-line> {{vehicle.name}} </h1>
+        <span mat-line>
+          HP {{vehicle.health}}% Przebieg {{vehicle.milage}} mi
+        </span>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
 
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon>attach_money</mat-icon>
+      <mat-icon>build</mat-icon>
       Przedmioty
     </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let item of character.items; let last = last">
+        <h1 mat-line> {{item.name}} </h1>
+        <span mat-line>
+          Typ przedmiotu {{vehicle.itemType}}
+        </span>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
