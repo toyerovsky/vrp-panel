@@ -1,8 +1,9 @@
 .card {
-  min-width: 110px;
-  max-width: 128px;
+  min-width: 15vh;
+  max-width: 16vh;
+  height: 20vh;
   display: inline-block;
-  margin: .4em .2em;
+  margin: 2vh 0.4vh;
   text-align: center;
 
   h4 {
@@ -34,9 +35,21 @@ mat-toolbar {
 }
 
 .mat-card-content {
-  mat-icon {
-    height: 64px;
-    width: 64px;
-    font-size: 64px;
+  img {
+    height: 11vh;
+    width: 11vh;
+    margin-bottom: 1vh;
+    border-radius: 50%;
   }
+}
+
+.bottom-right {
+  position: fixed;
+  bottom: 3vh;
+  right: 10vh;
+}
+
+.mat-fab {
+  width: 64px !important;
+  height: 64px !important;
 }

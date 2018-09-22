@@ -1,3 +1,4 @@
+// spinner 
 .loading {
   margin: 0;
   position: absolute;
@@ -6,6 +7,7 @@
   transform: translate(-50%, -50%);
 }
 
+// custom scrollbar
 ::-webkit-scrollbar {
   width: 4px;
 }

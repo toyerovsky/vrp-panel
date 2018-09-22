@@ -10,9 +10,13 @@
   <h3 class="title">Moje postacie</h3>
   <mat-card class="card" *ngFor="let character of _playerCharacters" (click)="openDetails(character)">
     <mat-card-content>
-      <mat-icon>person</mat-icon>
+      <img [src]="'https://ui-avatars.com/api/?name=' + character.name + '+' + character.surname + '&background=673AB7&color=fff&size=128'">
       <h4>{{character.name}} {{character.surname}}</h4>
       <p>{{character.playedTime}}</p>
     </mat-card-content>
   </mat-card>
 </div>
+
+<button (click)="addCharacterClickHandler()" mat-fab color="primary" class="bottom-right">
+  <mat-icon>add</mat-icon>
+</button>

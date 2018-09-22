@@ -7,4 +7,12 @@
 </div>
 
 <div [hidden]="!_dataReady">
+  <h3 class="title">Moje grupy</h3>
+  <mat-card class="card" *ngFor="let group of _playerGroups" (click)="openDetails(group)">
+    <mat-card-content>
+      <img [src]="'https://ui-avatars.com/api/?name=' + group.name + '&background=673AB7&color=fff&size=128'">
+      <h4>{{group.name}}</h4>
+      <p>{{group.groupType}}</p>
+    </mat-card-content>
+  </mat-card>
 </div>

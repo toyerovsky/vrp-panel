@@ -1,7 +1,44 @@
+.card {
+  min-width: 15vh;
+  max-width: 16vh;
+  height: 20vh;
+  display: inline-block;
+  margin: 2vh 0.4vh;
+  text-align: center;
+
+  h4 {
+    margin-top: 1vh;
+  }
+}
+
+.card:hover {
+  background-color: rgba(210, 210, 210, 0.2);
+  cursor: pointer;
+}
+
 .loading {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+mat-toolbar {
+  mat-icon {
+    margin-right: 2px;
+  }
+}
+
+.title {
+  margin: 1vh;
+}
+
+.mat-card-content {
+  img {
+    height: 11vh;
+    width: 11vh;
+    margin-bottom: 1vh;
+    border-radius: 50%;
+  }
 }

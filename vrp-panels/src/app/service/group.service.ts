@@ -19,10 +19,10 @@ export class GroupService extends AbstractService {
     super(_toastr, _router);
   }
 
-  public getAllByAccountId(accountId: number): Observable<WorkerModel[]> {
-    return this._http.get<WorkerModel[]>(`${environment.apiUrl}/group/account/${accountId}`, {
+  public getAllByAccountId(accountId: number): Observable<GroupModel[]> {
+    return this._http.get<GroupModel[]>(`${environment.apiUrl}/group/account/${accountId}`, {
       withCredentials: true
-    }).pipe(catchError(this.handleError<WorkerModel[]>()));
+    }).pipe(catchError(this.handleError<GroupModel[]>()));
   }
 
   public getAll(): Observable<GroupModel[]> {
