@@ -1,0 +1,49 @@
+.card {
+  min-width: 14vh;
+  max-width: 15vh;
+  height: 18vh;
+  display: inline-block;
+  margin: 2vh 0.4vh;
+  text-align: center;
+
+  h4 {
+    margin-top: 1vh;
+  }
+}
+
+.card:hover {
+  background-color: rgba(210, 210, 210, 0.2);
+  cursor: pointer;
+}
+
+.loading {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  margin: 1vh;
+}
+
+.mat-card-content {
+  img {
+    height: 11vh;
+    width: 11vh;
+    margin-bottom: 0.8vh;
+    border-radius: 50%;
+  }
+}
+
+.bottom-right {
+  position: fixed;
+  bottom: 3vh;
+  right: 10vh;
+}
+
+.mat-fab {
+  width: 64px !important;
+  height: 64px !important;
+}

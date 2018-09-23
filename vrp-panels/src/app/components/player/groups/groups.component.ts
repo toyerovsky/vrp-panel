@@ -1,14 +1,14 @@
 import { GroupDetailsComponent } from './elements/group-details/group-details.component';
-import { GroupModel } from './../../../models/GroupModel';
-import { GroupService } from './../../../service/group.service';
-import { AccountService } from './../../../service/account.service';
+import { GroupModel } from '../../../models/GroupModel';
+import { GroupService } from '../../../service/group.service';
+import { AccountService } from '../../../service/account.service';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'player-groups',
   templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.scss']
+  styleUrls: ['../player.scss', './groups.component.scss']
 })
 export class GroupsComponent implements OnInit {
   private _dataReady: boolean;
@@ -18,7 +18,8 @@ export class GroupsComponent implements OnInit {
     private _dialog: MatDialog,
     private _groupService: GroupService,
     private _accountService: AccountService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this._groupService.getAllByAccountId(this._accountService.currentUserId)
@@ -35,5 +36,4 @@ export class GroupsComponent implements OnInit {
       minHeight: '250px'
     });
   }
-
 }

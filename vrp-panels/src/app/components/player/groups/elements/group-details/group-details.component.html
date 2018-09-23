@@ -1,0 +1,44 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>account_circle</mat-icon>
+      Informacje
+    </ng-template>
+    <span class="info-container">
+      <span class="title">Nazwa:</span>{{groupModel.name}}
+    </span>
+    <span class="info-container">
+      <span class="title">Tag:</span>{{groupModel.tag}}
+    </span>
+    <span class="info-container">
+      <span class="title">Konto:</span>${{groupModel.money}}
+    </span>
+    <span class="info-container">
+      <span class="title">Typ grupy:</span>{{groupModel.groupType}}
+    </span>
+    <span class="info-container">
+      <span class="title">Dotacja:</span>${{groupModel.grant}}
+    </span>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>people</mat-icon>
+      Pracownicy
+    </ng-template>
+    <mat-list>
+      <mat-list-item *ngFor="let worker of groupModel.workers; let last = last">
+        <img mat-list-avatar *ngIf="worker.character.imageUrl"
+             [src]="worker.character.imageUrl">
+        <img mat-list-avatar *ngIf="!worker.character.imageUrl"
+             [src]="'https://ui-avatars.com/api/?name=' + worker.character.name + '+' + worker.character.surname + '&background=673AB7&color=fff&size=128'">
+        <h1 mat-line> {{worker.character.name}} {{worker.character.surname}} </h1>
+        <span mat-line>
+          {{worker.groupRank.name}} ${{worker.salary}}
+        </span>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-tab>
+
+</mat-tab-group>

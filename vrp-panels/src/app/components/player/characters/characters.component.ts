@@ -6,11 +6,12 @@ import { PenaltyModel } from '../../../models/PenaltyModel';
 import { MatDialog } from '@angular/material';
 import { AccountService } from '../../../service/account.service';
 import { CharacterService } from '../../../service/character.service';
+import { AddCharacterComponent } from './elements/add-character/add-character.component';
 
 @Component({
   selector: 'player-characters',
   templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.scss']
+  styleUrls: ['../player.scss', './characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
   private _playerCharacters: CharacterModel[] = [];
@@ -20,7 +21,8 @@ export class CharactersComponent implements OnInit {
     private _dialog: MatDialog,
     private _accountService: AccountService,
     private _characterService: CharacterService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this._characterService.getAllByAccountId(this._accountService.currentUserId)
@@ -39,6 +41,13 @@ export class CharactersComponent implements OnInit {
   }
 
   addCharacterClickHandler() {
+    const dialogRef = this._dialog.open(AddCharacterComponent, {
+      width: '80vh',
+      minHeight: '250px'
+    });
 
+    dialogRef.afterClosed().subscribe(data => {
+
+    });
   }
 }

@@ -55,7 +55,7 @@
       <mat-list-item *ngFor="let item of character.items; let last = last">
         <h1 mat-line> {{item.name}} </h1>
         <span mat-line>
-          Typ przedmiotu {{vehicle.itemType}}
+          Typ przedmiotu {{item.itemType}}
         </span>
         <mat-divider *ngIf="!last"></mat-divider>
       </mat-list-item>
