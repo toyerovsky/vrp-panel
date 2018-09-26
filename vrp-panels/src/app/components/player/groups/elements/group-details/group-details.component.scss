@@ -1,0 +1,25 @@
+.title {
+  font-weight: 700;
+  padding: 1vh;
+}
+
+.info-container {
+  display: block;
+  margin: 1vh;
+}
+
+mat-form-field {
+  margin: 1vh;
+}
+
+.mat-list-avatar {
+  width: 100px !important;
+  height: 60px !important;
+  border-radius: 0 !important;
+}
+
+mat-list-item {
+  span {
+    color: #777;
+  }
+}

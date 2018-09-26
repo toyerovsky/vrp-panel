@@ -17,7 +17,8 @@ export class CharacterDetailsComponent implements OnInit {
     private _dialogRef: MatDialogRef<CharacterDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public character: CharacterModel,
     private _characterService: CharacterService
-  ) { }
+  ) {
+  }
 
   public onUpload = false;
   public imageChangedEvent: any = '';
@@ -49,6 +50,6 @@ export class CharacterDetailsComponent implements OnInit {
 
   getVehicleImageUrl(vehicleHash: string): string {
     return 'https://info.v-rp.pl/uploads/vehicles/icons/' +
-      this._vehicles.find(veh => veh.id == vehicleHash).displayName.toLowerCase() + '.jpg';
+      this._vehicles.find(veh => veh.id === vehicleHash).displayName.toLowerCase() + '.jpg';
   }
 }

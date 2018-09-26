@@ -10,6 +10,7 @@ import { PlayerNavigationComponent } from '../../components/player/player-naviga
 import { GroupsComponent } from '../../components/player/groups/groups.component';
 import { PenaltiesComponent } from '../../components/player/penalties/penalties.component';
 import { GroupDetailsComponent } from '../../components/player/groups/elements/group-details/group-details.component';
+import { AddCharacterComponent } from '../../components/player/characters/elements/add-character/add-character.component';
 
 @NgModule({
   imports: [
@@ -26,12 +27,13 @@ import { GroupDetailsComponent } from '../../components/player/groups/elements/g
     PlayerNavigationComponent,
     GroupsComponent,
     PenaltiesComponent,
+    GroupDetailsComponent,
+    AddCharacterComponent
   ],
   entryComponents: [
     CharacterDetailsComponent,
-    PlayerNavigationComponent,
-    GroupsComponent,
-    PenaltiesComponent,
+    GroupDetailsComponent,
+    AddCharacterComponent
   ]
 })
 export class PlayerModule {
