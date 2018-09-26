@@ -6,23 +6,24 @@
 
 <main *ngIf="_accountModel" class="app-container">
   <!-- #region mobile-menu-button -->
-  <div (click)="openMenu()" class="openMenu">
-      <i class="material-icons">keyboard_arrow_right</i>
+  <div class="openMenu">
+    <button mat-icon-button (click)="_menuOpened = true">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
   </div>
   <!-- #endregion mobile-menu-button -->
 
-  <aside class="asideContent">
+  <aside [ngClass]="{'asideShowContent': _menuOpened}" class="asideContent">
     <!-- #region mobile-menu-button -->
-    <div (click)="closeMenu()" class="closeMenu">
-        <i class="material-icons">close</i>
-    </div>
+    <button mat-icon-button (click)="_menuOpened = false" class="closeMenu">
+      <mat-icon>close</mat-icon>
+    </button>
     <!-- #endregion mobile-menu-button -->
-    
+
     <header class="panelHeader">
       <div class="userBox">
         <div class="userImg">
-          <img class="avatar" [src]="_accountModel.useGravatar == false ? 'https://forum.v-rp.pl/uploads/' + _accountModel.avatarUrl :
-        _accountService.getGravatarUrl(this._accountModel.gravatarEmail) + '.jpg'" />
+          <img class="avatar" [src]="getUserAvatar()" />
         </div>
 
         <div class="userInfo">

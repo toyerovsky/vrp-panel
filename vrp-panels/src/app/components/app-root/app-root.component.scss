@@ -23,8 +23,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+
 // menu button for mobile users
-.openMenu, .closeMenu {display: none; }
+.openMenu,
+.closeMenu {
+  display: none;
+}
 
 .asideContent {
   position: fixed;
@@ -340,9 +344,9 @@
 }
 
 @media only screen and (max-width: 976px) {
-  .openMenu{
+  .openMenu {
     display: inline-block;
-    z-index: 9992 ;
+    z-index: 9992;
     position: absolute;
     top: 50%;
 
@@ -352,36 +356,37 @@
     color: white;
     background: #272b33;
   }
-  .asideContent{
+
+  .asideContent {
     display: none;
   }
 
-  .asideShowContent{
+  .asideShowContent {
     z-index: 9995 !important;
     display: block !important;
     width: 100% !important;
     height: 100vh !important;
 
     .navigationHeader,
-  .shortcutsHeader {
-    padding: 10px 0px 10px 7px !important;
-    font-size: 15px !important;
-  }
+    .shortcutsHeader {
+      padding: 10px 0px 10px 7px !important;
+      font-size: 15px !important;
+    }
 
-  .shortcutImg {
-    width: 36px !important;
-    height: 36px !important;
-  }
+    .shortcutImg {
+      width: 36px !important;
+      height: 36px !important;
+    }
 
-  .shortcutInfo-name {
-    font-size: 13px !important;
-  }
+    .shortcutInfo-name {
+      font-size: 13px !important;
+    }
 
-  .shortcutInfo-rank {
-    font-size: 12px !important;
-  }
+    .shortcutInfo-rank {
+      font-size: 12px !important;
+    }
 
-    .closeMenu{
+    .closeMenu {
       display: inline-block;
       position: absolute;
       top: 1.5%;

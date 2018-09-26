@@ -13,6 +13,7 @@ import GroupRightsHelper from '../../helpers/GroupRankHelper';
 export class AppRootComponent implements OnInit {
   private _accountModel: AccountModel;
   private _manageableGroups: GroupModel[] = [];
+  private _menuOpened: boolean;
 
   constructor(
     private _accountService: AccountService,
@@ -51,11 +52,8 @@ export class AppRootComponent implements OnInit {
     this._cookie.delete('AccountId');
   }
 
-  public openMenu(): void{
-    document.getElementsByTagName('aside')[0].classList.add('asideShowContent');
-  }
-
-  public closeMenu(): void{
-    document.getElementsByTagName('aside')[0].classList.remove('asideShowContent');
+  public getUserAvatar(): string {
+    return this._accountModel.useGravatar == false ? 'https://forum.v-rp.pl/uploads/' + this._accountModel.avatarUrl :
+      this._accountService.getGravatarUrl(this._accountModel.gravatarEmail) + '.jpg'
   }
 }

@@ -1,3 +1,4 @@
+import { ItemTemplatesComponent } from './components/admin/item-templates/item-templates.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -20,7 +21,7 @@ import { CharactersComponent as PlayerCharactersComponent } from './components/p
 import { CharactersComponent as AdminCharactersComponent } from './components/admin/characters/characters.component';
 import { GroupInfoComponent } from './components/group-management/group-info/group-info.component';
 import { PenaltiesComponent as PlayerPenaltiesComponent } from './components/player/penalties/penalties.component';
-import { GroupsComponent as PlayerGroupsComponent} from './components/player/groups/groups.component';
+import { GroupsComponent as PlayerGroupsComponent } from './components/player/groups/groups.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'player/characters', pathMatch: 'full' },
@@ -54,6 +55,7 @@ const routes: Routes = [
           { path: 'vehicles', component: VehiclesComponent },
           { path: 'buildings', component: BuildingsComponent },
           { path: 'items', component: ItemsComponent },
+          { path: 'itemtemplates', component: ItemTemplatesComponent },
           { path: 'penalties', component: PenaltiesComponent }
         ]
       },

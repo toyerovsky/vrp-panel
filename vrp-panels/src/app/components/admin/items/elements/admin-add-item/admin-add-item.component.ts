@@ -62,11 +62,13 @@ export class AdminAddItemComponent implements OnInit {
     });
     this.characterId.setValidators([mutuallyExclusiveWith(this.buildingId, this.vehicleId)]);
     this.buildingId.setValidators([mutuallyExclusiveWith(this.characterId, this.vehicleId)]);
-    this.vehicleId.setValidators([mutuallyExclusiveWith(this.characterId, this.buildingId)])
+    this.vehicleId.setValidators([mutuallyExclusiveWith(this.characterId, this.buildingId)]);
     // enable/disable parameters input depending on the item type
     this.itemType.valueChanges.subscribe(selectValue => {
+      // find the current form value depending on item type
       this._currentForm = ADMIN_ITEMS_FORM.find(
         item => item.itemType === this._itemTypes.find(type => type.value === selectValue).viewValue);
+      // if the form doesn't exist default values are shown
       if (this._currentForm !== undefined) {
         this._currentForm.firstParamLabel ? this.firstParameter.enable() : this.disableAndReset(this.firstParameter);
         this._currentForm.secondParamLabel ? this.secondParameter.enable() : this.disableAndReset(this.secondParameter);
