@@ -23,6 +23,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+// menu button for mobile users
+.openMenu, .closeMenu {display: none; }
 
 .asideContent {
   position: fixed;
@@ -338,21 +340,52 @@
 }
 
 @media only screen and (max-width: 976px) {
+  .openMenu{
+    display: inline-block;
+    z-index: 9992 ;
+    position: absolute;
+    top: 50%;
 
-  .panelHeader,
-  .navigationHeader,
-  .shortcutsHeader,
-  .shortcutInfo {
-    display: none !important;
+    padding: 5px 2px;
+    border-radius: 0 30% 30% 0;
+
+    color: white;
+    background: #272b33;
+  }
+  .asideContent{
+    display: none;
   }
 
-  aside {
-    width: 0 auto !important;
-    justify-content: center;
-    align-items: center;
+  .asideShowContent{
+    z-index: 9995 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100vh !important;
+
+    .navigationHeader,
+  .shortcutsHeader {
+    padding: 10px 0px 10px 7px !important;
+    font-size: 15px !important;
   }
 
-  .mainContent {
-    margin-left: 10%;
+  .shortcutImg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .shortcutInfo-name {
+    font-size: 13px !important;
+  }
+
+  .shortcutInfo-rank {
+    font-size: 12px !important;
+  }
+
+    .closeMenu{
+      display: inline-block;
+      position: absolute;
+      top: 1.5%;
+      right: 2.5%;
+    }
   }
 }

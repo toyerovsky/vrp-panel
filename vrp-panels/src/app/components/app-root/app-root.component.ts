@@ -50,4 +50,12 @@ export class AppRootComponent implements OnInit {
     this._accountService.logOut().subscribe();
     this._cookie.delete('AccountId');
   }
+
+  public openMenu(): void{
+    document.getElementsByTagName('aside')[0].classList.add('asideShowContent');
+  }
+
+  public closeMenu(): void{
+    document.getElementsByTagName('aside')[0].classList.remove('asideShowContent');
+  }
 }

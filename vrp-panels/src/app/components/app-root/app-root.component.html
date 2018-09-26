@@ -5,7 +5,19 @@
 </div>
 
 <main *ngIf="_accountModel" class="app-container">
+  <!-- #region mobile-menu-button -->
+  <div (click)="openMenu()" class="openMenu">
+      <i class="material-icons">keyboard_arrow_right</i>
+  </div>
+  <!-- #endregion mobile-menu-button -->
+
   <aside class="asideContent">
+    <!-- #region mobile-menu-button -->
+    <div (click)="closeMenu()" class="closeMenu">
+        <i class="material-icons">close</i>
+    </div>
+    <!-- #endregion mobile-menu-button -->
+    
     <header class="panelHeader">
       <div class="userBox">
         <div class="userImg">
