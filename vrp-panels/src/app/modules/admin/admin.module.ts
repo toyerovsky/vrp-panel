@@ -1,24 +1,8 @@
+import { AddItemTemplateComponent } from './../../components/admin/item-templates/elements/add-item-template/add-item-template.component';
 // modules
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatCheckboxModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatOptionModule,
-  MatPaginatorModule,
-  MatProgressSpinnerModule,
-  MatSelectModule, MatSnackBarModule,
-  MatSortModule,
-  MatTableModule
-} from '@angular/material';
 
 // components
 import { AddCharacterComponent } from '../../components/admin/characters/elements/add-character/add-character.component';
@@ -42,7 +26,6 @@ import { BuildingsComponent } from '../../components/admin/buildings/buildings.c
 import { ItemsComponent } from '../../components/admin/items/items.component';
 import { PenaltiesComponent } from '../../components/admin/penalties/penalties.component';
 import { ItemTemplatesComponent } from '../../components/admin/item-templates/item-templates.component';
-import { AddItemTemplateComponent } from '../../components/admin/item-templates/elements/add-item-template/add-item-template.component';
 import { EditItemTemplateComponent } from '../../components/admin/item-templates/elements/edit-item-template/edit-item-template.component';
 
 // services
@@ -119,6 +102,8 @@ import { MaterialModule } from '../material/material.module';
     EditItemComponent,
     AdminAddPenaltyComponent,
     AdminEditPenaltyComponent,
+    AddItemTemplateComponent,
+    EditItemTemplateComponent
   ],
   providers: [
     AccountService,

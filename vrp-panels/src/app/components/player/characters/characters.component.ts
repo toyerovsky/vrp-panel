@@ -42,8 +42,7 @@ export class CharactersComponent implements OnInit {
 
   addCharacterClickHandler() {
     const dialogRef = this._dialog.open(AddCharacterComponent, {
-      width: '80vh',
-      minHeight: '250px'
+      width: '100vh'
     });
 
     dialogRef.afterClosed().subscribe(data => {

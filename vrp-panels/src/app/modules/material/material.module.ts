@@ -72,7 +72,8 @@ import {
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatBottomSheetModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ]
 })
 export class MaterialModule {

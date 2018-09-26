@@ -1,12 +1,8 @@
+import { GENDERS } from './../../../../../const/Names';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { AccountService } from '../../../../../service/account.service';
 import { CharacterModel } from '../../../../../models/CharacterModel';
-
-export interface Gender {
-  value: boolean;
-  viewValue: string;
-}
 
 @Component({
   selector: 'add-character',
@@ -14,10 +10,7 @@ export interface Gender {
   styleUrls: ['../../../admin-dialog.scss']
 })
 export class AddCharacterComponent implements OnInit {
-  private _genders: Gender[] = [
-    {value: false, viewValue: 'Kobieta'},
-    {value: true, viewValue: 'Mężczyzna'},
-  ];
+  private _genders = GENDERS;
   private _characterModel: CharacterModel;
 
   constructor(
