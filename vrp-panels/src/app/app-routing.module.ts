@@ -43,13 +43,11 @@ const routes: Routes = [
           { path: 'info', component: PlayerCharactersComponent },
           { path: 'characters', component: PlayerCharactersComponent },
           { path: 'groups', component: PlayerGroupsComponent },
-          { path: 'penalties', component: PlayerPenaltiesComponent },
-
+          { path: 'penalties', component: PlayerPenaltiesComponent }
         ]
       },
       {
-        path: 'admin',
-        children: [
+        path: 'admin', children: [
           { path: 'characters', component: AdminCharactersComponent },
           { path: 'accounts', component: AccountsComponent },
           { path: 'groups', component: GroupsComponent },
