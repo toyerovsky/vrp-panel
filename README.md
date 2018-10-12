@@ -4,5 +4,5 @@
 # V Role Play
 [V Role Play](https://github.com/v-role-play) is Role Play server based on rage.mp platform. This repository contains angular web panel for server/gameplay management.
 
-## project status ##
+# Project status #
 discontinued :disappointed_relieved:
